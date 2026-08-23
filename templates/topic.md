@@ -1,19 +1,28 @@
 # Topic
-
+ 
 ## Definition
-<!-- What is it? Core concepts, definitions, and terminology -->
-
-## Alternatives & Trade-offs
-<!-- How does it differ from alternatives? Contrast with similar patterns/approaches and discuss pros/cons -->
-
-## Mechanism
-<!-- How does it work internally? Implementation details and how it operates under the hood -->
-
+<!-- What is it? Core concepts, definitions, terminology, and why it matters -->
+ 
+## Alternatives & Trade-offs (optional)
+<!-- How does it differ from alternatives? Pros, cons, and design considerations -->
+ 
+## How it Works
+<!-- Internal behavior, runtime/compiler details, implementation concepts -->
+ 
 ## Application
-<!-- When would you use it? Use cases and practical scenarios -->
-
+<!-- When to use it, when not to use it, practical scenarios -->
+ 
+## Common Mistakes
+<!-- Misconceptions, pitfalls, interview traps, anti-patterns -->
+ 
+## Common Interview Questions
+<!-- Typical interview questions and follow-up questions -->
+ 
 ## Practical Tasks
-<!-- Can you implement, test, debug, or review it? Code examples and exercises -->
-
+<!-- Coding, debugging, testing, review, or design exercises -->
+ 
+## Readiness Criteria
+<!-- What a candidate should be able to explain, implement, analyse and debug -->
+ 
 ## References
-<!-- Links to documentation, articles, videos, and books -->
+<!-- Microsoft Learn, documentation, articles, videos, books -->
