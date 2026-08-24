@@ -1,8 +1,8 @@
 # Module 6 - Asynchronous Programming and Concurrency
 
-**Status:** Complete
-**Priority:** Critical
-**Prerequisites:** [C# Language and Type System](../m02-csharp-language/README.md)
+**Status:** Complete  
+**Priority:** Critical  
+**Prerequisites:** [C# Language and Type System](../m02-csharp-language/README.md)  
 
 ## Scope
 

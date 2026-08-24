@@ -1,8 +1,8 @@
 # Module 2 - C# Language and Type System
 
-**Status:** Complete
-**Priority:** Critical
-**Prerequisites:** None (this is the entry point into the core learning path).
+**Status:** Complete  
+**Priority:** Critical  
+**Prerequisites:** None (this is the entry point into the core learning path).  
 
 ## Scope
 

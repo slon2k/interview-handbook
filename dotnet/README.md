@@ -102,7 +102,7 @@ This combines normal error handling with the relevant parts of the runtime memor
 
 See the [Asynchronous Programming and Concurrency module](m06-async-concurrency/README.md).
 
-**Status:** Complete
+**Status:** Complete  
 **Priority:** Critical.
 
 This deserves an independent module because it is a frequent differentiator between junior and mid-level candidates.
