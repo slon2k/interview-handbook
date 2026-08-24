@@ -73,6 +73,9 @@ See the completed [C# language and type system module](m02-csharp-language/READM
 
 See the [Collections, LINQ, and Basic Algorithms module](m03-collections-linq/README.md).
 
+**Status:** Complete  
+**Priority:** Critical.
+
 This module covers data manipulation and basic problem-solving.
 High-level topics:
 
@@ -472,7 +475,7 @@ The modules do not deserve equal preparation time.
 ### Tier A — Must Be Strong
 
 1. C# language and type system
-2. Collections and LINQ
+2. Collections, LINQ, and basic algorithms
 3. Async and concurrency
 4. ASP.NET Core and HTTP
 5. SQL

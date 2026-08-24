@@ -1,6 +1,6 @@
 # Module 3 - Collections, LINQ, and Basic Algorithms
 
-**Status:** In progress  
+**Status:** Complete  
 **Priority:** Critical  
 **Prerequisites:** [C# Language and Type System](../m02-csharp-language/README.md)
 
@@ -47,16 +47,20 @@ Concurrent collections are covered at an awareness level here. Detailed synchron
 
 ### 3. LINQ and Iteration
 
-`IQueryable<T>` is introduced here as a contrast with in-memory LINQ. Query translation, database execution, loading, and provider-specific behavior belong primarily in [Module 9 - Entity Framework Core](../README.md#module-9--entity-framework-core).
+- [`IEnumerable<T>` and iterators](ienumerable-and-iterators.md)
+- [LINQ query operators](linq-query-operators.md)
+- [Deferred execution and materialization](deferred-execution-and-materialization.md)
+- [`IEnumerable<T>` versus `IQueryable<T>`](ienumerable-vs-iqueryable.md)
+
+`IQueryable<T>` is introduced here as a contrast with in-memory LINQ. Query translation, database execution, loading, and provider-specific behavior belong primarily in Module 9 - Entity Framework Core.
 
 ### 4. Basic Algorithms
 
-- Searching and sorting
-- Binary search
-- Recursion
-- Basic tree representation
-- Breadth-first search and depth-first search awareness
-- Common interview problems involving strings and collections
+- [Searching and sorting](searching-and-sorting.md)
+- [Binary search](binary-search.md)
+- [Recursion](recursion.md)
+- [Trees, BFS, and DFS](tree-traversal.md)
+- [Collection and string interview problems](collection-interview-problems.md)
 
 Advanced graph algorithms are optional for the target roles covered by this handbook.
 
@@ -73,7 +77,7 @@ Advanced graph algorithms are optional for the target roles covered by this hand
 2. Collection interfaces and equality comparers.
 3. Complexity and collection performance.
 4. `IEnumerable<T>`, iterators, and deferred execution.
-5. Core LINQ operators and materialization.
+5. Core LINQ operators, streaming, and materialization.
 6. Query composition, grouping, joining, and repeated enumeration.
 7. Searching, sorting, recursion, and tree traversal.
 8. Mixed interview problems and performance reviews.
