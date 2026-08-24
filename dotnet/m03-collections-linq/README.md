@@ -38,27 +38,14 @@ Concurrent collections are covered at an awareness level here. Detailed synchron
 
 ### 2. Collection Design
 
-- Selecting the correct collection
-- Read-only and mutable collection interfaces
-- Equality comparers and dictionary keys
-- Hashing requirements for sets and dictionaries
-- Time and space complexity
-- Capacity, resizing, and allocation awareness
+- [Selecting the correct collection](selecting-collections.md)
+- [Read-only and mutable collection interfaces](collection-interfaces.md)
+- [Equality comparers and dictionary keys](equality-comparers.md)
+- [Hashing and dictionary keys](hashing-and-dictionary-keys.md)
+- [Time and space complexity](complexity-analysis.md)
+- [Capacity, resizing, and allocation awareness](capacity-resizing-and-allocation.md)
 
 ### 3. LINQ and Iteration
-
-- `IEnumerable<T>`
-- Iterators and `yield return`
-- Deferred execution
-- Projection and filtering
-- Aggregation
-- Grouping and joining
-- `Select` versus `SelectMany`
-- `First`, `Single`, `Any`, and `All`
-- Ordering and distinct results
-- Materialization with `ToList` and `ToArray`
-- Repeated enumeration
-- `IEnumerable<T>` versus `IQueryable<T>`
 
 `IQueryable<T>` is introduced here as a contrast with in-memory LINQ. Query translation, database execution, loading, and provider-specific behavior belong primarily in [Module 9 - Entity Framework Core](../README.md#module-9--entity-framework-core).
 

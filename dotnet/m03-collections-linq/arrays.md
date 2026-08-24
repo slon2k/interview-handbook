@@ -36,7 +36,7 @@ Use arrays for fixed-size buffers, interop boundaries, lookup tables, and perfor
 
 - What is an array?
 - Are arrays zero-based?
-- What is the difference between `Length` and `Count`?
+- Arrays expose a `Length` property; how does that differ from a collection's `Count` property or LINQ's `Count()` method?
 
 ### Intermediate
 

@@ -13,7 +13,7 @@ var tags = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
 
 ## Alternatives & Trade-offs
 
-Use a hash set when uniqueness and membership are central. Use `List<T>` when order and duplicates matter, or `SortedSet<T>` when sorted uniqueness is required. Use `FrozenSet<T>` for .NET 8+ build-once, read-heavy membership data.
+Use a hash set when uniqueness and membership are central. Use `List<T>` when order and duplicates matter, or `SortedSet<T>` when sorted uniqueness is required and $O(\log n)$ operations are acceptable. Use `FrozenSet<T>` for .NET 8+ build-once, read-heavy membership data.
 
 ## How It Works
 

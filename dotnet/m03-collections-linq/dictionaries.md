@@ -17,7 +17,7 @@ Use a dictionary for unsorted key-based lookup. Use `SortedDictionary<TKey, TVal
 
 ## How It Works
 
-The dictionary hashes a key and uses an equality comparer to locate a bucket. Correct key behavior requires consistent equality and hashing. Collisions are handled internally; poor hash distribution can degrade performance.
+The dictionary uses a hash function to select a bucket, then an equality comparer to locate or verify the key within that bucket. Correct key behavior requires consistent equality and hashing. Collisions are handled internally; poor hash distribution can degrade performance.
 
 `SortedDictionary<TKey, TValue>` is tree-backed, with $O(\log n)$ lookup, insertion, and removal. `SortedList<TKey, TValue>` uses sorted arrays, with $O(\log n)$ lookup but $O(n)$ insertion and removal because elements may need to move. A `Lookup<TKey, TValue>` is typically created by LINQ grouping and is useful for one-to-many read-only access.
 
@@ -31,6 +31,7 @@ Use dictionaries for indexes, caches, configuration maps, frequency counts, and 
 
 - Mutating a key after insertion.
 - Assuming enumeration order is a business contract.
+- Assuming a `null` key is accepted; `Dictionary<TKey, TValue>` throws `ArgumentNullException` for a null key.
 - Using `ContainsKey` followed by an indexer when `TryGetValue` is clearer.
 - Using a culture-sensitive comparer for identifiers.
 - Ignoring duplicate-key behavior during construction.
@@ -42,6 +43,7 @@ Use dictionaries for indexes, caches, configuration maps, frequency counts, and 
 - What is a dictionary?
 - What is the role of a key?
 - What is the average lookup complexity?
+- Can a `Dictionary<TKey, TValue>` contain a null key?
 
 ### Intermediate
 
@@ -60,7 +62,6 @@ Use dictionaries for indexes, caches, configuration maps, frequency counts, and 
 
 ### Follow-up Questions
 
-- Can a dictionary contain a null key?
 - Does a dictionary preserve insertion order as a contract?
 - What happens when a key is added twice?
 

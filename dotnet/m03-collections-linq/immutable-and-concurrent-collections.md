@@ -22,7 +22,7 @@ queue.TryDequeue(out int item);
 | `ConcurrentDictionary<TKey, TValue>` | Thread-safe key/value lookup and updates |
 | `ConcurrentQueue<T>` | FIFO work items shared by producers and consumers |
 | `ConcurrentStack<T>` | LIFO work items shared by multiple threads |
-| `ConcurrentBag<T>` | Unordered items when threads often add and remove their own work; not a FIFO queue |
+| `ConcurrentBag<T>` | Unordered items when threads often add and remove their own work; per-thread storage can reduce contention, but it is not a FIFO queue |
 
 These types provide thread-safe individual operations. They do not make a sequence of operations an atomic transaction.
 
