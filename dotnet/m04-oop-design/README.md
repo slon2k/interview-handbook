@@ -28,42 +28,42 @@ By the end of this module, you should be able to:
 
 ### 1. OOP Foundations
 
-- [x] [Encapsulation](encapsulation.md)
-- [x] [Abstraction](abstraction.md)
-- [x] [Inheritance](inheritance.md)
-- [x] [Polymorphism](polymorphism.md)
-- [x] [Composition versus inheritance](composition-versus-inheritance.md)
-- [x] [Interfaces versus abstract classes](interfaces-versus-abstract-classes.md)
-- [x] [Method overloading versus overriding](overloading-versus-overriding.md)
-- [x] [API and class design](api-and-class-design.md)
+- [Encapsulation](encapsulation.md)
+- [Abstraction](abstraction.md)
+- [Inheritance](inheritance.md)
+- [Polymorphism](polymorphism.md)
+- [Composition versus inheritance](composition-versus-inheritance.md)
+- [Interfaces versus abstract classes](interfaces-versus-abstract-classes.md)
+- [Method overloading versus overriding](overloading-versus-overriding.md)
+- [API and class design](api-and-class-design.md)
 
 ### 2. Maintainable Design
 
-- [x] [Coupling and cohesion](coupling-and-cohesion.md)
-- [x] [Separation of concerns](separation-of-concerns.md)
-- [x] [SOLID principles](solid-principles.md)
-- [x] [DRY, KISS, and YAGNI](dry-kiss-yagni.md)
-- [x] [Guard clauses](guard-clauses.md)
-- [x] [Immutability in object design](immutability-in-object-design.md)
-- [x] [Dependency inversion and dependency injection](dependency-inversion-and-injection.md)
+- [Coupling and cohesion](coupling-and-cohesion.md)
+- [Separation of concerns](separation-of-concerns.md)
+- [SOLID principles](solid-principles.md)
+- [DRY, KISS, and YAGNI](dry-kiss-yagni.md)
+- [Guard clauses](guard-clauses.md)
+- [Immutability in object design](immutability-in-object-design.md)
+- [Dependency inversion and dependency injection](dependency-inversion-and-injection.md)
 
 Dependency injection is covered here as a design technique. ASP.NET Core container configuration and service lifetimes belong in Module 7.
 
 ### 3. Code Quality and Refactoring
 
-- [x] [Code smells](code-smells.md)
-- [x] [Refactoring techniques](refactoring-techniques.md)
-- [x] [Pattern overuse and overengineering](pattern-overuse-and-overengineering.md)
+- [Code smells](code-smells.md)
+- [Refactoring techniques](refactoring-techniques.md)
+- [Pattern overuse and overengineering](pattern-overuse-and-overengineering.md)
 
 ### 4. Common Design Patterns
 
-- [x] [Strategy](strategy.md)
-- [x] [Factory](factory.md)
-- [x] [Adapter](adapter.md)
-- [x] [Decorator](decorator.md)
-- [x] [Observer](observer.md)
-- [x] [Builder](builder.md)
-- [x] [Repository](repository.md)
+- [Strategy](strategy.md)
+- [Factory](factory.md)
+- [Adapter](adapter.md)
+- [Decorator](decorator.md)
+- [Observer](observer.md)
+- [Builder](builder.md)
+- [Repository](repository.md)
 
 Patterns should be introduced as responses to recurring design problems. Each topic should explain when a simpler design is preferable.
 

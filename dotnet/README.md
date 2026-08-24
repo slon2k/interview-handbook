@@ -2,6 +2,8 @@
 
 This roadmap covers the language, runtime, backend, engineering, and interview skills needed for practical .NET development and interview preparation.
 
+**Short on time?** See the [Fast Track](fast-track.md) for a curated shortlist of the highest-yield topics instead of the full roadmap below.
+
 ## Scope
 
 The core path is designed for junior-to-mid-level roles. Advanced sections provide optional depth for stronger interviews and follow-up questions; they do not imply a senior-level target.

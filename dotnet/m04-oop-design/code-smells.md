@@ -2,105 +2,101 @@
 
 ## Definition
 
-A code smell is a symptom of design or maintenance difficulty, not necessarily a defect. Examples include long methods, large classes, duplication, feature envy, and shotgun changes.
+A code smell is a surface indicator in source code that usually signals a deeper design problem — not a bug itself, but a sign that refactoring is likely worthwhile. Common examples: long methods, large classes, long parameter lists, duplicated code, feature envy, and shotgun surgery.
+
+```csharp
+// Long parameter list + primitive obsession — two smells at once
+public void CreateUser(string firstName, string lastName, string email, string phone,
+    string street, string city, string zip, DateTime birthDate, bool isAdmin) { }
+```
 
 ## Alternatives & Trade-offs
 
-A smell is a signal to investigate, not an automatic refactoring command. Some duplication or complexity may be justified by domain requirements.
+Recognizing smells early is cheap; ignoring them lets small frictions compound into a codebase that's expensive to change. Not every smell needs fixing immediately — a "God class" in code that's about to be deleted isn't worth refactoring, and treating every smell as an emergency can itself become a form of over-engineering. The judgment call is whether the smelly code is on a path of continued change.
 
 ## How It Works
 
-Smells indicate excessive responsibility, coupling, unclear intent, or unstable boundaries. Tests and measurements help determine whether a change improves the design.
-
-## Common Examples
-
-### Long Method
-
-A method that validates input, queries storage, applies business rules, formats output, and sends notifications has too many reasons to change.
+### Long method
 
 ```csharp
-public InvoiceResult Process(InvoiceRequest request)
+public void ProcessOrder(Order order)
 {
-	Validate(request);
-	Customer customer = database.LoadCustomer(request.CustomerId);
-	decimal total = CalculateTotal(request, customer);
-	Invoice invoice = formatter.Format(total);
-	email.Send(invoice);
-	return new InvoiceResult(invoice);
+    // 80 lines mixing validation, pricing, inventory checks, payment, notification...
 }
 ```
+Smell: doing too much in one place, hard to test any single piece in isolation. Fix: extract cohesive steps into named methods or collaborator classes.
 
-Extract focused collaborators or methods only when the boundaries improve understanding and change isolation.
+### Feature envy
 
-### Large Class
+```csharp
+public class InvoicePrinter
+{
+    public string Print(Order order) =>
+        $"{order.Customer.Name}, {order.Customer.Address.Street}, {order.Customer.Address.City}, total: {order.Items.Sum(i => i.Price)}";
+}
+```
+`InvoicePrinter` reaches deep into `order.Customer.Address` and `order.Items` — it's more interested in `Order`'s data than its own. Fix: move the summarizing logic onto `Order` itself, or introduce a dedicated view/DTO built by `Order`.
 
-A class that owns persistence, authorization, pricing, reporting, and email has low cohesion. Separate responsibilities by reason to change, not by arbitrary line count.
+### Shotgun surgery
 
-### Duplicate Knowledge
+A single conceptual change (e.g., adding a new `OrderStatus`) that requires editing the same `switch` statement in six different unrelated classes. Smell: the concept isn't centralized. Fix: consolidate the `switch` behavior behind polymorphism (see Strategy) or a single owning type.
 
-Repeating the same tax rule in checkout and reporting can cause inconsistent behavior. Centralize the rule when both locations represent the same business knowledge. Similar-looking code with independent rules should not be merged automatically.
+### Duplicated code
 
-### Primitive Obsession
+```csharp
+// In OrderService
+if (email.Contains('@') && email.Length <= 254) { }
 
-Passing a raw string for an email address, currency, or status can allow invalid values everywhere. A value object can enforce the invariant once.
-
-### Feature Envy
-
-A method that reads many fields from another object and performs that object's business logic may belong on the object it relies on.
-
-### Shotgun Changes
-
-If one small requirement requires edits across many unrelated classes, the behavior may be scattered across poor boundaries. A focused service or policy can localize the change.
-
-### Speculative Generality
-
-Unused extension points, generic abstractions, and configuration options add complexity without a current requirement. Remove them until evidence justifies the flexibility.
+// In UserService, independently duplicated
+if (email.Contains('@') && email.Length <= 254) { }
+```
+Fix: extract to a single validator — but only once a second real use case confirms the rule is actually shared (see DRY/YAGNI).
 
 ## Application
 
-Use smells during code review and maintenance planning to prioritize changes that reduce defect or change cost.
+Use smells as a checklist during code review and before extending a piece of code: is this method doing one thing, is this class cohesive, would a single conceptual change require touching many files? Treat smells as prompts to investigate, not automatic verdicts.
 
 ## Common Mistakes
 
-- Refactoring without characterization tests.
-- Treating style preferences as design defects.
-- Applying a pattern to hide a smell.
+- Refactoring purely because a smell is "textbook present," without checking whether the code is stable and unlikely to change (low payoff for the risk of touching it).
+- Fixing a smell locally (e.g., extracting a method) without addressing the underlying design issue it was pointing at (e.g., an SRP violation).
+- Treating every long method as automatically bad — a long method that is a single linear sequence with no real branching or reuse concern may not need splitting.
+- Confusing "duplicated code" with "similar-looking code that represents different business rules" (see DRY/KISS/YAGNI).
 
 ## Common Interview Questions
 
 ### Basic
-- What is a code smell?
-- Name common code smells.
+- What is a code smell, and how does it differ from a bug?
+- Name three common code smells.
 
 ### Intermediate
-- How do you decide whether to refactor?
-- Why are long methods risky?
+- What is feature envy, and what design change typically fixes it?
+- What is shotgun surgery, and what does it usually indicate about how a concept is modeled?
 
 ### Advanced
-- How do you distinguish a smell from a domain-driven complexity?
-- How can a refactoring worsen coupling?
-- How do tests and metrics guide smell remediation?
+- How do you prioritize which smells to fix first in a large, imperfect legacy codebase?
+- How does recognizing a smell connect back to the SOLID principle it's actually violating?
 
 ### Follow-up Questions
-- Is a code smell always a bug?
-- What should be done before a risky refactoring?
+- Is a long method always a problem?
+- Can code have zero "textbook" smells and still be poorly designed?
 
 ### Code Prediction
-Which design makes a change require edits across unrelated classes?
+Given the `InvoicePrinter` feature-envy example, if `Order`'s internal structure changes (e.g., `Customer.Address` becomes `Customer.BillingAddress`), how many places likely need to change? What would change about that if the formatting logic lived on `Order` itself?
 
 ## Practical Tasks
 
-- Identify three smells in a legacy class.
-- Rank them by risk and propose the smallest safe change.
-- Refactor the long-method example while preserving its observable behavior.
-- Decide whether two similar code fragments represent duplicated knowledge or independent rules.
+- Identify feature envy in a given class and refactor it by relocating the envious logic.
+- Refactor a long method into named, single-purpose steps without changing its behavior.
+- Trace a shotgun-surgery scenario (adding a new enum case requiring edits in six files) and consolidate it behind polymorphism.
 
 ## Readiness Criteria
 
-Recognize common smells, explain their risks, and choose evidence-based refactorings without treating every preference as a defect.
+Recognize common code smells by name and by pattern in real code, connect each smell to the design principle it violates, and judge when a smell is worth fixing now versus leaving alone.
 
 ## References
 
 ### Microsoft Learn
 
-- [Design guidelines](https://learn.microsoft.com/dotnet/standard/design-guidelines/)
+- [Common architectural principles](https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles)
+- [Code metrics values](https://learn.microsoft.com/visualstudio/code-quality/code-metrics-values)

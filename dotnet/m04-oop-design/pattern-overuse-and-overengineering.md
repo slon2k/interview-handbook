@@ -2,61 +2,91 @@
 
 ## Definition
 
-Overengineering adds abstraction, configuration, or flexibility beyond current requirements. Pattern overuse applies a named solution where a simpler design would be clearer.
+Overengineering is adding structure, abstraction, or flexibility beyond what the current requirements justify — often by applying a design pattern because it's known, not because the problem calls for it. The result compiles and "looks professional" while making the code harder to read and change than a simpler version would.
+
+```csharp
+// A single, permanent tax rule wrapped in unnecessary Strategy + Factory ceremony
+public interface ITaxStrategy { decimal Calculate(decimal amount); }
+public sealed class StandardTaxStrategy : ITaxStrategy { public decimal Calculate(decimal amount) => amount * 0.2m; }
+public static class TaxStrategyFactory { public static ITaxStrategy Create() => new StandardTaxStrategy(); }
+
+// What the actual requirement needs
+public decimal CalculateTax(decimal amount) => amount * 0.2m;
+```
 
 ## Alternatives & Trade-offs
 
-A direct implementation minimizes complexity. A pattern earns its cost when it addresses a recurring change or collaboration problem.
+Patterns solve real recurring problems, but each one adds indirection that must be understood by every future reader. The trade-off is between flexibility for change that may never come and simplicity for the change that's actually needed today. YAGNI is the direct counterweight: prefer the simplest design that satisfies current, known requirements, and introduce a pattern when a second real variation actually appears.
 
 ## How It Works
 
-Every abstraction adds concepts, indirection, and maintenance cost. Evaluate the expected change, current evidence, and reversibility before introducing a framework or pattern.
+### Signs of overengineering
+
+- An interface with exactly one implementation, introduced "for testability" but never actually used in a test.
+- A factory or builder for an object with two constructor parameters and no validation logic.
+- A generic, configurable plugin system built for a business rule that has never changed in the system's history.
+- A layer of DTOs mapping to other DTOs mapping to other DTOs, with no behavioral difference between them.
+
+### A pattern earning its keep vs. not
+
+```csharp
+// Earns its keep: two real implementations exist today, and DI wiring lets tests substitute a fake
+public interface IPaymentGateway { Task<bool> ChargeAsync(decimal amount); }
+public sealed class StripeGateway : IPaymentGateway { /* ... */ }
+public sealed class FakePaymentGateway : IPaymentGateway { /* used in tests */ }
+
+// Doesn't earn its keep: no second implementation exists, no test uses the abstraction,
+// and the interface simply forwards to one class
+public interface ITaxCalculator { decimal Calculate(decimal amount); }
+public sealed class TaxCalculator : ITaxCalculator { public decimal Calculate(decimal amount) => amount * 0.2m; }
+```
+
+The `IPaymentGateway` abstraction is justified by an actual second implementation and actual test usage. `ITaxCalculator` provides neither — it's pure ceremony until a second tax rule or a genuine test-substitution need appears.
 
 ## Application
 
-Prefer simple composition first; introduce patterns when variation, testing, or extension points are real and understood.
-
-Singleton is a common example of a pattern that can become harmful: it introduces global lifetime, hidden dependencies, and shared mutable state. Prefer explicit dependencies and a DI-managed lifetime when one process-wide instance is genuinely required.
+Before introducing a pattern, ask: does a second real variation exist or is one concretely planned? Is there an actual test that needs to substitute an implementation? If the honest answer to both is no, prefer the plain, direct implementation and revisit once real variation appears.
 
 ## Common Mistakes
 
-- Building generic frameworks for one use case.
-- Adding factories that only call constructors.
-- Treating pattern names as design quality.
+- Reaching for a pattern because it was recently learned, rather than because the problem exhibits the variation the pattern addresses.
+- Treating "might need it later" as equivalent to "need it now" (this is exactly what YAGNI warns against).
+- Justifying an abstraction with "testability" without ever writing the test that would need it.
+- Confusing pattern *vocabulary* (being able to name Strategy, Factory, Decorator) with pattern *judgment* (knowing when not to use them) — interviewers often probe the latter specifically.
 
 ## Common Interview Questions
 
 ### Basic
 - What is overengineering?
-- When is a design pattern useful?
+- Give an example of a pattern applied where it wasn't needed.
 
 ### Intermediate
-- How do you decide whether abstraction is worth it?
-- What is the cost of indirection?
+- How do you decide whether an abstraction is justified or premature?
+- What's the cost of an interface with a single implementation and no test using it?
 
 ### Advanced
-- How do you preserve future flexibility without speculative design?
-- How can patterns create accidental coupling?
-- How would you simplify an over-abstracted design safely?
+- How would you simplify an overengineered plugin-style system back down to what the business actually needs, without losing the ability to extend it later if a real need arises?
+- How do you push back, in a design discussion, on a proposed abstraction that isn't yet justified by real requirements?
 
 ### Follow-up Questions
-- Is a simple design always better?
-- What evidence justifies a pattern?
+- Is it ever acceptable to add an abstraction purely for anticipated future flexibility?
+- How does pattern overuse relate to YAGNI and to the Open/Closed Principle?
 
 ### Code Prediction
-Which design has fewer moving parts while satisfying one fixed behavior?
+Given the `ITaxCalculator`/`TaxCalculator` example above, what does removing the interface entirely change about the code's actual behavior or test coverage today? What would justify re-introducing it later?
 
 ## Practical Tasks
 
-- Simplify a pattern-heavy example into direct composition.
-- Identify the requirement that would justify restoring an abstraction.
+- Review a small codebase (or the OOP-design module itself) for interfaces with exactly one implementation and no test usage, and argue for or against simplifying each.
+- Simplify an overengineered factory+strategy combination for a rule that has never varied.
+- In a mock design discussion, argue against a proposed abstraction that isn't yet justified, and state what evidence would change your mind.
 
 ## Readiness Criteria
 
-Evaluate patterns by problem, change pressure, complexity, and evidence rather than by vocabulary or fashion.
+Recognize overengineering by pattern (single-implementation interfaces, unused flexibility, layered indirection with no behavioral difference), and articulate the difference between anticipatory design that's earned and design that's premature.
 
 ## References
 
 ### Microsoft Learn
 
-- [Design guidelines](https://learn.microsoft.com/dotnet/standard/design-guidelines/)
+- [Common architectural principles](https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles)

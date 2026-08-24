@@ -24,12 +24,12 @@ By the end of this module, you should be able to:
 
 ## Topics
 
-- [x] [Exception handling and design](exception-handling-and-design.md)
-- [x] [Resource management and disposal](resource-management-and-disposal.md)
-- [x] [Garbage collection and object lifetime](gc-and-object-lifetime.md)
-- [x] [Boxing and allocation pressure](boxing-and-allocation-pressure.md)
-- [x] [Span, memory, pooling, and measurement](span-memory-and-pooling.md)
-- [x] [Memory diagnostics and performance review](memory-diagnostics-and-performance.md)
+- [Exception handling and design](exception-handling-and-design.md)
+- [Resource management and disposal](resource-management-and-disposal.md)
+- [Garbage collection and object lifetime](gc-and-object-lifetime.md)
+- [Boxing and allocation pressure](boxing-and-allocation-pressure.md)
+- [Span, memory, pooling, and measurement](span-memory-and-pooling.md)
+- [Memory diagnostics and performance review](memory-diagnostics-and-performance.md)
 
 ## Scope Boundaries
 
