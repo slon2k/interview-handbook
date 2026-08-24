@@ -89,30 +89,12 @@ This is less about naming definitions and more about making and defending design
 
 ### Module 5 — Exceptions, Resources, and Memory Management
 
-This combines normal error handling with the relevant parts of the runtime memory model.
-High-level topics:
+See the [Exceptions, Resources, and Memory Management module](m05-exceptions-resources-memory/README.md).
 
-- Exception hierarchy
-- try, catch, finally and exception filters
-- throw versus throw ex
-- Custom exceptions
-- When to catch and when to propagate
-- Exceptions as part of API design
-- Global versus local error handling
-- Managed and unmanaged resources
-- IDisposable
-- using statements and declarations
-- IAsyncDisposable
-- Finalisers
-- Garbage-collection roots
-- GC generations
-- Large Object Heap
-- Managed memory leaks
-- Event-handler leaks
-- Boxing and unboxing
-- Basic allocation awareness
-- Span<T> and Memory<T> at an awareness level
-**Priority:** High. Deep GC tuning is optional.
+**Status:** Complete  
+**Priority:** High.
+
+This combines normal error handling with the relevant parts of the runtime memory model.
 
 ### Module 6 — Asynchronous Programming and Concurrency
 
