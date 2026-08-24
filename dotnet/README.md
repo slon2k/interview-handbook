@@ -80,30 +80,12 @@ See the [Collections, LINQ, and Basic Algorithms module](m03-collections-linq/RE
 
 ### Module 4 — Object-Oriented Design and Maintainable Code
 
-This is less about naming definitions and more about making and defending design decisions.
-High-level topics:
+See the [Object-Oriented Design and Maintainable Code module](m04-oop-design/README.md).
 
-- Encapsulation
-- Abstraction
-- Inheritance
-- Polymorphism
-- Composition versus inheritance
-- Interfaces versus abstract classes
-- Method overloading versus overriding
-- Coupling and cohesion
-- Separation of concerns
-- SOLID principles
-- DRY, KISS and YAGNI
-- Guard clauses
-- Immutability
-- Dependency inversion
-- Dependency injection as a design technique
-- Code smells
-- Refactoring techniques
-- API and class design
-- Common patterns: Strategy, Factory, Adapter, Decorator, Observer, Builder, and Repository
-- Pattern overuse and overengineering
+**Status:** Complete  
 **Priority:** High.
+
+This is less about naming definitions and more about making and defending design decisions.
 
 ### Module 5 — Exceptions, Resources, and Memory Management
 
