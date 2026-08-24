@@ -67,6 +67,7 @@ High-level topics:
 
 See the completed [C# language and type system module](m02-csharp-language/README.md).
 
+**Status:** Complete  
 **Priority:** Critical.
 
 ### Module 3 — Collections, LINQ, and Basic Algorithms
@@ -76,34 +77,6 @@ See the [Collections, LINQ, and Basic Algorithms module](m03-collections-linq/RE
 **Status:** Complete  
 **Priority:** Critical.
 
-This module covers data manipulation and basic problem-solving.
-High-level topics:
-
-- Arrays and multidimensional/jagged arrays
-- List<T>
-- Dictionary<TKey,TValue>
-- HashSet<T>
-- Queue<T> and Stack<T>
-- LinkedList<T> and when it is useful
-- Immutable and concurrent collections
-- Selecting the correct collection
-- Equality comparers and dictionary keys
-- Time and space complexity
-- IEnumerable<T>
-- Iterators and yield return
-- Deferred execution
-- LINQ projection, filtering and aggregation
-- Grouping and joining
-- Select versus SelectMany
-- First, Single, Any, All
-- Materialisation and repeated enumeration
-- IEnumerable<T> versus IQueryable<T>
-- Basic search and sorting
-- Binary search
-- Recursion
-- Basic tree, BFS and DFS awareness
-- Common interview problems involving strings and collections
-**Priority:** Critical. Advanced graph algorithms are optional for most target roles.
 
 ### Module 4 — Object-Oriented Design and Maintainable Code
 
