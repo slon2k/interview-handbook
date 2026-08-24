@@ -34,7 +34,7 @@ By the end of this module, you should be able to:
 - [`LinkedList<T>` and when it is useful](linked-lists.md)
 - [Immutable and concurrent collections](immutable-and-concurrent-collections.md)
 
-Concurrent collections are covered at an awareness level here. Detailed synchronization and coordination belong in Module 6 - Asynchronous Programming and Concurrency.
+Concurrent collections are covered at an awareness level here. Detailed synchronization and coordination belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md).
 
 ### 2. Collection Design
 
@@ -67,7 +67,7 @@ Advanced graph algorithms are optional for the target roles covered by this hand
 ## Scope Boundaries
 
 - C# generics, delegates, iterators, and value semantics are covered in the C# module.
-- Thread safety and synchronization belong in Module 6 - Asynchronous Programming and Concurrency.
+- Thread safety and synchronization belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md).
 - Detailed SQL and query-provider behavior belong in Modules 8 and 9.
 - Advanced algorithms and specialized data structures are optional unless a target role requires them.
 

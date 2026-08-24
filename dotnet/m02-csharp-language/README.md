@@ -68,14 +68,14 @@ Topics related to but documented elsewhere:
 - **Interfaces & abstract classes** → [OOP Design module](../m04-oop-design/interfaces-versus-abstract-classes.md)
 - **Method overloading/overriding** → [OOP Design module](../m04-oop-design/overloading-versus-overriding.md)
 - **Collections & LINQ** → [Collections, LINQ, and Basic Algorithms module](../m03-collections-linq/README.md)
-- **Async/await & parallelism** → Module 6 - Asynchronous Programming and Concurrency (not yet published)
+- **Async/await & parallelism** → [Asynchronous Programming and Concurrency module](../m06-async-concurrency/README.md)
 
 ## Scope Boundaries
 
 - Collection types and LINQ operators belong in [Module 3 - Collections, LINQ, and Basic Algorithms](../m03-collections-linq/README.md).
 - OOP design principles, SOLID, and design patterns belong in [Module 4 - Object-Oriented Design and Maintainable Code](../m04-oop-design/README.md); this module covers only the language mechanics (e.g., `virtual`/`override` syntax), not design judgment.
 - Deep exception *design* (boundaries, custom exception hierarchies, when to throw vs. return a result) belongs in [Module 5 - Exceptions, Resources, and Memory Management](../m05-exceptions-resources-memory/README.md); this module covers exception-handling syntax and mechanics.
-- `async`/`await`, `Task`, and concurrency primitives belong in Module 6.
+- `async`/`await`, `Task`, and concurrency primitives belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md).
 
 ## Suggested Learning Sequence
 

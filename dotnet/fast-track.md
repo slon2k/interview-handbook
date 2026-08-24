@@ -31,6 +31,15 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [`IEnumerable<T>` versus `IQueryable<T>`](m03-collections-linq/ienumerable-vs-iqueryable.md)
 - [Collection and string interview problems](m03-collections-linq/collection-interview-problems.md)
 
+### Asynchronous Programming and Concurrency ([Module 6](m06-async-concurrency/README.md))
+
+- [How `async`/`await` work conceptually](m06-async-concurrency/async-await-mechanics.md)
+- [`Task.WhenAll`, `Task.WhenAny`, and sequential vs. concurrent execution](m06-async-concurrency/combinators-and-execution-shape.md)
+- [Exception propagation and `async void`](m06-async-concurrency/exception-handling-in-async-code.md)
+- [Race conditions, deadlocks, and shared mutable state](m06-async-concurrency/race-conditions-and-deadlocks.md)
+- [Synchronization context and `ConfigureAwait`](m06-async-concurrency/synchronization-context-and-configureawait.md)
+- [Cancellation tokens and timeouts](m06-async-concurrency/cancellation-and-timeouts.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -55,7 +64,6 @@ Load-bearing topics from High-priority modules — not the full module, just the
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 6 — Asynchronous Programming and Concurrency (Critical)
 - Module 7 — HTTP, REST, and ASP.NET Core (Critical)
 - Module 8 — Relational SQL (Critical)
 - Module 9 — Entity Framework Core (Critical)

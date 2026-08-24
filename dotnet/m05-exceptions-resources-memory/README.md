@@ -34,7 +34,7 @@ By the end of this module, you should be able to:
 ## Scope Boundaries
 
 - Basic exception syntax is covered in [C# exception handling](../m02-csharp-language/exception-handling.md).
-- Async exception propagation, cancellation, synchronization, and bounded concurrency belong in Module 6.
+- Async exception propagation, cancellation, synchronization, and bounded concurrency belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md).
 - ASP.NET Core exception middleware, `ProblemDetails`, and HTTP error contracts belong in Module 7.
 - Database transaction behavior belongs in Modules 8 and 9.
 - Detailed performance investigation and observability belong in Module 12.

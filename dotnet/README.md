@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. The [C# module](m02-csharp-language/README.md) is currently available.
+Module links will be added as their documentation is created. Modules 2–6 (Part I's language, collections, design, memory, and concurrency content) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), and [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -100,34 +100,12 @@ This combines normal error handling with the relevant parts of the runtime memor
 
 ### Module 6 — Asynchronous Programming and Concurrency
 
-This deserves an independent module because it is a frequent differentiator between junior and mid-level candidates.
-High-level topics:
+See the [Asynchronous Programming and Concurrency module](m06-async-concurrency/README.md).
 
-- Synchronous versus asynchronous execution
-- Concurrency versus parallelism
-- I/O-bound versus CPU-bound work
-- Task and Task<T>
-- How async and await work conceptually
-- Why async does not necessarily create a thread
-- Task.WhenAll and Task.WhenAny
-- Sequential versus concurrent async execution
-- Exception propagation
-- async void
-- Cancellation tokens
-- Timeouts
-- Task.Run
-- Thread and ThreadPool
-- Race conditions
-- Deadlocks
-- Shared mutable state
-- lock, Monitor and Interlocked
-- SemaphoreSlim
-- Concurrent collections
-- IAsyncEnumerable<T>
-- Async disposal
-- Synchronization context and ConfigureAwait
-- Bounded concurrency
+**Status:** Complete
 **Priority:** Critical.
+
+This deserves an independent module because it is a frequent differentiator between junior and mid-level candidates.
 
 ## Part II — Backend Application Development
 
