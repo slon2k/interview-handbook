@@ -17,7 +17,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. The [C# module](csharp/README.md) is currently available.
+Module links will be added as their documentation is created. The [C# module](m02-csharp-language/README.md) is currently available.
 
 ## Module Format
 
@@ -65,11 +65,13 @@ High-level topics:
 This is the central language module and one of the most important interview areas.
 High-level topics:
 
-See the completed [C# language and type system module](csharp/README.md).
+See the completed [C# language and type system module](m02-csharp-language/README.md).
 
 **Priority:** Critical.
 
 ### Module 3 — Collections, LINQ, and Basic Algorithms
+
+See the [Collections, LINQ, and Basic Algorithms module](m03-collections-linq/README.md).
 
 This module covers data manipulation and basic problem-solving.
 High-level topics:
