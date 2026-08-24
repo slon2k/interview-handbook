@@ -26,14 +26,15 @@ By the end of this module, you should be able to:
 
 ### 1. Core Collections
 
-- Arrays and multidimensional or jagged arrays
-- `List<T>`
-- `Dictionary<TKey, TValue>`
-- `HashSet<T>`
-- `Queue<T>` and `Stack<T>`
-- `LinkedList<T>` and when it is useful
-- Immutable collections
-- Concurrent collections at an awareness level
+- [Arrays and multidimensional or jagged arrays](arrays.md)
+- [`List<T>`](lists.md)
+- [`Dictionary<TKey, TValue>`](dictionaries.md)
+- [`HashSet<T>`](sets.md)
+- [`Queue<T>` and `Stack<T>`](queues-and-stacks.md)
+- [`LinkedList<T>` and when it is useful](linked-lists.md)
+- [Immutable and concurrent collections](immutable-and-concurrent-collections.md)
+
+Concurrent collections are covered at an awareness level here. Detailed synchronization and coordination belong in Module 6 - Asynchronous Programming and Concurrency.
 
 ### 2. Collection Design
 
@@ -121,4 +122,3 @@ Each topic should include:
 - [Standard query operators overview](https://learn.microsoft.com/dotnet/csharp/linq/standard-query-operators/)
 - [Deferred execution and lazy evaluation](https://learn.microsoft.com/dotnet/standard/linq/deferred-execution-lazy-evaluation)
 - [Iterators](https://learn.microsoft.com/dotnet/csharp/iterators)
-- [Complexity analysis](https://learn.microsoft.com/dotnet/standard/collections/)
