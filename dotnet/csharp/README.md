@@ -20,12 +20,12 @@ Core C# language features, OOP fundamentals, type system, and modern syntax esse
 - [x] [Pattern matching](pattern-matching.md)
 - [x] [Generics and constraints](generics-and-constraints.md)
 - [x] [Covariance and contravariance](covariance-and-contravariance.md)
-- [ ] Delegates, lambdas and closures
-- [ ] Events
-- [ ] Attributes
-- [ ] Reflection basics
-- [ ] Exception handling
-- [ ] Modern C# syntax (init properties, using declarations, required members, collection expressions, span, etc.)
+- [x] [Delegates, lambdas and closures](delegates-lambdas-and-closures.md)
+- [x] [Events](events.md)
+- [x] [Attributes](attributes.md)
+- [x] [Reflection basics](reflection-basics.md)
+- [x] [Exception handling](exception-handling.md)
+- [x] [Modern C# syntax (init properties, using declarations, required members, collection expressions, span, etc.)](modern-csharp-syntax.md)
 
 ## Cross-Folder References
 
