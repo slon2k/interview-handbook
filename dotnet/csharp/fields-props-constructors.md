@@ -515,6 +515,19 @@ Many domain models become easier to reason about when state changes are controll
 - What is an init-only property?
 - What is constructor chaining?
 
+### Advanced
+
+- What are primary constructors and when should you use them?
+- What is the difference between immutable objects and readonly properties?
+- How do properties interact with value types (structs)?
+- What are the performance implications of property accessors vs fields?
+- When should you use lazy initialization in properties?
+- How do you implement thread-safe properties?
+- Explain property indexers and when they are useful.
+- What are the implications of mutable properties in immutable design?
+- How does the compiler generate code for auto-properties?
+- What is the difference between record constructors and class constructors?
+
 ### Follow-up Questions
 
 - Can a class have multiple constructors?
@@ -683,16 +696,9 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Fields
-- Properties
-- Automatically Implemented Properties
-- init Accessors
-- Constructors
-- Primary Constructors
-
-### Additional Reading
-
-- Framework Design Guidelines
-- C# in Depth
-- C# Language Specification
-- CLR via C#
+- [Fields](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/fields)
+- [Properties](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/properties)
+- [Automatically implemented properties](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties)
+- [`init` accessors](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/init)
+- [Instance constructors](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/instance-constructors)
+- [Primary constructors](https://learn.microsoft.com/dotnet/csharp/whats-new/tutorials/primary-constructors)

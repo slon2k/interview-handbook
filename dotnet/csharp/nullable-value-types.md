@@ -477,6 +477,19 @@ Zero and null are different concepts.
 - What does `GetValueOrDefault()` do?
 - How are nullable value types represented internally?
 
+### Advanced
+
+- How does `Nullable<T>` use the `HasValue` flag internally?
+- What are the implications of nullable types in LINQ queries?
+- How do you safely lift operations across nullable values?
+- What is the performance overhead of nullable value types compared to sentinel values?
+- How do nullable types interact with database mapping in Entity Framework?
+- What are the implications of using nullable types in constraints (Func<T>, where T?)?
+- How should you handle three-valued logic (true/false/null) in business logic?
+- What is the relationship between `Nullable<T>` and `IEquatable<T>`?
+- How do you design APIs that distinguish between "unknown" and "zero"?
+- What are best practices for nullable types in complex domain models?
+
 ### Follow-up Questions
 
 - What exception can `Value` throw?
@@ -625,14 +638,7 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Nullable Value Types
-- Nullable<T>
-- Null-Coalescing Operators
-- Boxing and Unboxing
-
-### Additional Reading
-
-- C# Language Specification
-- C# in Depth
-- CLR via C#
-- Framework Design Guidelines
+- [Nullable value types](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/nullable-value-types)
+- [Nullable<T> structure](https://learn.microsoft.com/dotnet/api/system.nullable-1)
+- [Null-coalescing operators](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/null-coalescing-operator)
+- [Boxing and unboxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing)

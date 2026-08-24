@@ -544,6 +544,19 @@ Objects used as keys should be:
 - Why is `IEquatable<T>` useful?
 - How do records implement equality?
 
+### Advanced
+
+- What is the mathematical contract between `Equals()` and `GetHashCode()`?
+- How do you implement equality for types with mutable fields?
+- What are the implications of custom equality on collection performance?
+- How do you safely override equality operators (`==`, `!=`) without breaking inheritance?
+- What is the difference between structural equality and referential identity?
+- How do you implement custom comparers for complex domain objects?
+- What performance implications exist for different equality implementations?
+- How should equality be handled in inheritance hierarchies?
+- What are the implications of implementing `IComparable<T>` alongside `IEquatable<T>`?
+- How do you ensure consistency between database equality and domain object equality?
+
 ### Follow-up Questions
 
 - What happens if `Equals()` is overridden but `GetHashCode()` is not?
@@ -712,17 +725,10 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Object.Equals
-- Object.GetHashCode
-- IEquatable<T>
-- Equality Comparisons
-- Records
-- HashSet<T>
-- Dictionary<TKey, TValue>
-
-### Additional Reading
-
-- Framework Design Guidelines
-- CLR via C#
-- C# in Depth
-- C# Language Specification
+- [Object.Equals method](https://learn.microsoft.com/dotnet/api/system.object.equals)
+- [Object.GetHashCode method](https://learn.microsoft.com/dotnet/api/system.object.gethashcode)
+- [IEquatable<T> interface](https://learn.microsoft.com/dotnet/api/system.iequatable-1)
+- [Equality operators](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/equality-operators)
+- [Records](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/record)
+- [HashSet<T> class](https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1)
+- [Dictionary<TKey, TValue> class](https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2)

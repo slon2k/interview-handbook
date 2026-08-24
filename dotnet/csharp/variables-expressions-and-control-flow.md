@@ -376,6 +376,19 @@ Candidates often know `&&` and `||` but forget that later conditions may never e
 - What is the difference between `for` and `foreach`?
 - When would you choose `switch` instead of `if`?
 
+### Advanced
+
+- How does the compiler perform type inference for complex expressions?
+- What are the performance characteristics of different loop types in modern .NET?
+- How do pattern matching and switch expressions optimize runtime behavior?
+- What is the relationship between control flow analysis and nullability warnings?
+- How do you optimize expression evaluation order for performance?
+- What are the implications of GOTO in control flow (why it's rarely used)?
+- How does the compiler handle tail recursion vs loops?
+- What is the relationship between definite assignment and flow analysis?
+- How should you structure control flow for readability and maintainability?
+- What are the performance implications of different control flow patterns (early exit, guard clauses, etc.)?
+
 ### Follow-up Questions
 
 - Does `var` make C# dynamically typed?
@@ -508,14 +521,8 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Variables
-- Expressions
-- Selection statements (`if`, `switch`)
-- Iteration statements (`for`, `foreach`, `while`, `do`)
-- C# operators and expressions
-
-### Additional Reading
-
-- C# Language Specification
-- C# in Depth — Jon Skeet
-- CLR via C# — Jeffrey Richter
+- [Variables](https://learn.microsoft.com/dotnet/csharp/language-reference/language-specification/variables)
+- [Expressions](https://learn.microsoft.com/dotnet/csharp/language-reference/language-specification/expressions)
+- [Selection statements](https://learn.microsoft.com/dotnet/csharp/language-reference/statements/selection-statements)
+- [Iteration statements](https://learn.microsoft.com/dotnet/csharp/language-reference/statements/iteration-statements)
+- [Operators and expressions](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/)

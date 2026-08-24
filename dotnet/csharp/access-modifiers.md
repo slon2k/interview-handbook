@@ -468,6 +468,19 @@ Access modifiers are not merely a language feature; they help define boundaries 
 - Why might you make a constructor private?
 - When should a member be `protected`?
 
+### Advanced
+
+- What is the difference between `protected internal` and `private protected`?
+- How does accessibility interact with inheritance hierarchies across assemblies?
+- What are the implications of exposing internal implementation through public APIs?
+- How would you design an API that provides extension points without exposing implementation?
+- What is `InternalsVisibleTo` and when is it appropriate to use?
+- How do access modifiers relate to SOLID principles (especially Open/Closed Principle)?
+- What is the difference between sealing a type vs making members private?
+- How do accessibility rules affect reflection-based frameworks like ORMs?
+- What design patterns rely on private constructors (Singleton, Factory)?
+- How should you balance API surface area with usability?
+
 ### Follow-up Questions
 
 - What is the difference between `protected internal` and `private protected`?
@@ -632,15 +645,6 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Access Modifiers
-- Access Levels
-- Encapsulation
-- Accessibility Levels
-- Access Control
-
-### Additional Reading
-
-- Framework Design Guidelines
-- C# Language Specification
-- CLR via C#
-- C# in Depth
+- [Access modifiers](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers)
+- [Accessibility levels](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/accessibility-levels)
+- [Encapsulation](https://learn.microsoft.com/dotnet/csharp/fundamentals/object-oriented/encapsulation)

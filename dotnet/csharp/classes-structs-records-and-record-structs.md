@@ -493,6 +493,19 @@ Records are usually a better fit for value objects and DTOs than database entiti
 - Why are mutable structs discouraged?
 - When would you choose a record over a class?
 
+### Advanced
+
+- What are the implications of value types on garbage collection and memory layout?
+- How do records interact with serialization frameworks?
+- What are the performance characteristics of structs vs classes in different scenarios?
+- How should you design immutable value objects using records?
+- What are the pros and cons of record inheritance hierarchies?
+- How does the `with` expression work internally?
+- What design patterns are facilitated by records (e.g., value objects, events)?
+- How do nullable structs interact with `Nullable<T>` semantics?
+- What considerations exist when using structs in collections (boxing, copying)?
+- How do you implement proper equality for domain-specific types?
+
 ### Follow-up Questions
 
 - Are records immutable?
@@ -649,15 +662,8 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Classes
-- Structs
-- Records
-- Record structs
-- Equality in C#
-
-### Additional Reading
-
-- Framework Design Guidelines
-- C# Language Specification
-- C# in Depth
-- CLR via C#
+- [Classes](https://learn.microsoft.com/dotnet/csharp/fundamentals/types/classes)
+- [Structure types](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/struct)
+- [Records](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/record)
+- [Record types](https://learn.microsoft.com/dotnet/csharp/fundamentals/types/records)
+- [Equality operators](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/equality-operators)

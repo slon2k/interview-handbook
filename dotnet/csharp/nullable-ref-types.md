@@ -449,6 +449,19 @@ Model them intentionally.
 - What is the purpose of the null-forgiving operator?
 - What does the null-conditional operator do?
 
+### Advanced
+
+- How does nullability analysis track information through method calls?
+- What are the limitations of static nullability checking?
+- How should you design APIs that work across codebases with different nullability settings?
+- What is the relationship between `[AllowNull]`, `[DisallowNull]`, `[MaybeNull]` attributes?
+- How do you migrate legacy code to enable nullable reference types?
+- What are the implications of interop with unmanaged code regarding nullability?
+- How do you handle DTOs and external API contracts that don't specify nullability?
+- What is the performance impact of nullability annotations?
+- How should nullable annotations be used in generic types and constraints?
+- How does nullability interact with serialization frameworks?
+
 ### Follow-up Questions
 
 - Do nullable reference types affect runtime behavior?
@@ -607,15 +620,8 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Nullable Reference Types
-- Nullable Contexts
-- Nullability Warnings
-- Null-Conditional Operators
-- Null-Coalescing Operators
-
-### Additional Reading
-
-- C# Language Specification
-- C# in Depth
-- Framework Design Guidelines
-- Nullable Reference Types Design Notes
+- [Nullable reference types](https://learn.microsoft.com/dotnet/csharp/nullable-references)
+- [Nullable contexts](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/nullable-contexts)
+- [Nullable warnings](https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/nullable-warnings)
+- [Null-conditional operators](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-)
+- [Null-coalescing operators](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/null-coalescing-operator)

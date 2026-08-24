@@ -393,6 +393,19 @@ int
 - What is the purpose of `checked`?
 - Why does `byte + byte` produce an `int`?
 
+### Advanced
+
+- Why is floating-point arithmetic imprecise at the binary level?
+- What are the performance implications of different numeric types?
+- How do you safely convert between numeric types without data loss?
+- What is the relationship between `nint`/`nuint` and platform architecture?
+- How does numeric type promotion interact with operator overloading?
+- What are the implications of using `decimal` in high-precision financial calculations?
+- How do boxing and unboxing work with numeric types?
+- What strategies exist for handling numeric operations in multi-threaded scenarios?
+- How do you validate numeric input from external sources?
+- What is the role of `CultureInfo` in parsing and formatting numeric values?
+
 ### Follow-up Questions
 
 - Why is floating-point arithmetic imprecise?
@@ -530,14 +543,8 @@ You should be able to:
 
 ### Microsoft Learn
 
-- Integral numeric types
-- Floating-point numeric types
-- Numeric conversions
-- checked and unchecked statements
-- Arithmetic operators
-
-### Additional Reading
-
-- C# Language Specification
-- CLR via C#
-- C# in Depth
+- [Integral numeric types](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/integral-numeric-types)
+- [Floating-point numeric types](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types)
+- [Numeric conversions](https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/numeric-conversions)
+- [The `checked` and `unchecked` statements](https://learn.microsoft.com/dotnet/csharp/language-reference/statements/checked-and-unchecked)
+- [Arithmetic operators](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/arithmetic-operators)

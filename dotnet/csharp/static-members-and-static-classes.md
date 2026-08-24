@@ -475,6 +475,19 @@ Design and maintainability are usually more important.
 - Why can't static methods access instance members?
 - When should a class be static?
 
+### Advanced
+
+- What are the implications of static state in multithreaded applications?
+- How do you implement thread-safe static caches and singletons?
+- What is the difference between eager initialization and lazy initialization with `Lazy<T>`?
+- How should static members be designed to support unit testing?
+- What are the implications of static constructors for assembly loading and diagnostics?
+- How do you refactor static utilities to support dependency injection?
+- What design patterns use static members (Singleton, Factory, Registry)?
+- How does static state interact with async/await and task scheduling?
+- What are the memory implications of static fields in long-running applications?
+- How should you handle static state in multi-domain scenarios (e.g., plugin architectures)?
+
 ### Follow-up Questions
 
 - Can a static class implement an interface?
@@ -652,14 +665,7 @@ You should be able to:
 
 ### Microsoft Learn
 
-- static Keyword
-- Static Classes and Static Class Members
-- Static Constructors
-- Extension Methods
-
-### Additional Reading
-
-- Framework Design Guidelines
-- C# in Depth
-- C# Language Specification
-- CLR via C#
+- [`static` keyword](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/static)
+- [Static classes and static class members](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/static-classes-and-static-class-members)
+- [Static constructors](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/static-constructors)
+- [Extension methods](https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/extension-methods)
