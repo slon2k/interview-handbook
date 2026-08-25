@@ -48,6 +48,14 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [Pagination, filtering, and sorting](m07-http-rest-api-design/pagination-filtering-and-sorting.md)
 - [API versioning](m07-http-rest-api-design/api-versioning.md)
 
+### ASP.NET Core Fundamentals ([Module 8](m08-aspnet-core-fundamentals/README.md))
+
+- [The request pipeline and middleware](m08-aspnet-core-fundamentals/request-pipeline-and-middleware.md)
+- [Service lifetimes: transient, scoped, and singleton](m08-aspnet-core-fundamentals/service-lifetimes.md)
+- [Global exception handling and ProblemDetails](m08-aspnet-core-fundamentals/global-exception-handling-and-problemdetails.md)
+- [HttpClientFactory](m08-aspnet-core-fundamentals/httpclientfactory.md)
+- [Controllers vs. minimal APIs](m08-aspnet-core-fundamentals/controllers-versus-minimal-apis.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -72,7 +80,6 @@ Load-bearing topics from High-priority modules — not the full module, just the
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 8 — ASP.NET Core Fundamentals (Critical)
 - Module 9 — Relational Databases and SQL (Critical)
 - Module 10 — Entity Framework Core (Critical)
 - Module 11 — Testing and Testability (Critical)

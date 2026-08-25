@@ -51,8 +51,8 @@ By the end of this module, you should be able to:
 
 - Basic C# generics, delegates, and value semantics belong in [Module 2 - C# Language and Type System](../m02-csharp-language/README.md).
 - Collection types themselves (as opposed to their thread-safety) belong in [Module 3 - Collections, LINQ, and Basic Algorithms](../m03-collections-linq/README.md); concurrent collections are documented here since their defining feature is thread-safety.
-- ASP.NET Core request cancellation, `HttpClientFactory`, and background services belong in Module 7.
-- Detailed EF Core `DbContext` thread-safety and concurrency conflict handling belong in Module 9.
+- ASP.NET Core request cancellation, `HttpClientFactory`, and background services belong in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
+- Detailed EF Core `DbContext` thread-safety and concurrency conflict handling belong in Module 10 - Entity Framework Core.
 
 ## Suggested Learning Sequence
 

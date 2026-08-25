@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–7 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API foundation) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), and [HTTP, REST, and API Design](m07-http-rest-api-design/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–8 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API and framework foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), and [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -118,33 +118,9 @@ See the [HTTP, REST, and API Design module](m07-http-rest-api-design/README.md).
 
 ### Module 8 — ASP.NET Core Fundamentals
 
-This is the main framework module for a backend or full-stack .NET role, building on the HTTP/REST vocabulary from Module 7.
-High-level topics:
+See the [ASP.NET Core Fundamentals module](m08-aspnet-core-fundamentals/README.md).
 
-- ASP.NET Core hosting model
-- Kestrel and reverse proxies
-- Request pipeline
-- Middleware and middleware ordering
-- Middleware versus filters
-- Routing
-- Controllers versus minimal APIs
-- Model binding
-- Validation
-- Dependency-injection container
-- Service lifetimes: transient, scoped, and singleton
-- Configuration and options pattern
-- Logging
-- Global exception handling
-- ProblemDetails
-- File uploads and downloads
-- Background services
-- HttpClientFactory
-- Cancellation of HTTP requests
-- CORS
-- Rate limiting
-- Health checks
-- Basic caching
-
+**Status:** Complete  
 **Priority:** Critical.
 
 ### Module 9 — Relational Databases and SQL

@@ -47,7 +47,7 @@ By the end of this module, you should be able to:
 - [Immutability in object design](immutability-in-object-design.md)
 - [Dependency inversion and dependency injection](dependency-inversion-and-injection.md)
 
-Dependency injection is covered here as a design technique. ASP.NET Core container configuration and service lifetimes belong in Module 7.
+Dependency injection is covered here as a design technique. ASP.NET Core container configuration and service lifetimes belong in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
 
 ### 3. Code Quality and Refactoring
 
@@ -82,7 +82,7 @@ Patterns should be introduced as responses to recurring design problems. Each to
 ## Scope Boundaries
 
 - C# syntax and type semantics belong in [Module 2 - C# Language and Type System](../m02-csharp-language/README.md).
-- ASP.NET Core dependency-injection registration, service lifetimes, middleware, and framework configuration belong in Module 7.
+- ASP.NET Core dependency-injection registration, service lifetimes, middleware, and framework configuration belong in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
 - Unit, integration, and end-to-end testing belong in Module 10, although testability is a design concern here.
 - Large-scale architecture and distributed-system trade-offs belong in Module 13.
 

@@ -8,7 +8,7 @@
 
 This module covers the protocol and contract level of building a web API: the HTTP request/response model, methods, status codes, headers, REST design principles, and the practical concerns of shaping an API contract (pagination, versioning, documentation). It is deliberately framework-agnostic — everything here applies before any ASP.NET Core specifics, the same way relational database fundamentals precede Entity Framework Core later in the roadmap.
 
-The goal is a solid mental model of HTTP and API design that transfers regardless of framework, before layering ASP.NET Core's specific implementation of it in Module 8 - ASP.NET Core Fundamentals (not yet published).
+The goal is a solid mental model of HTTP and API design that transfers regardless of framework, before layering ASP.NET Core's specific implementation of it in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
 
 ## Learning Outcomes
 
@@ -40,7 +40,7 @@ By the end of this module, you should be able to:
 
 ## Scope Boundaries
 
-- ASP.NET Core's specific implementation of these concepts — middleware, routing, controllers vs. minimal APIs, model binding, DI, `ProblemDetails` — belongs in Module 8 - ASP.NET Core Fundamentals (not yet published).
+- ASP.NET Core's specific implementation of these concepts — middleware, routing, controllers vs. minimal APIs, model binding, DI, `ProblemDetails` — belongs in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
 - The system-level choice between synchronous request/response (of which REST/gRPC are implementations) and asynchronous messaging/events belongs in Module 14 - Architecture and System Design Fundamentals (not yet published); this module covers the shape of one synchronous HTTP API, not how services in a larger system choose to communicate.
 - Authentication and authorization mechanics (JWTs, cookies vs. bearer tokens, claims) belong in Module 12 - Application Security (not yet published).
 - Caching *strategy* (invalidation, in-memory vs. distributed) belongs in Module 13 - Performance, Diagnostics, and Observability (not yet published); this module only covers HTTP-level caching headers (`ETag`, `Cache-Control`).
