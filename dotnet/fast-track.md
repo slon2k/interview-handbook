@@ -56,6 +56,16 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [HttpClientFactory](m08-aspnet-core-fundamentals/httpclientfactory.md)
 - [Controllers vs. minimal APIs](m08-aspnet-core-fundamentals/controllers-versus-minimal-apis.md)
 
+### Relational Databases and SQL ([Module 9](m09-relational-databases-and-sql/README.md))
+
+- [Inner and outer joins](m09-relational-databases-and-sql/joins.md)
+- [Grouping and aggregation](m09-relational-databases-and-sql/grouping-and-aggregation.md)
+- [Window functions](m09-relational-databases-and-sql/window-functions.md)
+- [NULL handling and three-valued logic](m09-relational-databases-and-sql/null-handling.md)
+- [Transactions and ACID](m09-relational-databases-and-sql/transactions-and-acid.md)
+- [Indexes](m09-relational-databases-and-sql/indexes.md)
+- [SQL injection prevention](m09-relational-databases-and-sql/sql-injection-prevention.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -80,7 +90,6 @@ Load-bearing topics from High-priority modules — not the full module, just the
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 9 — Relational Databases and SQL (Critical)
 - Module 10 — Entity Framework Core (Critical)
 - Module 11 — Testing and Testability (Critical)
 - Module 12 — Application Security (High)

@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–8 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API and framework foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), and [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–9 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API, framework, and database foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), and [Relational Databases and SQL](m09-relational-databases-and-sql/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -125,29 +125,9 @@ See the [ASP.NET Core Fundamentals module](m08-aspnet-core-fundamentals/README.m
 
 ### Module 9 — Relational Databases and SQL
 
-Relational modeling and SQL fundamentals come first because strong data-access decisions require understanding the queries and database behavior underneath the ORM.
-High-level topics:
+See the [Relational Databases and SQL module](m09-relational-databases-and-sql/README.md).
 
-- Tables, rows and schemas
-- Primary and foreign keys
-- Normalization and denormalization trade-offs
-- Relationships
-- Constraints
-- Inner and outer joins
-- Grouping and aggregation
-- Subqueries and CTEs
-- Window functions
-- NULL handling and three-valued logic
-- Views and stored procedures
-- Transactions and ACID
-- Isolation levels at a basic level
-- Indexes
-- Query execution plans
-- Pagination
-- SQL injection prevention
-
-**Expected outcome:** Design basic relational schemas, write and analyze common SQL queries, and identify indexing, pagination, transaction, and injection risks.
-
+**Status:** Complete  
 **Priority:** Critical.
 
 ### Module 10 — Entity Framework Core
