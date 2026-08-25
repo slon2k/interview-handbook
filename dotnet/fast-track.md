@@ -40,6 +40,14 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [Synchronization context and `ConfigureAwait`](m06-async-concurrency/synchronization-context-and-configureawait.md)
 - [Cancellation tokens and timeouts](m06-async-concurrency/cancellation-and-timeouts.md)
 
+### HTTP, REST, and API Design ([Module 7](m07-http-rest-api-design/README.md))
+
+- [HTTP methods and idempotency](m07-http-rest-api-design/http-methods-and-idempotency.md)
+- [HTTP status codes](m07-http-rest-api-design/status-codes.md)
+- [REST principles and practical trade-offs](m07-http-rest-api-design/rest-principles-and-trade-offs.md)
+- [Pagination, filtering, and sorting](m07-http-rest-api-design/pagination-filtering-and-sorting.md)
+- [API versioning](m07-http-rest-api-design/api-versioning.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -64,13 +72,16 @@ Load-bearing topics from High-priority modules — not the full module, just the
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 7 — HTTP, REST, and ASP.NET Core (Critical)
-- Module 8 — Relational SQL (Critical)
-- Module 9 — Entity Framework Core (Critical)
-- Module 10 — Testing and Testability (Critical)
-- Module 11 — Application Security (High)
-- Module 14 — Development Workflow and Delivery Fundamentals (High)
-- Module 16 — Experience and Behavioural Evidence (High)
+- Module 8 — ASP.NET Core Fundamentals (Critical)
+- Module 9 — Relational Databases and SQL (Critical)
+- Module 10 — Entity Framework Core (Critical)
+- Module 11 — Testing and Testability (Critical)
+- Module 12 — Application Security (High)
+- Module 13 — Performance, Diagnostics, and Observability (Medium to High)
+- Module 14 — Architecture and System Design Fundamentals (Medium)
+- Module 15 — Development Workflow and Delivery Fundamentals (High)
+- Module 16 — Practical Interview Exercises (Critical)
+- Module 17 — Experience and Behavioural Evidence (High)
 
 ## If You Truly Have One Day
 

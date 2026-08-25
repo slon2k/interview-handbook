@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–6 (Part I's language, collections, design, memory, and concurrency content) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), and [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–7 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API foundation) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), and [HTTP, REST, and API Design](m07-http-rest-api-design/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -109,17 +109,18 @@ This deserves an independent module because it is a frequent differentiator betw
 
 ## Part II — Backend Application Development
 
-### Module 7 — HTTP, REST, and ASP.NET Core
+### Module 7 — HTTP, REST, and API Design
 
-This is the main framework module for a backend or full-stack .NET role.
+See the [HTTP, REST, and API Design module](m07-http-rest-api-design/README.md).
+
+**Status:** Complete  
+**Priority:** Critical.
+
+### Module 8 — ASP.NET Core Fundamentals
+
+This is the main framework module for a backend or full-stack .NET role, building on the HTTP/REST vocabulary from Module 7.
 High-level topics:
 
-- HTTP request/response model
-- HTTP methods
-- Status codes
-- Headers and content types
-- Idempotency
-- REST principles and practical trade-offs
 - ASP.NET Core hosting model
 - Kestrel and reverse proxies
 - Request pipeline
@@ -135,31 +136,32 @@ High-level topics:
 - Logging
 - Global exception handling
 - ProblemDetails
-- OpenAPI/Swagger
-- Pagination, filtering and sorting
-- File handling
+- File uploads and downloads
 - Background services
 - HttpClientFactory
 - Cancellation of HTTP requests
 - CORS
-- API versioning
+- Rate limiting
 - Health checks
 - Basic caching
+
 **Priority:** Critical.
 
-### Module 8 — Relational SQL
+### Module 9 — Relational Databases and SQL
 
-SQL fundamentals come first because strong data-access decisions require understanding the queries and database behavior underneath the ORM.
+Relational modeling and SQL fundamentals come first because strong data-access decisions require understanding the queries and database behavior underneath the ORM.
 High-level topics:
 
 - Tables, rows and schemas
 - Primary and foreign keys
-- Normalisation
+- Normalization and denormalization trade-offs
 - Relationships
 - Constraints
 - Inner and outer joins
 - Grouping and aggregation
 - Subqueries and CTEs
+- Window functions
+- NULL handling and three-valued logic
 - Views and stored procedures
 - Transactions and ACID
 - Isolation levels at a basic level
@@ -172,36 +174,38 @@ High-level topics:
 
 **Priority:** Critical.
 
-### Module 9 — Entity Framework Core
+### Module 10 — Entity Framework Core
 
-EF Core maps .NET objects to relational data, translates LINQ into SQL, and manages persistence concerns. It should be learned after the relational SQL fundamentals above.
+EF Core maps .NET objects to relational data, translates LINQ into SQL, and manages persistence concerns. It should be learned after the relational database fundamentals above.
 High-level topics:
 
 - DbContext and DbSet
 - DbContext lifetime and thread safety
+- DbContext pooling
 - Entity configuration
 - Relationships
 - Code-first migrations
 - Change tracking
 - AsNoTracking
 - Query translation
-- IQueryable<T>
+- `IQueryable<T>` and EF Core's LINQ provider translation
 - Projection
 - Eager, explicit and lazy loading
 - N+1 queries
 - Split versus single queries
+- Global query filters (e.g., soft delete)
 - Transactions
 - Optimistic concurrency
 - Raw SQL
-- Bulk operations awareness
+- Bulk operations (`ExecuteUpdate`/`ExecuteDelete`, bulk-operation libraries)
 - Testing EF-based code
-- Repository pattern over EF Core: benefits and possible redundancy
+- Repository pattern in EF Core: interaction with change tracking and DbContext lifetime
 
 **Expected outcome:** Build a correctly scoped `DbContext`, write efficient queries, manage changes and migrations, and diagnose common translation, loading, and concurrency problems.
 
 **Priority:** Critical.
 
-### Module 10 — Testing and Testability
+### Module 11 — Testing and Testability
 
 This module should cover both concepts and actual test implementation.
 High-level topics:
@@ -231,7 +235,7 @@ High-level topics:
 - Tests in CI
 **Priority:** Critical.
 
-### Module 11 — Application Security
+### Module 12 — Application Security
 
 For your level, focus on secure application-development fundamentals rather than cryptographic implementation details.
 High-level topics:
@@ -259,7 +263,7 @@ High-level topics:
 - GDPR awareness
 **Priority:** High.
 
-### Module 12 — Performance, Diagnostics, and Observability
+### Module 13 — Performance, Diagnostics, and Observability
 
 The goal is not advanced optimisation. It is demonstrating that you can investigate performance systematically.
 High-level topics:
@@ -286,7 +290,7 @@ High-level topics:
 
 ## Part III — Software Engineering Context
 
-### Module 13 — Architecture and System Design Fundamentals
+### Module 14 — Architecture and System Design Fundamentals
 
 For junior+/mid-level positions, this should focus on explaining reasonable designs rather than designing global-scale systems.
 High-level topics:
@@ -303,6 +307,7 @@ High-level topics:
 - Messaging fundamentals
 - Event-driven architecture
 - Caching
+- Relational versus NoSQL: when each fits (awareness)
 - Stateless application design
 - Horizontal versus vertical scaling
 - Availability and resilience
@@ -315,7 +320,7 @@ High-level topics:
 - Avoiding unnecessary architecture
 **Priority:** Medium. Practical design reasoning is more important than pattern vocabulary.
 
-### Module 14 — Development Workflow and Delivery Fundamentals
+### Module 15 — Development Workflow and Delivery Fundamentals
 
 This covers the normal daily workflow expected from a professional developer.
 High-level topics:
@@ -344,7 +349,7 @@ Azure-specific delivery details can be moved to the later cloud plan.
 
 ## Part IV — Interview Execution
 
-### Module 15 — Practical Interview Exercises
+### Module 16 — Practical Interview Exercises
 
 This module converts knowledge into interview performance.
 Exercise categories:
@@ -365,7 +370,7 @@ Exercise categories:
 - “What would you improve?” questions
 **Priority:** Critical.
 
-### Module 16 — Experience and Behavioural Evidence
+### Module 17 — Experience and Behavioural Evidence
 
 Even though this is not purely technical, it should be connected to the technical modules.
 Prepare examples for:
@@ -394,10 +399,11 @@ The modules do not deserve equal preparation time.
 1. C# language and type system
 2. Collections, LINQ, and basic algorithms
 3. Async and concurrency
-4. ASP.NET Core and HTTP
-5. SQL
-6. Entity Framework Core
-7. Testing
+4. HTTP, REST, and API design
+5. ASP.NET Core
+6. Relational databases and SQL
+7. Entity Framework Core
+8. Testing
 
 These are likely to determine whether you meet the technical bar.
 
