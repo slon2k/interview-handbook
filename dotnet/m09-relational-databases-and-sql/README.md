@@ -6,7 +6,7 @@
 
 ## Scope
 
-This module covers relational database design and SQL fundamentals — schema design, keys and relationships, normalization, querying (joins, aggregation, subqueries, window functions), transactions and concurrency, indexing and performance, and injection safety. It's deliberately learned before Module 10 - Entity Framework Core (not yet published), the same way [Module 7 - HTTP, REST, and API Design](../m07-http-rest-api-design/README.md) precedes [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md): strong data-access decisions require understanding what's actually happening underneath the ORM, not just the ORM's API surface.
+This module covers relational database design and SQL fundamentals — schema design, keys and relationships, normalization, querying (joins, aggregation, subqueries, window functions), transactions and concurrency, indexing and performance, and injection safety. It's deliberately learned before [Module 10 - Entity Framework Core](../m10-entity-framework-core/README.md), the same way [Module 7 - HTTP, REST, and API Design](../m07-http-rest-api-design/README.md) precedes [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md): strong data-access decisions require understanding what's actually happening underneath the ORM, not just the ORM's API surface.
 
 Examples use standard SQL with SQL Server (T-SQL) and PostgreSQL syntax noted where they diverge, since either is a reasonable pairing with a .NET backend.
 
@@ -52,7 +52,7 @@ By the end of this module, you should be able to:
 
 ## Scope Boundaries
 
-- ORM-specific concerns — `DbContext`, change tracking, migrations, query translation — belong in Module 10 - Entity Framework Core (not yet published); this module covers the underlying SQL and database behavior independent of any particular ORM.
+- ORM-specific concerns — `DbContext`, change tracking, migrations, query translation — belong in [Module 10 - Entity Framework Core](../m10-entity-framework-core/README.md); this module covers the underlying SQL and database behavior independent of any particular ORM.
 - API-contract-level pagination (how a client expresses "which page" over HTTP) belongs in [Module 7 - HTTP, REST, and API Design](../m07-http-rest-api-design/README.md); this module covers the SQL mechanics (`OFFSET`/`FETCH`, keyset queries) underneath it.
 - NoSQL/document-store trade-offs belong in Module 14 - Architecture and System Design Fundamentals (not yet published); this module is deliberately scoped to relational databases only.
 - Deep performance tuning and database-level observability belong in Module 13 - Performance, Diagnostics, and Observability (not yet published); this module covers indexing and execution plans at a practical, everyday level.

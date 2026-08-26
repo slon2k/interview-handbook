@@ -83,8 +83,8 @@ Patterns should be introduced as responses to recurring design problems. Each to
 
 - C# syntax and type semantics belong in [Module 2 - C# Language and Type System](../m02-csharp-language/README.md).
 - ASP.NET Core dependency-injection registration, service lifetimes, middleware, and framework configuration belong in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
-- Unit, integration, and end-to-end testing belong in Module 10, although testability is a design concern here.
-- Large-scale architecture and distributed-system trade-offs belong in Module 13.
+- Unit, integration, and end-to-end testing belong in Module 11 - Testing and Testability, although testability is a design concern here.
+- Large-scale architecture and distributed-system trade-offs belong in Module 14 - Architecture and System Design Fundamentals.
 
 ## Suggested Learning Sequence
 

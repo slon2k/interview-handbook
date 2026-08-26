@@ -66,6 +66,15 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [Indexes](m09-relational-databases-and-sql/indexes.md)
 - [SQL injection prevention](m09-relational-databases-and-sql/sql-injection-prevention.md)
 
+### Entity Framework Core ([Module 10](m10-entity-framework-core/README.md))
+
+- [DbContext lifetime, thread safety, and pooling](m10-entity-framework-core/dbcontext-lifetime-and-pooling.md)
+- [N+1 queries](m10-entity-framework-core/n-plus-one-queries.md)
+- [Eager, explicit, and lazy loading](m10-entity-framework-core/loading-strategies.md)
+- [AsNoTracking](m10-entity-framework-core/asnotracking.md)
+- [Optimistic concurrency](m10-entity-framework-core/optimistic-concurrency.md)
+- [Split vs. single queries](m10-entity-framework-core/split-vs-single-queries.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -90,7 +99,6 @@ Load-bearing topics from High-priority modules — not the full module, just the
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 10 — Entity Framework Core (Critical)
 - Module 11 — Testing and Testability (Critical)
 - Module 12 — Application Security (High)
 - Module 13 — Performance, Diagnostics, and Observability (Medium to High)

@@ -52,7 +52,7 @@ Concurrent collections are covered at an awareness level here. Detailed synchron
 - [Deferred execution and materialization](deferred-execution-and-materialization.md)
 - [`IEnumerable<T>` versus `IQueryable<T>`](ienumerable-vs-iqueryable.md)
 
-`IQueryable<T>` is introduced here as a contrast with in-memory LINQ. Query translation, database execution, loading, and provider-specific behavior belong primarily in Module 9 - Entity Framework Core.
+`IQueryable<T>` is introduced here as a contrast with in-memory LINQ. Query translation, database execution, loading, and provider-specific behavior belong primarily in [Module 10 - Entity Framework Core](../m10-entity-framework-core/README.md).
 
 ### 4. Basic Algorithms
 

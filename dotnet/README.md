@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–9 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API, framework, and database foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), and [Relational Databases and SQL](m09-relational-databases-and-sql/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–10 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API, framework, and data-access foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), and [Entity Framework Core](m10-entity-framework-core/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -132,33 +132,9 @@ See the [Relational Databases and SQL module](m09-relational-databases-and-sql/R
 
 ### Module 10 — Entity Framework Core
 
-EF Core maps .NET objects to relational data, translates LINQ into SQL, and manages persistence concerns. It should be learned after the relational database fundamentals above.
-High-level topics:
+See the [Entity Framework Core module](m10-entity-framework-core/README.md).
 
-- DbContext and DbSet
-- DbContext lifetime and thread safety
-- DbContext pooling
-- Entity configuration
-- Relationships
-- Code-first migrations
-- Change tracking
-- AsNoTracking
-- Query translation
-- `IQueryable<T>` and EF Core's LINQ provider translation
-- Projection
-- Eager, explicit and lazy loading
-- N+1 queries
-- Split versus single queries
-- Global query filters (e.g., soft delete)
-- Transactions
-- Optimistic concurrency
-- Raw SQL
-- Bulk operations (`ExecuteUpdate`/`ExecuteDelete`, bulk-operation libraries)
-- Testing EF-based code
-- Repository pattern in EF Core: interaction with change tracking and DbContext lifetime
-
-**Expected outcome:** Build a correctly scoped `DbContext`, write efficient queries, manage changes and migrations, and diagnose common translation, loading, and concurrency problems.
-
+**Status:** Complete  
 **Priority:** Critical.
 
 ### Module 11 — Testing and Testability
