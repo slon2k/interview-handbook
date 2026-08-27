@@ -75,6 +75,14 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [Optimistic concurrency](m10-entity-framework-core/optimistic-concurrency.md)
 - [Split vs. single queries](m10-entity-framework-core/split-vs-single-queries.md)
 
+### Testing and Testability ([Module 11](m11-testing-and-testability/README.md))
+
+- [Testing behavior, not implementation](m11-testing-and-testability/testing-behavior-not-implementation.md)
+- [Mocks, stubs, and fakes](m11-testing-and-testability/mocks-stubs-and-fakes.md)
+- [What should and should not be mocked](m11-testing-and-testability/what-to-mock.md)
+- [ASP.NET Core integration testing and WebApplicationFactory](m11-testing-and-testability/aspnet-core-integration-testing.md)
+- [Reliable and deterministic tests](m11-testing-and-testability/reliable-and-deterministic-tests.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -99,7 +107,6 @@ Load-bearing topics from High-priority modules — not the full module, just the
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 11 — Testing and Testability (Critical)
 - Module 12 — Application Security (High)
 - Module 13 — Performance, Diagnostics, and Observability (Medium to High)
 - Module 14 — Architecture and System Design Fundamentals (Medium)

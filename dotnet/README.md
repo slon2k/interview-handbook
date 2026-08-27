@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–10 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API, framework, and data-access foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), and [Entity Framework Core](m10-entity-framework-core/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–11 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API, framework, data-access, and testing foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), and [Testing and Testability](m11-testing-and-testability/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -139,32 +139,9 @@ See the [Entity Framework Core module](m10-entity-framework-core/README.md).
 
 ### Module 11 — Testing and Testability
 
-This module should cover both concepts and actual test implementation.
-High-level topics:
+See the [Testing and Testability module](m11-testing-and-testability/README.md).
 
-- Unit, integration, component and end-to-end tests
-- Test pyramid and practical variations
-- Arrange–Act–Assert
-- Test naming
-- Testing behaviour rather than implementation
-- xUnit or NUnit
-- Assertions
-- Parameterised tests
-- Test fixtures
-- Test data builders
-- Mocks, stubs and fakes
-- Moq or NSubstitute
-- What should and should not be mocked
-- Testing asynchronous code
-- Testing exceptions
-- Testing HttpClient
-- ASP.NET Core integration testing
-- WebApplicationFactory
-- Database integration tests
-- Testcontainers
-- Code coverage and its limitations
-- Reliable and deterministic tests
-- Tests in CI
+**Status:** Complete  
 **Priority:** Critical.
 
 ### Module 12 — Application Security
