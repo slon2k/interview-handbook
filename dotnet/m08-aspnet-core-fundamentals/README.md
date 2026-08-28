@@ -60,8 +60,8 @@ By the end of this module, you should be able to:
 ## Scope Boundaries
 
 - HTTP protocol fundamentals, status codes, REST design, and API contracts belong in Module 7 - HTTP, REST, and API Design.
-- Authentication and authorization mechanics (JWTs, cookies vs. bearer tokens, claims, policies) belong in Module 12 - Application Security (not yet published).
-- Caching *strategy* (invalidation patterns, in-memory vs. distributed trade-offs at scale) belongs in Module 13 - Performance, Diagnostics, and Observability (not yet published); this module covers only the framework mechanics (`IMemoryCache`, Output Caching).
+- Authentication and authorization mechanics (JWTs, cookies vs. bearer tokens, claims, policies) belong in [Module 12 - Application Security](../m12-application-security/README.md).
+- Caching *strategy* (invalidation patterns, in-memory vs. distributed trade-offs at scale) belongs in [Module 13 - Performance, Diagnostics, and Observability](../m13-performance-diagnostics-observability/README.md); this module covers only the framework mechanics (`IMemoryCache`, Output Caching).
 - General C# async/await mechanics, cancellation tokens, and threading belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md); this module covers their ASP.NET Core-specific application (`RequestAborted`, hosted services).
 - Dependency injection as a design *technique* (constructor injection, DIP) belongs in [Module 4 - Object-Oriented Design and Maintainable Code](../m04-oop-design/README.md); this module covers the ASP.NET Core container's specific mechanics (lifetimes, keyed services, validation).
 

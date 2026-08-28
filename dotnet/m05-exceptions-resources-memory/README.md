@@ -37,7 +37,7 @@ By the end of this module, you should be able to:
 - Async exception propagation, cancellation, synchronization, and bounded concurrency belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md).
 - ASP.NET Core exception-handling middleware and `ProblemDetails` belong in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md); HTTP status-code semantics belong in [Module 7 - HTTP, REST, and API Design](../m07-http-rest-api-design/README.md).
 - Database transaction behavior belongs in Modules 8 and 9.
-- Detailed performance investigation and observability belong in Module 13 - Performance, Diagnostics, and Observability.
+- Detailed performance investigation and observability belong in [Module 13 - Performance, Diagnostics, and Observability](../m13-performance-diagnostics-observability/README.md).
 
 ## Suggested Learning Sequence
 

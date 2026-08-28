@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–11 (Part I's language, collections, design, memory, and concurrency content, plus Part II's HTTP/API, framework, data-access, and testing foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), and [Testing and Testability](m11-testing-and-testability/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–13 (all of Part I, all of Part II, and Part III's security and performance foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), and [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -146,55 +146,16 @@ See the [Testing and Testability module](m11-testing-and-testability/README.md).
 
 ### Module 12 — Application Security
 
-For your level, focus on secure application-development fundamentals rather than cryptographic implementation details.
-High-level topics:
+See the [Application Security module](m12-application-security/README.md).
 
-- Authentication versus authorisation
-- Claims, roles and policies
-- Cookies versus bearer tokens
-- JWT structure and validation
-- Access and refresh tokens
-- Password storage
-- Secret management
-- HTTPS
-- CORS versus CSRF
-- XSS
-- SQL injection
-- Input validation
-- Output encoding
-- Mass assignment/over-posting
-- File-upload security
-- Rate limiting
-- Principle of least privilege
-- Secure logging
-- OWASP Top 10
-- OWASP API Security Top 10
-- GDPR awareness
+**Status:** Complete  
 **Priority:** High.
 
 ### Module 13 — Performance, Diagnostics, and Observability
 
-The goal is not advanced optimisation. It is demonstrating that you can investigate performance systematically.
-High-level topics:
+See the [Performance, Diagnostics, and Observability module](m13-performance-diagnostics-observability/README.md).
 
-- Measuring before optimising
-- CPU-bound versus I/O-bound bottlenecks
-- Allocations and GC pressure
-- Common collection and LINQ performance issues
-- Database-query performance
-- N+1 problems
-- Caching strategies
-- In-memory versus distributed caching
-- Logging and structured logging
-- Metrics
-- Tracing
-- Correlation IDs
-- OpenTelemetry awareness
-- Application Insights awareness
-- Health checks
-- Profilers and diagnostic tools
-- Load and stress testing
-- Basic resilience: timeouts, retries, and circuit breakers
+**Status:** Complete  
 **Priority:** Medium to high.
 
 ## Part III — Software Engineering Context

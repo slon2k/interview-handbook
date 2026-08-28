@@ -103,12 +103,28 @@ Load-bearing topics from High-priority modules — not the full module, just the
 - [Garbage collection and object lifetime](m05-exceptions-resources-memory/gc-and-object-lifetime.md)
 - [Boxing and allocation pressure](m05-exceptions-resources-memory/boxing-and-allocation-pressure.md)
 
+### Application Security ([Module 12](m12-application-security/README.md))
+
+- [Authentication vs. authorization](m12-application-security/authentication-vs-authorization.md)
+- [JWT structure and validation](m12-application-security/jwt-structure-and-validation.md)
+- [Password storage](m12-application-security/password-storage.md)
+- [CORS vs. CSRF](m12-application-security/cors-vs-csrf.md)
+- [XSS and output encoding](m12-application-security/xss-and-output-encoding.md)
+- [Mass assignment / over-posting](m12-application-security/mass-assignment-and-over-posting.md)
+- [OWASP Top 10 and OWASP API Security Top 10](m12-application-security/owasp-top-10-and-api-security-top-10.md)
+
+### Performance, Diagnostics, and Observability ([Module 13](m13-performance-diagnostics-observability/README.md))
+
+- [Measuring before optimizing](m13-performance-diagnostics-observability/measure-before-optimizing.md)
+- [Database query performance and N+1 problems](m13-performance-diagnostics-observability/database-query-performance-and-n-plus-one.md)
+- [Caching strategies: in-memory vs. distributed](m13-performance-diagnostics-observability/caching-strategies.md)
+- [Metrics and tracing](m13-performance-diagnostics-observability/metrics-and-tracing.md)
+- [Basic resilience: timeouts, retries, and circuit breakers](m13-performance-diagnostics-observability/resilience-timeouts-retries-circuit-breakers.md)
+
 ## Pending — Not Yet Written
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 12 — Application Security (High)
-- Module 13 — Performance, Diagnostics, and Observability (Medium to High)
 - Module 14 — Architecture and System Design Fundamentals (Medium)
 - Module 15 — Development Workflow and Delivery Fundamentals (High)
 - Module 16 — Practical Interview Exercises (Critical)

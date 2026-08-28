@@ -55,7 +55,7 @@ By the end of this module, you should be able to:
 - ORM-specific concerns — `DbContext`, change tracking, migrations, query translation — belong in [Module 10 - Entity Framework Core](../m10-entity-framework-core/README.md); this module covers the underlying SQL and database behavior independent of any particular ORM.
 - API-contract-level pagination (how a client expresses "which page" over HTTP) belongs in [Module 7 - HTTP, REST, and API Design](../m07-http-rest-api-design/README.md); this module covers the SQL mechanics (`OFFSET`/`FETCH`, keyset queries) underneath it.
 - NoSQL/document-store trade-offs belong in Module 14 - Architecture and System Design Fundamentals (not yet published); this module is deliberately scoped to relational databases only.
-- Deep performance tuning and database-level observability belong in Module 13 - Performance, Diagnostics, and Observability (not yet published); this module covers indexing and execution plans at a practical, everyday level.
+- Deep performance tuning and database-level observability belong in [Module 13 - Performance, Diagnostics, and Observability](../m13-performance-diagnostics-observability/README.md); this module covers indexing and execution plans at a practical, everyday level.
 
 ## Suggested Learning Sequence
 
