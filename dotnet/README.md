@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–13 (all of Part I, all of Part II, and Part III's security and performance foundations) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), and [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–14 (all of Part I, Part II, and Part III) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), and [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -162,32 +162,9 @@ See the [Performance, Diagnostics, and Observability module](m13-performance-dia
 
 ### Module 14 — Architecture and System Design Fundamentals
 
-For junior+/mid-level positions, this should focus on explaining reasonable designs rather than designing global-scale systems.
-High-level topics:
+See the [Architecture and System Design Fundamentals module](m14-architecture-and-system-design/README.md).
 
-- Layered architecture
-- Modular monolith
-- Clean/hexagonal architecture at a conceptual level
-- Separation of domain and infrastructure
-- Dependency direction
-- DTOs versus domain entities
-- Application services
-- Repositories and units of work
-- Synchronous versus asynchronous communication
-- Messaging fundamentals
-- Event-driven architecture
-- Caching
-- Relational versus NoSQL: when each fits (awareness)
-- Stateless application design
-- Horizontal versus vertical scaling
-- Availability and resilience
-- Monolith versus microservices
-- Microservice trade-offs
-- Distributed transactions and eventual consistency
-- Idempotent message handling
-- Basic CQRS awareness
-- Basic domain-driven design vocabulary
-- Avoiding unnecessary architecture
+**Status:** Complete  
 **Priority:** Medium. Practical design reasoning is more important than pattern vocabulary.
 
 ### Module 15 — Development Workflow and Delivery Fundamentals

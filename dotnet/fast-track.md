@@ -121,11 +121,18 @@ Load-bearing topics from High-priority modules — not the full module, just the
 - [Metrics and tracing](m13-performance-diagnostics-observability/metrics-and-tracing.md)
 - [Basic resilience: timeouts, retries, and circuit breakers](m13-performance-diagnostics-observability/resilience-timeouts-retries-circuit-breakers.md)
 
+### Architecture and System Design Fundamentals ([Module 14](m14-architecture-and-system-design/README.md))
+
+- [Layered architecture, separation of domain/infrastructure, and dependency direction](m14-architecture-and-system-design/layered-architecture-and-boundaries.md)
+- [Synchronous vs. asynchronous communication (system level)](m14-architecture-and-system-design/synchronous-versus-asynchronous-communication.md)
+- [Monolith vs. microservices, and microservice trade-offs](m14-architecture-and-system-design/monolith-versus-microservices.md)
+- [Distributed transactions, eventual consistency, and idempotent message handling](m14-architecture-and-system-design/distributed-transactions-and-eventual-consistency.md)
+- [Avoiding unnecessary architecture](m14-architecture-and-system-design/avoiding-unnecessary-architecture.md)
+
 ## Pending — Not Yet Written
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 14 — Architecture and System Design Fundamentals (Medium)
 - Module 15 — Development Workflow and Delivery Fundamentals (High)
 - Module 16 — Practical Interview Exercises (Critical)
 - Module 17 — Experience and Behavioural Evidence (High)

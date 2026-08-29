@@ -41,7 +41,7 @@ By the end of this module, you should be able to:
 ## Scope Boundaries
 
 - ASP.NET Core's specific implementation of these concepts — middleware, routing, controllers vs. minimal APIs, model binding, DI, `ProblemDetails` — belongs in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md).
-- The system-level choice between synchronous request/response (of which REST/gRPC are implementations) and asynchronous messaging/events belongs in Module 14 - Architecture and System Design Fundamentals (not yet published); this module covers the shape of one synchronous HTTP API, not how services in a larger system choose to communicate.
+- The system-level choice between synchronous request/response (of which REST/gRPC are implementations) and asynchronous messaging/events belongs in [Module 14 - Architecture and System Design Fundamentals](../m14-architecture-and-system-design/README.md); this module covers the shape of one synchronous HTTP API, not how services in a larger system choose to communicate.
 - Authentication and authorization mechanics (JWTs, cookies vs. bearer tokens, claims) belong in [Module 12 - Application Security](../m12-application-security/README.md).
 - Caching *strategy* (invalidation, in-memory vs. distributed) belongs in [Module 13 - Performance, Diagnostics, and Observability](../m13-performance-diagnostics-observability/README.md); this module only covers HTTP-level caching headers (`ETag`, `Cache-Control`).
 
