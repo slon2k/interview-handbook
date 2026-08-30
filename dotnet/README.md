@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–14 (all of Part I, Part II, and Part III) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), and [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–15 (all of Parts I, II, III, and now Part IV's workflow foundation) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md), and [Development Workflow and Delivery Fundamentals](m15-development-workflow-and-delivery/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -169,29 +169,9 @@ See the [Architecture and System Design Fundamentals module](m14-architecture-an
 
 ### Module 15 — Development Workflow and Delivery Fundamentals
 
-This covers the normal daily workflow expected from a professional developer.
-High-level topics:
+See the [Development Workflow and Delivery Fundamentals module](m15-development-workflow-and-delivery/README.md).
 
-- Git fundamentals
-- Branching and pull requests
-- Commit quality
-- Merge conflicts
-- Code review
-- Debugging in Visual Studio or Rider
-- Breakpoints and conditional breakpoints
-- NuGet dependency management
-- Build and publish commands
-- Project configuration
-- Environment-specific settings
-- Static analysis and analyzers
-- Formatting
-- Docker fundamentals
-- CI/CD concepts
-- Running tests in a pipeline
-- Database migrations during deployment
-- Feature flags
-- Basic release and rollback thinking
-Azure-specific delivery details can be moved to the later cloud plan.
+**Status:** Complete  
 **Priority:** High for practical readiness, although usually lighter in theoretical interviews.
 
 ## Part IV — Interview Execution

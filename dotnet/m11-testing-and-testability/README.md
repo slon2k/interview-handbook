@@ -64,7 +64,7 @@ By the end of this module, you should be able to:
 - Async/await mechanics in general belong in [Module 6 - Asynchronous Programming and Concurrency](../m06-async-concurrency/README.md); this module covers only the test-specific patterns for exercising async code.
 - `HttpClientFactory` and typed HTTP clients in general belong in [Module 8 - ASP.NET Core Fundamentals](../m08-aspnet-core-fundamentals/README.md); this module covers only how to test code that depends on them.
 - EF Core testing fidelity trade-offs (in-memory provider vs. SQLite vs. Testcontainers) are introduced in [Module 10 - Entity Framework Core](../m10-entity-framework-core/README.md); this module's database-integration-tests topic builds directly on that.
-- CI/CD pipeline mechanics beyond running and gating tests belong in Module 15 - Development Workflow and Delivery Fundamentals (not yet published).
+- CI/CD pipeline mechanics beyond running and gating tests belong in [Module 15 - Development Workflow and Delivery Fundamentals](../m15-development-workflow-and-delivery/README.md).
 
 ## Suggested Learning Sequence
 

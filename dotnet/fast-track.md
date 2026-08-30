@@ -129,11 +129,18 @@ Load-bearing topics from High-priority modules — not the full module, just the
 - [Distributed transactions, eventual consistency, and idempotent message handling](m14-architecture-and-system-design/distributed-transactions-and-eventual-consistency.md)
 - [Avoiding unnecessary architecture](m14-architecture-and-system-design/avoiding-unnecessary-architecture.md)
 
+### Development Workflow and Delivery Fundamentals ([Module 15](m15-development-workflow-and-delivery/README.md))
+
+- [Branching and pull requests](m15-development-workflow-and-delivery/branching-and-pull-requests.md)
+- [Code review](m15-development-workflow-and-delivery/code-review.md)
+- [CI/CD concepts, and running tests in a pipeline](m15-development-workflow-and-delivery/ci-cd-concepts-and-pipeline-testing.md)
+- [Database migrations during deployment](m15-development-workflow-and-delivery/database-migrations-during-deployment.md)
+- [Basic release and rollback thinking](m15-development-workflow-and-delivery/release-and-rollback-thinking.md)
+
 ## Pending — Not Yet Written
 
 These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
 
-- Module 15 — Development Workflow and Delivery Fundamentals (High)
 - Module 16 — Practical Interview Exercises (Critical)
 - Module 17 — Experience and Behavioural Evidence (High)
 
