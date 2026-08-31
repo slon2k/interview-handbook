@@ -83,6 +83,14 @@ The topics most likely to come up, directly or as follow-ups, in a real intervie
 - [ASP.NET Core integration testing and WebApplicationFactory](m11-testing-and-testability/aspnet-core-integration-testing.md)
 - [Reliable and deterministic tests](m11-testing-and-testability/reliable-and-deterministic-tests.md)
 
+### Practical Interview Exercises ([Module 16](m16-practical-interview-exercises/README.md))
+
+- [Debugging broken code](m16-practical-interview-exercises/debugging-broken-code.md)
+- [Explaining a code snippet](m16-practical-interview-exercises/explaining-a-code-snippet.md)
+- [Reviewing a pull request](m16-practical-interview-exercises/reviewing-a-pull-request.md)
+- [Finding EF Core performance issues](m16-practical-interview-exercises/finding-ef-core-performance-issues.md)
+- [Async/concurrency problem analysis](m16-practical-interview-exercises/async-concurrency-problem-analysis.md)
+
 ## Strengthen — If You Have More Time
 
 Load-bearing topics from High-priority modules — not the full module, just the parts most likely to anchor a design or memory-management discussion.
@@ -137,12 +145,17 @@ Load-bearing topics from High-priority modules — not the full module, just the
 - [Database migrations during deployment](m15-development-workflow-and-delivery/database-migrations-during-deployment.md)
 - [Basic release and rollback thinking](m15-development-workflow-and-delivery/release-and-rollback-thinking.md)
 
+### Experience and Behavioural Evidence ([Module 17](m17-experience-and-behavioural-evidence/README.md))
+
+- [The STAR method, and why technical grounding is what makes it work](m17-experience-and-behavioural-evidence/star-method-and-technical-grounding.md)
+- [A difficult bug](m17-experience-and-behavioural-evidence/a-difficult-bug.md)
+- [A production or test failure](m17-experience-and-behavioural-evidence/a-production-or-test-failure.md)
+- [Missing a deadline or making a mistake](m17-experience-and-behavioural-evidence/missing-a-deadline-or-making-a-mistake.md)
+- [Making a design trade-off](m17-experience-and-behavioural-evidence/making-a-design-trade-off.md)
+
 ## Pending — Not Yet Written
 
-These modules are Critical or High priority per the main roadmap but don't have files yet. This section will be filled in as each module is completed.
-
-- Module 16 — Practical Interview Exercises (Critical)
-- Module 17 — Experience and Behavioural Evidence (High)
+Every module through Module 17 is now complete. Only Module 1 (.NET Platform and Development Model) remains an outline-only entry in the main roadmap — deliberately last in the queue, priority Medium, and not expected to need a full file treatment the way the other modules did.
 
 ## If You Truly Have One Day
 

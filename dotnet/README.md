@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–15 (all of Parts I, II, III, and now Part IV's workflow foundation) are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md), and [Development Workflow and Delivery Fundamentals](m15-development-workflow-and-delivery/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. Modules 2–17 — every module in Parts I through IV — are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md), [Development Workflow and Delivery Fundamentals](m15-development-workflow-and-delivery/README.md), [Practical Interview Exercises](m16-practical-interview-exercises/README.md), and [Experience and Behavioural Evidence](m17-experience-and-behavioural-evidence/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
 
 ## Module Format
 
@@ -178,43 +178,16 @@ See the [Development Workflow and Delivery Fundamentals module](m15-development-
 
 ### Module 16 — Practical Interview Exercises
 
-This module converts knowledge into interview performance.
-Exercise categories:
+See the [Practical Interview Exercises module](m16-practical-interview-exercises/README.md).
 
-- Short coding tasks
-- LINQ tasks
-- Refactoring tasks
-- Debugging broken code
-- Reviewing a pull request
-- Explaining a code snippet
-- Writing unit tests
-- Designing an endpoint
-- Designing a small service
-- SQL query exercises
-- Finding EF Core performance issues
-- Async/concurrency problem analysis
-- Small architecture discussion
-- “What would you improve?” questions
+**Status:** Complete  
 **Priority:** Critical.
 
 ### Module 17 — Experience and Behavioural Evidence
 
-Even though this is not purely technical, it should be connected to the technical modules.
-Prepare examples for:
+See the [Experience and Behavioural Evidence module](m17-experience-and-behavioural-evidence/README.md).
 
-- A difficult bug
-- A production or test failure
-- A disagreement during code review
-- Receiving critical feedback
-- Learning a new technology
-- Refactoring difficult code
-- Improving performance
-- Working with unclear requirements
-- Missing a deadline or making a mistake
-- Helping another developer
-- Making a design trade-off
-- Handling technical debt
-Use the STAR structure, but keep answers natural rather than memorised.
+**Status:** Complete  
 **Priority:** High.
 
 ## Recommended Priority Tiers
