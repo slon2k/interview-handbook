@@ -19,7 +19,7 @@ Examples target modern C# and supported .NET LTS releases. Version-specific beha
 - **Part III:** Software engineering context
 - **Part IV:** Interview execution
 
-Module links will be added as their documentation is created. Modules 2–17 — every module in Parts I through IV — are now complete: [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md), [Development Workflow and Delivery Fundamentals](m15-development-workflow-and-delivery/README.md), [Practical Interview Exercises](m16-practical-interview-exercises/README.md), and [Experience and Behavioural Evidence](m17-experience-and-behavioural-evidence/README.md). Module 1 (.NET Platform and Development Model) remains an outline only — priority Medium, deliberately last in the queue.
+Module links will be added as their documentation is created. **The entire roadmap — Modules 1 through 17 — is now complete:** [.NET Platform and Development Model](m01-dotnet-platform-and-development-model/README.md), [C# Language and Type System](m02-csharp-language/README.md), [Collections, LINQ, and Basic Algorithms](m03-collections-linq/README.md), [Object-Oriented Design and Maintainable Code](m04-oop-design/README.md), [Exceptions, Resources, and Memory Management](m05-exceptions-resources-memory/README.md), [Asynchronous Programming and Concurrency](m06-async-concurrency/README.md), [HTTP, REST, and API Design](m07-http-rest-api-design/README.md), [ASP.NET Core Fundamentals](m08-aspnet-core-fundamentals/README.md), [Relational Databases and SQL](m09-relational-databases-and-sql/README.md), [Entity Framework Core](m10-entity-framework-core/README.md), [Testing and Testability](m11-testing-and-testability/README.md), [Application Security](m12-application-security/README.md), [Performance, Diagnostics, and Observability](m13-performance-diagnostics-observability/README.md), [Architecture and System Design Fundamentals](m14-architecture-and-system-design/README.md), [Development Workflow and Delivery Fundamentals](m15-development-workflow-and-delivery/README.md), [Practical Interview Exercises](m16-practical-interview-exercises/README.md), and [Experience and Behavioural Evidence](m17-experience-and-behavioural-evidence/README.md).
 
 ## Module Format
 
@@ -36,30 +36,9 @@ Each module should document:
 
 ### Module 1 — The .NET Platform and Development Model
 
-This module establishes what .NET actually is and how an application is built and executed.
-High-level topics:
+See the [.NET Platform and Development Model module](m01-dotnet-platform-and-development-model/README.md).
 
-- .NET Framework, .NET Core and modern unified .NET
-- Supported and LTS versions
-- SDK, runtime, and `dotnet` CLI
-- Runtime and SDK selection
-- CLR and Base Class Library
-- Project and solution structure
-- `.csproj` files and target frameworks
-- NuGet packages and dependency basics
-- `dotnet new`, `restore`, `build`, `run`, and `publish`
-- Compilation from C# source to IL and native code
-- JIT compilation and basic AOT awareness
-- Assemblies, executables, and class libraries
-- Framework-dependent and self-contained deployment
-- Debug and Release configurations
-- Application execution lifecycle
-- Cross-platform execution
-- Runtime compatibility and target framework selection
-- Basic legacy .NET Framework awareness
-
-**Expected outcome:** Explain the .NET platform model, create and build a simple application with the CLI, describe how it executes, and distinguish SDK, runtime, target framework, assembly, and deployment concepts.
-
+**Status:** Complete  
 **Priority:** Medium. Understand the current platform model; historical version-by-version memorisation is unnecessary.
 
 ### Module 2 — C# Language and Type System

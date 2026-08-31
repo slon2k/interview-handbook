@@ -4,7 +4,7 @@ A curated shortlist for when you don't have time to read every module in full. T
 
 Unlike the "Recommended Priority Tiers" list in the [main README](README.md), which ranks whole *modules*, this page picks the highest-yield *individual topics* within those modules — not every file in a Critical-priority module is equally load-bearing, and this list is meant to reflect that.
 
-This page will grow as new modules are completed. Until then, it only covers what exists today.
+This page covers the complete roadmap — Modules 1 through 17 — now that every module is finished.
 
 ## Core — Read These First
 
@@ -153,9 +153,16 @@ Load-bearing topics from High-priority modules — not the full module, just the
 - [Missing a deadline or making a mistake](m17-experience-and-behavioural-evidence/missing-a-deadline-or-making-a-mistake.md)
 - [Making a design trade-off](m17-experience-and-behavioural-evidence/making-a-design-trade-off.md)
 
-## Pending — Not Yet Written
+### The .NET Platform and Development Model ([Module 1](m01-dotnet-platform-and-development-model/README.md))
 
-Every module through Module 17 is now complete. Only Module 1 (.NET Platform and Development Model) remains an outline-only entry in the main roadmap — deliberately last in the queue, priority Medium, and not expected to need a full file treatment the way the other modules did.
+- [.NET Framework, .NET Core, modern unified .NET, and version support](m01-dotnet-platform-and-development-model/dotnet-editions-and-versions.md)
+- [SDK, runtime, and the `dotnet` CLI](m01-dotnet-platform-and-development-model/sdk-runtime-and-cli.md)
+- [Compilation to IL, JIT compilation, and basic AOT awareness](m01-dotnet-platform-and-development-model/compilation-il-and-jit.md)
+- [Application execution lifecycle](m01-dotnet-platform-and-development-model/application-execution-lifecycle.md)
+
+## Every Module Is Complete
+
+Modules 1 through 17 — the entire roadmap — are done. This Fast Track page is no longer chasing a moving target; it can be treated as a finished, curated shortlist rather than a work in progress. If a new module or topic is ever added to the main roadmap later, update this page then — otherwise, there's nothing left pending.
 
 ## If You Truly Have One Day
 
