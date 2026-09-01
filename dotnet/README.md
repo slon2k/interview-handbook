@@ -58,7 +58,6 @@ See the [Collections, LINQ, and Basic Algorithms module](m03-collections-linq/RE
 **Status:** Complete  
 **Priority:** Critical.
 
-
 ### Module 4 — Object-Oriented Design and Maintainable Code
 
 See the [Object-Oriented Design and Maintainable Code module](m04-oop-design/README.md).

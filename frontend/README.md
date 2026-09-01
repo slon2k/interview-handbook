@@ -12,12 +12,12 @@ Legacy ASP.NET MVC needs only working awareness of server-rendered HTML, forms, 
 
 ## Learning Path
 
-1. Web platform: HTML, CSS, and accessibility
-2. JavaScript language and runtime
-3. TypeScript
-4. Browser platform and ASP.NET Core API integration
-5. React
-6. Frontend testing and tooling
+1. Module 1: Web platform: HTML, CSS, and accessibility
+2. Module 2: JavaScript language and runtime
+3. Module 3: TypeScript
+4. Module 4: Browser platform and ASP.NET Core API integration
+5. Module 5: React
+6. Module 6: Frontend testing and tooling
 
 ## Learning Outcomes
 
@@ -33,7 +33,7 @@ By the end of this track, you should be able to:
 
 ## Modules
 
-### F1 - Web Platform Foundations
+### Module 1 - Web Platform Foundations
 
 **Priority:** High  
 **Prerequisites:** None
@@ -55,10 +55,10 @@ By the end of this track, you should be able to:
 - Maintainable CSS organisation
 - Stacking contexts, animations, responsive images, and SEO at awareness level
 
-### F2 - JavaScript Language and Runtime
+### Module 2 - JavaScript Language and Runtime
 
 **Priority:** Critical  
-**Prerequisites:** F1
+**Prerequisites:** Module 1
 
 - Primitive and reference values; objects, arrays, equality, and mutation
 - Type coercion, `==` versus `===`, truthy/falsy values, `null` versus `undefined`
@@ -68,10 +68,10 @@ By the end of this track, you should be able to:
 - Errors, promises, `async`/`await`, event loop, microtasks, and macrotasks
 - Prototype inheritance, classes, iterables/generators, and garbage collection at awareness level
 
-### F3 - TypeScript
+### Module 3 - TypeScript
 
 **Priority:** Critical  
-**Prerequisites:** F2
+**Prerequisites:** Module 2
 
 - Type inference, annotations, interfaces, type aliases, and structural typing
 - Unions, literal types, narrowing, discriminated unions, and optional properties
@@ -83,15 +83,15 @@ By the end of this track, you should be able to:
 
 > TypeScript types do not normally exist at runtime and do not validate external data.
 
-### F4 - Browser Platform and ASP.NET Core API Integration
+### Module 4 - Browser Platform and ASP.NET Core API Integration
 
 **Priority:** High  
-**Prerequisites:** F2, F3
+**Prerequisites:** Modules 2 and 3
 
 - DOM events, bubbling, capturing, delegation, and form events
 - Browser rendering, reflow, repaint, and browser developer tools
 - `fetch`, `AbortController`, request cancellation, and stale-response handling
-- Same-origin policy, CORS, cookies, browser storage, HTTP caching, XSS, and CSRF
+- Same-origin policy, CORS, environment variables, cookies, browser storage, HTTP caching, XSS, and CSRF
 - Client-side routing, URLs, history, and URL state
 - API contracts: DTOs, pagination, error payloads including `ProblemDetails`, and validation errors
 - Authentication consequences for cookie and bearer-token approaches; handling `401`, `403`, and login redirects
@@ -101,10 +101,10 @@ By the end of this track, you should be able to:
 
 **Scope boundaries:** HTTP semantics belong in [Module 7](../dotnet/m07-http-rest-api-design/README.md), application-security theory in [Module 12](../dotnet/m12-application-security/README.md), and general performance/observability in [Module 13](../dotnet/m13-performance-diagnostics-observability/README.md). This module covers their browser-facing effects.
 
-### F5 - React
+### Module 5 - React
 
 **Priority:** Critical  
-**Prerequisites:** F1-F4
+**Prerequisites:** Modules 1-4
 
 #### Core Rendering Model
 
@@ -112,6 +112,7 @@ By the end of this track, you should be able to:
 - Component identity, composition, lifting state, controlled and uncontrolled components
 - Derived state versus stored state
 - What causes rerenders, reconciliation, referential equality, and `React.memo`
+- Route-based code splitting with `React.lazy` and `Suspense`; awareness of bundle-size and loading trade-offs
 
 #### Hooks
 
@@ -126,25 +127,25 @@ By the end of this track, you should be able to:
 - Typed data fetching; loading, error, empty, and retry states
 - Request cancellation and effect race conditions
 - Local UI, shared, server, and URL state
-- Forms, validation, error boundaries, Suspense, and feature-oriented component structure
+- Forms: controlled and uncontrolled components, form libraries such as React Hook Form or Formik, validation, error display, and submission handling
+- Styling approaches: CSS Modules, utility-first CSS such as Tailwind, and CSS-in-JS awareness; choosing and justifying a strategy
+- Client-state libraries: Redux, Zustand, and Jotai awareness; local UI versus shared client state versus server state
+- Error boundaries, Suspense, and feature-oriented component structure
 - Server-state libraries such as TanStack Query at awareness level: caching, invalidation, and why raw `useEffect` fetching becomes limiting
 
-#### Testing
-
-- React Testing Library queries and user-oriented interaction tests
-- Mocking API requests and testing asynchronous UI states
-- Component integration tests and the limits of hook-only tests
-
-### F6 - Frontend Testing and Tooling
+### Module 6 - Frontend Testing and Tooling
 
 **Priority:** High  
-**Prerequisites:** F3, F5
+**Prerequisites:** Modules 3 and 5
 
-#### Testing
+#### Testing React Components and Applications
 
+- React Testing Library: queries, user-oriented interaction tests, and testing asynchronous UI states
+- Mocking API requests with Mock Service Worker (MSW)
+- Component integration tests and the limitations of hook-only tests
 - Unit, component, integration, and end-to-end tests; the frontend test pyramid
-- Vitest or Jest, React Testing Library, Mock Service Worker, and Playwright or Cypress
-- Accessibility-oriented queries, asynchronous UI testing, test reliability, and snapshot-testing trade-offs
+- Vitest or Jest, Playwright or Cypress, accessibility-oriented queries, and test reliability
+- Snapshot testing trade-offs and avoiding implementation-detail tests
 
 #### Tooling and Delivery
 
@@ -161,12 +162,12 @@ By the end of this track, you should be able to:
 
 ## Suggested Learning Sequence
 
-1. Complete the essential HTML, CSS, and accessibility topics in F1.
-2. Focus on F2 async behavior, closures, values/references, modules, and array transformations.
-3. Complete F3 through typed API contracts and runtime-validation limits.
-4. Study F4 browser/API integration alongside the linked .NET HTTP and security modules.
-5. Spend the largest share of time on F5: rendering, hooks, Router, API states, and state boundaries.
-6. Finish with F6 testing and tooling, focusing on Vitest, React Testing Library, MSW, and Playwright awareness.
+1. Complete the essential HTML, CSS, and accessibility topics in Module 1.
+2. Focus on Module 2 async behavior, closures, values/references, modules, and array transformations.
+3. Complete Module 3 through typed API contracts and runtime-validation limits.
+4. Study Module 4 browser/API integration alongside the linked .NET HTTP and security modules.
+5. Spend the largest share of time on Module 5: rendering, hooks, Router, API states, and state boundaries.
+6. Finish with Module 6 testing and tooling, focusing on Vitest, React Testing Library, MSW, and Playwright awareness.
 
 ## Practical Deliverables
 
