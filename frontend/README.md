@@ -12,7 +12,7 @@ Legacy ASP.NET MVC needs only working awareness of server-rendered HTML, forms, 
 
 ## Learning Path
 
-1. Module 1: Web platform: HTML, CSS, and accessibility
+1. [Module 1: Web platform: HTML, CSS, and accessibility](m01-web-platform-foundations/README.md)
 2. Module 2: JavaScript language and runtime
 3. Module 3: TypeScript
 4. Module 4: Browser platform and ASP.NET Core API integration
@@ -38,22 +38,7 @@ By the end of this track, you should be able to:
 **Priority:** High  
 **Prerequisites:** None
 
-#### HTML and Accessibility
-
-- Semantic document structure
-- Forms, native validation, labels, and accessible form controls
-- Buttons versus links
-- Tables and images
-- Keyboard navigation, focus management, accessible names, colour contrast, and appropriate ARIA use
-- WCAG fundamentals and screen-reader awareness
-
-#### CSS
-
-- Cascade, specificity, inheritance, and custom properties
-- Box model, display, and positioning
-- Flexbox, Grid, responsive design, media queries, and units
-- Maintainable CSS organisation
-- Stacking contexts, animations, responsive images, and SEO at awareness level
+See the [Web Platform Foundations module](m01-web-platform-foundations/README.md).
 
 ### Module 2 - JavaScript Language and Runtime
 

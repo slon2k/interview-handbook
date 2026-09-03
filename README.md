@@ -7,6 +7,7 @@ A structured, in-depth interview preparation handbook — organized as a role-sp
 ## Available Tracks
 
 - [.NET — Middle Backend Developer](dotnet/README.md)
+- [Frontend — TypeScript and React](frontend/README.md)
 
 ## How This Handbook Works
 
