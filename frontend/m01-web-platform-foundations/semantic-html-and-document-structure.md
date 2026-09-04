@@ -4,6 +4,10 @@
 
 Semantic HTML uses elements according to their meaning and built-in behaviour. A heading describes document hierarchy, `nav` identifies navigation, a `button` performs an action, and an `a` element navigates to a URL. The browser exposes these meanings to assistive technology, search engines, and other tools.
 
+## Application
+
+Choose the native element from the user action and document meaning before styling it. In a React component, treat the rendered HTML element as part of the component's public contract: visual variants should not silently turn navigation into an action or a control into an inert element.
+
 ## How It Works
 
 - Use one logical heading hierarchy and landmarks such as `header`, `nav`, `main`, `aside`, and `footer` where they describe the page.
@@ -41,6 +45,10 @@ Generic elements with ARIA can imitate some native semantics, but they do not au
 
 - Why can adding `role="button"` to a `div` still leave an inaccessible control?
 - How would you review a React component that renders different visual variants but must preserve a meaningful underlying element?
+
+### Code Prediction
+
+Given a clickable `div`, identify which expected button behaviours are absent when a keyboard user presses Tab, Enter, and Space, and describe the smallest semantic replacement.
 
 ## Practical Tasks
 

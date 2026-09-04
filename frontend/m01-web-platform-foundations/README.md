@@ -32,15 +32,28 @@ By the end of this module, you should be able to:
 - Explain responsive units, media queries, stacking contexts, and common CSS maintenance trade-offs.
 - Inspect a small HTML or CSS example, predict its behaviour, and explain a practical fix.
 
-## Topics and Priorities
+## Topics
 
-### Must Know
+### 1. Meaningful and Usable Markup
 
-1. [Semantic HTML and document structure](semantic-html-and-document-structure.md)
-2. [Forms and native controls](forms-and-native-controls.md)
-3. [Accessibility and keyboard interaction](accessibility-and-keyboard-interaction.md)
-4. [CSS cascade and box model](css-cascade-and-box-model.md)
-5. [Layout and responsive design](layout-and-responsive-design.md)
+- [Semantic HTML and document structure](semantic-html-and-document-structure.md)
+- [Forms and native controls](forms-and-native-controls.md)
+- [Accessibility and keyboard interaction](accessibility-and-keyboard-interaction.md)
+
+### 2. CSS Foundations
+
+- [CSS cascade, specificity, and inheritance](css-cascade-specificity-and-inheritance.md)
+- [Box model, sizing, and overflow](box-model-sizing-and-overflow.md)
+
+### 3. Layout Systems
+
+- [Normal flow and positioning](normal-flow-and-positioning.md)
+- [Flexbox](flexbox.md)
+- [Grid](grid.md)
+
+### 4. Responsive Interface Design
+
+- [Responsive design and media queries](responsive-design-and-media-queries.md)
 
 ### Working Awareness
 
@@ -66,11 +79,12 @@ For every topic, practise four passes:
 
 ## Suggested Learning Sequence
 
-1. Start with semantic HTML, forms, and native controls.
-2. Add keyboard interaction, accessible names, focus management, and contrast checks.
-3. Practise the cascade, specificity, inheritance, and box model.
-4. Build a responsive page using normal flow, Flexbox, and Grid.
-5. Rehearse debugging and explain each choice as if reviewing a pull request.
+1. Establish semantic document structure, then build forms using the native controls that already provide the expected browser behaviour.
+2. Add accessible names, keyboard interaction, focus management, and contrast checks to that markup.
+3. Learn how the cascade and inherited values resolve, then use the box model to reason about an element's size and overflow.
+4. Build layouts progressively: normal flow first, then positioning for overlays, Flexbox for one-dimensional relationships, and Grid for two-dimensional ones.
+5. Make those layouts adapt to space, media, and user preferences with responsive constraints and queries.
+6. Rehearse debugging and explain each choice as if reviewing a pull request.
 
 ## Practical Deliverables
 

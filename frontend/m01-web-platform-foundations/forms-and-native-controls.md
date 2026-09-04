@@ -4,6 +4,10 @@
 
 A form collects user input and submits a meaningful set of named controls. Native controls such as text inputs, checkboxes, radio buttons, selects, and buttons provide browser behaviour that custom controls must otherwise recreate.
 
+## Application
+
+Start with a native `<form>` and native controls, then layer client feedback and API error mapping on top. Keep browser validation as fast user feedback only: an ASP.NET Core endpoint must independently validate every submitted value and return errors the UI can associate with the relevant fields.
+
 ## How It Works
 
 - Associate every control with a visible `label`; use `fieldset` and `legend` for related groups.
@@ -46,6 +50,10 @@ Controlled React inputs make state and conditional UI explicit. Uncontrolled inp
 
 - How would you prevent duplicate submissions without making the form unusable with a keyboard?
 - How would you handle validation for a form whose fields appear conditionally?
+
+### Code Prediction
+
+Given a form with an input that has no `name`, no associated `label`, and a button outside the form, identify what is missing from submitted data, accessible naming, and native submission behaviour.
 
 ## Practical Tasks
 

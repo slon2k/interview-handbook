@@ -4,6 +4,10 @@
 
 Accessible interfaces can be perceived, operated, and understood by people with different abilities and assistive technologies. Keyboard access, focus management, accessible names, contrast, and appropriate semantics are core implementation concerns rather than optional polish.
 
+## Application
+
+Build on semantic HTML first, then test the complete workflow using only the keyboard before adding ARIA. When UI opens, closes, filters, validates, or updates asynchronously, make the resulting focus and status behaviour part of the feature's acceptance criteria rather than a later audit item.
+
 ## How It Works
 
 - Keep focus visible and in a logical order. Do not remove an element from the focus order without a reason.
@@ -43,6 +47,10 @@ Automated tools are fast and useful for repeatable checks, but they cannot estab
 
 - What would you investigate if automated checks pass but keyboard users report that a workflow is confusing?
 - How would you design an autocomplete so keyboard users can inspect and select suggestions?
+
+### Code Prediction
+
+Given a custom dialog that opens without moving focus and closes by removing itself from the DOM, predict where keyboard focus remains and describe the entry and restoration behaviour the dialog needs.
 
 ## Practical Tasks
 
