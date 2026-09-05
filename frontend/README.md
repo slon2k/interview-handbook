@@ -13,7 +13,7 @@ Legacy ASP.NET MVC needs only working awareness of server-rendered HTML, forms, 
 ## Learning Path
 
 1. [Module 1: Web platform: HTML, CSS, and accessibility](m01-web-platform-foundations/README.md)
-2. Module 2: JavaScript language and runtime
+2. [Module 2: JavaScript language and runtime](m02-javascript-language-and-runtime/README.md)
 3. Module 3: TypeScript
 4. Module 4: Browser platform and ASP.NET Core API integration
 5. Module 5: React
@@ -45,13 +45,7 @@ See the [Web Platform Foundations module](m01-web-platform-foundations/README.md
 **Priority:** Critical  
 **Prerequisites:** Module 1
 
-- Primitive and reference values; objects, arrays, equality, and mutation
-- Type coercion, `==` versus `===`, truthy/falsy values, `null` versus `undefined`
-- Scope, `var`, `let`, `const`, hoisting, and the temporal dead zone
-- Functions, arrow functions, `this`, and closures
-- Destructuring, spread/rest syntax, optional chaining, nullish coalescing, modules, and array methods
-- Errors, promises, `async`/`await`, event loop, microtasks, and macrotasks
-- Prototype inheritance, classes, iterables/generators, and garbage collection at awareness level
+See the [JavaScript Language and Runtime module](m02-javascript-language-and-runtime/README.md).
 
 ### Module 3 - TypeScript
 
