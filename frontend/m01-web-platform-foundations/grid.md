@@ -2,58 +2,144 @@
 
 ## Definition
 
-CSS Grid is a two-dimensional layout system that defines rows and columns together. It is suited to page regions, card galleries, and layouts where items must align across both axes.
+CSS Grid is a two-dimensional layout system — it lets rows and columns align with each other simultaneously, which Flexbox can only approximate by nesting multiple flex containers. Grid is the right tool whenever a layout is genuinely a grid: a dashboard, a card gallery, or a page-level layout with header/sidebar/content/footer regions.
 
-## How It Works
-
-- Define tracks with `grid-template-columns` and `grid-template-rows`; use `fr`, `minmax()`, and intrinsic sizing keywords to describe available space.
-- Use `gap` for consistent space between tracks.
-- Place items by line number, named area, or automatic placement. Prefer source order that remains meaningful without visual placement.
-- `repeat(auto-fit, minmax(...))` can create a responsive card grid whose column count follows available space.
-- Grid and Flexbox can be nested: Grid may structure a page while Flexbox aligns controls inside a region.
-- Inspect the browser's Grid overlay to see tracks, lines, and implicit rows created by content.
+```css
+.dashboard {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}
+```
 
 ## Alternatives & Trade-offs
 
-Use Grid when both rows and columns describe the design. Use Flexbox when one dimension is primary. Explicit placement can create polished arrangements but should not create a visual order that conflicts with keyboard and reading order.
+Flexbox can fake a grid by wrapping flex items, but items on different rows won't align into consistent columns unless every row happens to have identical content widths — a real constraint Grid expresses directly instead of relying on coincidence. Grid's explicit two-dimensional model costs a small amount of extra syntax (`grid-template-columns`, named areas) compared to Flexbox's simpler mental model, which is exactly why Flexbox remains the better default for genuinely one-dimensional layouts.
+
+## How It Works
+
+### Defining tracks — `fr` units for flexible, proportional space
+
+```css
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr; /* fixed sidebar, then two EQUAL flexible columns */
+}
+```
+
+```css
+.layout {
+  grid-template-columns: repeat(3, 1fr); /* three equal columns, shorthand for 1fr 1fr 1fr */
+}
+```
+
+`fr` (fraction) units divide available space proportionally after any fixed-size tracks are subtracted — `1fr 2fr` gives the second column twice the space of the first, out of whatever space remains.
+
+### Named grid areas — mapping layout regions to readable names
+
+```css
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar content"
+    "sidebar footer";
+}
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+```
+
+Named areas make a layout's overall structure readable directly from the CSS — the `grid-template-areas` declaration visually resembles the actual page layout, which is far easier to reason about than a set of numeric row/column line placements for a complex page structure.
+
+### Placing items by line number, when named areas aren't a fit
+
+```css
+.item {
+  grid-column: 2 / 4;  /* starts at column line 2, ends at column line 4 — spans two column tracks */
+  grid-row: 1 / 3;
+}
+```
+
+### `auto-fit`/`auto-fill` with `minmax()` — a responsive grid with no media queries at all
+
+```css
+.card-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+```
+
+This produces as many 200px-minimum columns as currently fit the container's width, each stretching to fill any leftover space equally — the number of columns adjusts automatically as the viewport resizes, without writing a single `@media` breakpoint for this specific layout.
+
+### `auto-fit` vs. `auto-fill` — a subtle but real difference
+
+```
+auto-fill: keeps empty tracks if there's leftover space and not enough items to fill them —
+           existing items DON'T stretch to fill that leftover space.
+auto-fit:  collapses empty tracks, letting existing items stretch to fill the leftover space instead.
+```
+
+For a card gallery where cards should stretch to fill a partially-empty last row, `auto-fit` is almost always the intended choice; `auto-fill` is rarely what's actually wanted unless empty placeholder tracks are specifically desired.
+
+### Grid vs. Flexbox for alignment across containers
+
+```css
+/* Flexbox: each row aligns independently — column widths can drift between rows */
+.row { display: flex; }
+
+/* Grid: every row shares the SAME column tracks, guaranteeing alignment across rows */
+.grid-container { display: grid; grid-template-columns: repeat(3, 1fr); }
+```
+
+## Application
+
+Use Grid for genuinely two-dimensional layouts — page-level structure, dashboards, card galleries needing aligned columns across multiple rows. Use named grid areas for complex, human-readable page structure; use line-based placement for more ad hoc or overlapping item positioning. Use `auto-fit`/`minmax()` for a responsive grid that adapts without explicit breakpoints.
 
 ## Common Mistakes
 
-- Using Grid only because it is newer when a simple flex row communicates the layout better.
-- Relying on fixed tracks that fail with translated text or zoom.
-- Reordering content visually in a way that makes keyboard navigation confusing.
-- Forgetting that implicit tracks can be created when content exceeds the explicit grid.
+- Using nested Flexbox to fake a grid, then being surprised when column widths drift between rows that have different content.
+- Confusing `auto-fit` and `auto-fill`, ending up with unwanted empty tracks (or unwanted stretching) in a responsive card gallery.
+- Writing named grid areas that don't form a valid rectangular grid, causing the layout to silently fail or behave unexpectedly.
+- Reaching for Grid for a genuinely one-dimensional layout (a simple toolbar) where Flexbox would be simpler and equally correct.
 
 ## Common Interview Questions
 
-### Foundation
-
-- When would you use Grid instead of Flexbox?
-- What does the `fr` unit represent?
-- What is the difference between explicit and implicit grid tracks?
+### Basic
+- What's the core difference between Grid and Flexbox?
+- What does an `fr` unit represent?
 
 ### Intermediate
+- How would you build a responsive card gallery that adjusts its column count without writing media queries?
+- What's the difference between `auto-fit` and `auto-fill`?
 
-- How would you create a card grid that adapts its number of columns to available width?
-- When are named grid areas clearer than line numbers?
-- How should source order influence Grid placement?
+### Advanced
+- Why can nested Flexbox rows fail to keep their columns aligned, while Grid guarantees it?
+- How would you design a page layout (header, sidebar, content, footer) using named grid areas?
 
-### Advanced and Follow-up
+### Follow-up Questions
+- Can Grid and Flexbox be used together in the same layout, at different levels of nesting?
+- Does `minmax(200px, 1fr)` guarantee a column is never smaller than 200px, even if the container itself is narrower?
 
-- How would you debug an item appearing in an unexpected implicit row?
-- How do you keep a Grid layout robust under zoom and text expansion?
+### Code Prediction
+Given `grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))` inside a 650px-wide container with 16px gaps, roughly how many columns would this produce, and would the resulting columns be exactly 200px or wider?
 
 ## Practical Tasks
 
-- Build a responsive results grid using `repeat`, `minmax`, and `gap`.
-- Create a desktop page-region layout that becomes a single-column flow at narrow widths.
-- Use Grid developer tools to identify an implicit track.
+- Build a page layout (header, sidebar, content, footer) using named grid areas.
+- Build a responsive card gallery using `auto-fit` and `minmax()` with no explicit media queries.
+- Reproduce the column-misalignment problem from nested Flexbox rows, then fix it by converting to Grid.
 
 ## Readiness Criteria
 
-You can use Grid to express two-dimensional constraints, preserve meaningful source order, and build responsive tracks without device-specific column counts.
+Define grid tracks and named areas correctly, use `auto-fit`/`minmax()` for a responsive grid without media queries, and explain precisely when Grid's two-dimensional alignment guarantee matters over Flexbox.
 
 ## References
 
-- [MDN: CSS Grid layout](https://developer.mozilla.org/docs/Learn/CSS/CSS_layout/Grids)
 - [MDN: Basic concepts of grid layout](https://developer.mozilla.org/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)
+- [MDN: Grid template areas](https://developer.mozilla.org/docs/Web/CSS/grid-template-areas)

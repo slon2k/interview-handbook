@@ -2,64 +2,137 @@
 
 ## Definition
 
-Semantic HTML uses elements according to their meaning and built-in behaviour. A heading describes document hierarchy, `nav` identifies navigation, a `button` performs an action, and an `a` element navigates to a URL. The browser exposes these meanings to assistive technology, search engines, and other tools.
+Semantic HTML means choosing elements for what they *mean*, not how they happen to look by default — a `<button>` because it's a button, not a `<div>` styled to resemble one. The browser, assistive technology, and search engines all rely on this meaning to provide behavior (keyboard support, focus handling) and structure (a navigable outline) that a generic element never gets for free.
 
-## Application
+```html
+<!-- Non-semantic: LOOKS like a page, but means nothing to a screen reader or a browser -->
+<div class="header">
+  <div class="nav">
+    <div class="link">Home</div>
+  </div>
+</div>
+<div class="main">
+  <div class="title">Article Title</div>
+</div>
 
-Choose the native element from the user action and document meaning before styling it. In a React component, treat the rendered HTML element as part of the component's public contract: visual variants should not silently turn navigation into an action or a control into an inert element.
-
-## How It Works
-
-- Use one logical heading hierarchy and landmarks such as `header`, `nav`, `main`, `aside`, and `footer` where they describe the page.
-- Use lists for lists, tables for tabular relationships, and `figure`/`figcaption` when an illustration has a caption.
-- Use a link for navigation and a button for an in-page action. Native controls provide keyboard behaviour and accessible semantics.
-- Use `alt` text that conveys the purpose of an informative image. Use empty `alt` text for decorative images.
-- Treat semantic structure as part of the component contract. A React component should expose the right HTML element, not just the right visual appearance.
+<!-- Semantic: the SAME visual result, but the structure carries real meaning -->
+<header>
+  <nav>
+    <a href="/">Home</a>
+  </nav>
+</header>
+<main>
+  <h1>Article Title</h1>
+</main>
+```
 
 ## Alternatives & Trade-offs
 
-Generic elements with ARIA can imitate some native semantics, but they do not automatically reproduce native keyboard behaviour, focus handling, or browser integration. A custom control is justified only when a native element cannot express the required interaction.
+A `<div>`-only approach gives complete visual control with no default browser behavior to work around, but every piece of functionality a native element would have provided for free — keyboard activation, an accessible role, a document outline — has to be rebuilt by hand, usually incompletely. Semantic elements trade a small amount of default styling you'll often override anyway for behavior and structure that would otherwise require a lot of ARIA and JavaScript to approximate, and even then rarely as robustly.
+
+## How It Works
+
+### Landmark elements build a navigable page outline
+
+```html
+<body>
+  <header>...</header>
+  <nav>...</nav>
+  <main>
+    <article>
+      <h1>Post Title</h1>
+      <section>
+        <h2>Section Heading</h2>
+      </section>
+    </article>
+    <aside>Related links</aside>
+  </main>
+  <footer>...</footer>
+</body>
+```
+
+Screen reader users commonly navigate by landmark or by heading level, jumping directly to `<main>` or between `<h1>`/`<h2>` elements — a page built entirely from `<div>`s has no such outline for them to jump through at all, regardless of how it looks visually.
+
+### Heading levels must be sequential to form a real outline
+
+```html
+<!-- WRONG: skips from h1 to h3, breaking the outline a screen reader user navigates by -->
+<h1>Page Title</h1>
+<h3>Subsection</h3>
+
+<!-- RIGHT: sequential levels, chosen for structure, not for font size -->
+<h1>Page Title</h1>
+<h2>Subsection</h2>
+```
+
+Heading levels should never be chosen because "this needs to look smaller" — that's what CSS is for. `<h3>` used only because it renders at a convenient font size, while skipping `<h2>`, breaks the actual document outline for anyone navigating by heading.
+
+### `<button>` vs. a styled `<div>` — behavior you get for free
+
+```html
+<!-- A real button: Enter AND Space both activate it, it's focusable, it has an accessible role automatically -->
+<button type="button" onclick="handleClick()">Submit</button>
+
+<!-- A div "styled as a button": none of that works without extra code -->
+<div class="button-like" onclick="handleClick()">Submit</div>
+```
+
+The `<div>` version isn't focusable by default, doesn't respond to Enter or Space, and has no accessible role — all three would need to be added manually (`tabindex`, keydown handlers, `role="button"`) to approximate what `<button>` already does, and it's easy to miss one of the three.
+
+### `<article>` vs. `<section>` vs. `<div>` — a genuine, testable distinction
+
+```html
+<article>   <!-- independently distributable/reusable content: a blog post, a product card -->
+<section>   <!-- a thematic grouping WITHIN a page, usually with its own heading -->
+<div>        <!-- no semantic meaning at all — a pure styling/grouping hook -->
+```
+
+A useful test: if the content would still make sense syndicated on its own (an RSS feed entry, a card in a feed), it's an `<article>`. If it's just one thematic part of the current page, it's a `<section>`. If it carries no meaning of its own, it's a `<div>`.
+
+## Application
+
+Choose the most specific element that matches the actual meaning before reaching for a generic `<div>`/`<span>` plus ARIA. Use landmark elements (`<header>`, `<nav>`, `<main>`, `<footer>`) once per page (except `<nav>`, which can repeat), and keep heading levels sequential to preserve a real document outline.
 
 ## Common Mistakes
 
-- Using clickable `div` or `span` elements instead of buttons or links.
-- Choosing elements by default browser styling rather than meaning, then overriding the styles.
-- Using headings only to make text large or skipping heading levels without a structural reason.
-- Using tables for page layout or lists for visual indentation alone.
-- Giving an image redundant `alt` text that repeats an adjacent caption.
+- Choosing an element based on its default appearance rather than its meaning, then fighting the CSS to make it look different.
+- Skipping heading levels to get a particular default font size, breaking the document outline.
+- Using `<div onclick="...">` instead of `<button>`, silently losing keyboard activation and the accessible role.
+- Using more than one `<main>` element per page, or nesting one `<main>` inside another.
+- Reaching for ARIA roles to re-describe an element when a native element with that role built in was available all along.
 
 ## Common Interview Questions
 
-### Foundation
-
-- What makes HTML semantic?
-- When would you use a `button` instead of an `a` element?
-- Why should a page have a logical heading structure?
+### Basic
+- What does "semantic HTML" mean?
+- What's the difference between `<article>` and `<section>`?
 
 ### Intermediate
+- What specifically does a `<button>` give you for free that a styled `<div>` doesn't?
+- Why should heading levels stay sequential even if that means overriding the default font size with CSS?
 
-- How would you structure a dashboard containing navigation, filters, a results table, and a summary panel?
-- What should the `alt` text be for a decorative icon, an informative chart, and a linked product image?
+### Advanced
+- How does a screen reader user typically navigate a well-structured page, and what does that imply about landmark and heading usage?
+- How would you decide whether a given block of content should be an `<article>` or a `<section>`?
 
-### Advanced and Follow-up
-
-- Why can adding `role="button"` to a `div` still leave an inaccessible control?
-- How would you review a React component that renders different visual variants but must preserve a meaningful underlying element?
+### Follow-up Questions
+- Can a page have more than one `<nav>` element?
+- Does using semantic elements guarantee an accessible page on its own?
 
 ### Code Prediction
-
-Given a clickable `div`, identify which expected button behaviours are absent when a keyboard user presses Tab, Enter, and Space, and describe the smallest semantic replacement.
+Given the `<div onclick="handleClick()">Submit</div>` example above, can a keyboard-only user (no mouse) activate this element by pressing Enter or Space, without any additional JavaScript? What would need to be added to make it behave like a real button?
 
 ## Practical Tasks
 
-- Replace a `div`-based page with landmarks, headings, lists, links, buttons, and a correctly structured table.
-- Review a React component API and identify where an `as` or `element` prop could accidentally allow invalid or inaccessible markup.
+- Convert a `<div>`-only page layout into one using landmark elements, correct heading levels, and a real `<button>` for its interactive control.
+- Identify a heading-level skip in a sample page and fix it without changing the visual design.
+- Decide, for a list of content blocks (a blog post, a sidebar widget, a page section), whether each should be an `<article>`, `<section>`, or `<div>`.
 
 ## Readiness Criteria
 
-You can choose HTML elements by purpose, explain their native behaviour, structure a page for assistive technology, and identify semantic problems in React-rendered markup.
+Choose elements by meaning rather than default appearance, keep heading levels sequential, and explain concretely what behavior a native element provides that an equivalent styled `<div>` does not.
 
 ## References
 
 - [MDN: HTML elements reference](https://developer.mozilla.org/docs/Web/HTML/Element)
-- [MDN: HTML: A good basis for accessibility](https://developer.mozilla.org/docs/Learn/Accessibility/HTML)
+- [MDN: Document and website structure](https://developer.mozilla.org/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure)
