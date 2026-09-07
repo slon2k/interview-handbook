@@ -6,22 +6,24 @@
 
 ## Scope
 
-This module establishes the JavaScript mental models that sit underneath TypeScript and React. It focuses on runtime behaviour: what values are, how references and mutation work, when bindings exist, how functions capture state, and why asynchronous code executes in a particular order.
+This module establishes the JavaScript mental models that sit underneath TypeScript and React. It focuses on runtime behavior: what values are, how references and mutation work, when bindings exist, how functions capture state, and why asynchronous code executes in a particular order.
 
-The goal is not syntax recall. A strong frontend candidate can predict a small program, explain an unexpected UI bug, and choose a clear, maintainable expression of the required behaviour.
+## Why This Matters in Interviews
+
+The goal is not syntax recall. A strong frontend candidate can predict a small program, explain an unexpected UI bug, and choose a clear, maintainable expression of the required behavior. Interviewers are usually testing whether you can predict output from a short snippet involving closures, `this`, or the event loop; explain *why* a bug happens, not just recognize that it does; and choose the modern, idiomatic way to express something (immutable updates, `??` over `||`, `async`/`await` over raw `.then()` chains) rather than just the way that happens to run.
 
 ## Learning Outcomes
 
 By the end of this module, you should be able to:
 
-- Distinguish primitive values from object references and predict mutation, copying, and equality behaviour.
+- Distinguish primitive values from object references and predict mutation, copying, and equality behavior.
 - Use objects and arrays without accidental shared state or mutation.
-- Explain coercion, truthiness, `null`, and `undefined`, and use strict equality deliberately.
-- Predict scope, hoisting, temporal-dead-zone, closure, and `this` behaviour.
+- Explain coercion, truthiness, `null`, and `undefined`, and use strict equality and `??` deliberately.
+- Predict scope, hoisting, temporal-dead-zone, closure, and `this` behavior from a short snippet.
 - Use modern JavaScript syntax and modules to transform data clearly and safely.
 - Handle errors, promises, and `async`/`await` without losing failures or creating accidental sequential work.
 - Explain the browser event loop, microtasks, and macrotasks well enough to predict common ordering questions.
-- Recognise prototype, class, iterator, generator, and garbage-collection concepts at working-awareness level.
+- Recognize prototype, class, iterator, generator, and garbage-collection concepts at working-awareness level.
 
 ## Topics
 
@@ -51,16 +53,16 @@ By the end of this module, you should be able to:
 
 ## Scope Boundaries
 
-- Type annotations, narrowing, generics, and compiler configuration belong in Module 3 - TypeScript. JavaScript runtime behaviour remains relevant even in a TypeScript project.
+- Type annotations, narrowing, generics, and compiler configuration belong in Module 3 - TypeScript. JavaScript runtime behavior remains relevant even in a TypeScript project, since types disappear at runtime.
 - DOM events, `fetch`, browser storage, rendering, and API integration belong in Module 4 - Browser Platform and ASP.NET Core API Integration.
-- React rendering, state, effects, and React-specific stale closures belong in Module 5 - React; this module establishes the JavaScript rules underneath them.
+- React rendering, state, effects, and React-specific stale-closure bugs belong in Module 5 - React; this module establishes the JavaScript rules underneath them.
 - Test runners and frontend build tooling belong in Module 6 - Frontend Testing and Tooling.
 
 ## Suggested Learning Sequence
 
 1. Learn value categories, object references, mutation, equality, and coercion before writing data transformations.
 2. Learn scope and declarations, then functions, `this`, and closures.
-3. Practise modern syntax, modules, error handling, and array transformations on realistic UI data.
+3. Practice modern syntax, modules, error handling, and array transformations on realistic UI-shaped data.
 4. Learn promises and `async`/`await`, then use the event loop to explain observable execution order.
 5. Finish with prototype, class, iterator, generator, and garbage-collection awareness.
 
@@ -69,12 +71,12 @@ By the end of this module, you should be able to:
 - Predict and explain object mutation, equality, scope, closure, and event-loop snippets without running them.
 - Transform an API result into display data without mutating the original value.
 - Repair a callback that captures the wrong state or loses its `this` binding.
-- Refactor an error-prone promise chain into `async`/`await` with deliberate error handling.
-- Explain why two independent requests are accidentally sequential and how to start them concurrently.
+- Refactor an error-prone promise chain into `async`/`await` with deliberate error handling, including the unawaited-rejection trap.
+- Explain why two independent requests are accidentally sequential and rewrite them to run concurrently.
 
 ## Interview Coverage
 
-Each topic includes foundation questions, everyday trade-offs, advanced follow-ups, and a code-prediction prompt. Practise explaining the execution model in plain language before reaching for framework-specific terminology.
+Each topic includes basic, intermediate, and advanced/follow-up questions plus a code-prediction prompt grounded in a real, runnable snippet. Practice explaining the execution model in plain language before reaching for framework-specific terminology — React's own behavior (Module 5) is built directly on top of the closure, equality, and async rules established here.
 
 ## References
 

@@ -2,56 +2,145 @@
 
 ## Definition
 
-Functions are callable objects that can receive arguments, return values, and close over surrounding bindings. Regular functions receive `this` from their call site; arrow functions capture `this` lexically from their enclosing scope.
+A regular `function` has its own `this`, determined by *how it's called*, not where it's defined. An arrow function has no `this` of its own at all — it captures `this` lexically from its surrounding scope at the point it's defined, exactly like a closure captures a variable. This single difference is the most common reason to choose one over the other.
+
+```javascript
+const obj = {
+  name: "Widget",
+  regularMethod: function () { console.log(this.name); },
+  arrowMethod: () => { console.log(this?.name); }
+};
+
+obj.regularMethod(); // "Widget" — this is determined by the CALL: obj.regularMethod()
+obj.arrowMethod();      // undefined — arrow functions have no own this; captured from the surrounding (module) scope
+```
+
+## Alternatives & Trade-offs
+
+Regular functions give `this` real, call-site-determined flexibility — the same function can behave differently depending on how it's invoked, which classic OOP-style method dispatch relies on. Arrow functions trade that flexibility for predictability — `this` is fixed at definition time no matter how the arrow function is later called — which is exactly what's usually wanted for a callback that should keep referring to its enclosing context (an event handler inside a class method, for instance).
 
 ## How It Works
 
-- Function declarations and expressions can be called with `this` determined by invocation: `object.method()` supplies `object`; a detached call usually does not.
-- Arrow functions do not create their own `this`, `arguments`, or constructible prototype.
-- Use arrow functions for callbacks that should retain surrounding `this`; use regular methods when an object's receiver is meaningful.
-- `bind`, `call`, and `apply` explicitly choose the `this` value of a regular function.
-- Default parameters apply when an argument is `undefined`, not when it is `null`.
+### `this` is determined by the call site for regular functions
+
+```javascript
+function show() { console.log(this.name); }
+
+const a = { name: "A", show };
+const b = { name: "B", show };
+
+a.show(); // "A" — this is whatever object show() was called ON
+b.show();    // "B" — SAME function, different this, because it was called differently
+```
+
+The exact same function reference (`show`) produces a different `this` depending purely on how it's invoked — `a.show()` versus `b.show()` — which is the core idea behind regular functions' `this` behavior.
+
+### Losing `this` — a very common real bug
+
+```javascript
+class Counter {
+  count = 0;
+  increment() { this.count++; }
+}
+
+const counter = new Counter();
+button.addEventListener("click", counter.increment); // passes the FUNCTION, detached from `counter`
+
+// Later, when the browser calls it: this is undefined (or the button element, depending on context) —
+// NOT the counter instance — because it's no longer being called AS counter.increment()
+```
+
+```javascript
+// Fixed with an arrow function, which captures `this` from the surrounding class method scope, not the call site
+class Counter {
+  count = 0;
+  increment = () => { this.count++; }; // arrow function field: captures the CORRECT `this` permanently
+}
+button.addEventListener("click", counter.increment); // now works correctly regardless of how it's invoked
+```
+
+This is exactly why class methods passed as callbacks (event handlers, `setTimeout`, array methods) commonly need to be arrow functions or explicitly bound — the method, once detached from `counter.increment()`'s call syntax, loses the `this` binding that method syntax was relying on.
+
+### `.bind()`, `.call()`, and `.apply()` — controlling `this` explicitly
+
+```javascript
+function greet() { console.log(`Hi, ${this.name}`); }
+const user = { name: "Alice" };
+
+greet.call(user);          // "Hi, Alice" — calls greet immediately, with this set to user
+greet.apply(user);            // same as .call, but arguments are passed as an array for functions taking args
+const boundGreet = greet.bind(user); // returns a NEW function with this permanently fixed to user
+boundGreet();                            // "Hi, Alice" — this stays user no matter how boundGreet is later called
+```
+
+### Default (`function`) parameters and arguments
+
+```javascript
+function greet(name = "friend") { console.log(`Hello, ${name}`); }
+greet();          // "Hello, friend"
+greet("Alice");     // "Hello, Alice"
+
+function sum(...numbers) { return numbers.reduce((total, n) => total + n, 0); } // rest parameters
+sum(1, 2, 3); // 6
+```
+
+Arrow functions cannot use `arguments` (the old, array-like way of accessing all passed parameters) — they inherit `arguments` from their enclosing regular function's scope, if any, the same way they inherit `this`. Rest parameters (`...numbers`) are the modern, preferred replacement regardless of function type.
 
 ## Application
 
-Prefer simple functions whose inputs and outputs are explicit. In React function components, `this` is generally irrelevant; know it well enough to diagnose older class components, object methods, and callback APIs.
+Use arrow functions for callbacks, event handlers, and class field methods where `this` should stay fixed to the surrounding context rather than depend on how the function is eventually called. Use regular functions (or explicit `.bind()`) specifically when `this` needs to vary based on the call site, or when defining an object method the traditional way.
 
 ## Common Mistakes
 
-- Extracting an object method and expecting it to retain its receiver.
-- Using an arrow function as an object method when it needs the object as `this`.
-- Assuming arrow functions can be used as constructors.
+- Passing a class method or object method as a callback (`el.addEventListener("click", obj.method)`) without binding it, then being confused when `this` inside it is no longer the expected object.
+- Assuming arrow functions are just "shorter function syntax" with no other behavioral difference, missing the lexical-`this` distinction entirely.
+- Trying to use `arguments` inside an arrow function, not realizing it isn't bound the way it is in regular functions.
+- Using an arrow function for an object method that genuinely needs `this` to refer to the object it's called on.
 
 ## Common Interview Questions
 
-### Foundation
-
-- How is `this` determined for a regular function?
-- How do arrow functions differ from regular functions?
+### Basic
+- What's the core difference between how `this` works in a regular function versus an arrow function?
+- What do `.call()`, `.apply()`, and `.bind()` each do?
 
 ### Intermediate
+- Why does passing `obj.method` as a callback (without binding) commonly lose the intended `this`?
+- When would you deliberately choose a regular function over an arrow function for an object method?
 
-- Why does `const run = service.run; run()` often fail?
-- When would you use `bind`?
+### Advanced
+- Walk through, step by step, why `a.show()` and `b.show()` produce different `this` values for the exact same function reference.
+- How would you fix a detached class method callback without using an arrow-function class field?
 
-### Advanced and Follow-up
-
-- Why are arrow callbacks often useful inside a class method?
+### Follow-up Questions
+- Does `.bind()` create a new function, or modify the original?
+- Can an arrow function ever have its `this` changed after it's defined, using `.call()` or `.bind()`?
 
 ### Code Prediction
-
-Predict `this` for `user.print()`, for a detached `const print = user.print; print()`, and for an arrow created inside `user.print`.
+```javascript
+const obj = {
+  value: 42,
+  regular: function () { return this.value; },
+  arrow: () => this?.value
+};
+const { regular, arrow } = obj;
+console.log(regular());
+console.log(arrow());
+console.log(obj.regular());
+```
+Predict all three outputs, and explain why destructuring `regular` off `obj` changes its behavior compared to calling `obj.regular()` directly.
 
 ## Practical Tasks
 
-- Repair a detached callback that loses its receiver.
-- Choose between an arrow callback and a regular method for a stated API.
+- Reproduce the detached-callback `this` bug with a class method passed to `addEventListener`, then fix it two different ways (arrow function field, and `.bind()`).
+- Write a function using `.call()` to invoke it with two different `this` values, observing the different results.
+- Convert an old-style function relying on the `arguments` object into one using rest parameters instead.
 
 ## Readiness Criteria
 
-You can determine `this` from a call site and select arrow or regular functions for their actual semantics.
+Explain call-site-determined `this` for regular functions versus lexical `this` for arrow functions precisely, diagnose and fix a detached-callback `this` bug, and use `.call()`/`.apply()`/`.bind()` correctly.
 
 ## References
 
-- [MDN: Functions](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions)
-- [MDN: Arrow functions](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+- [MDN: this](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/this)
+- [MDN: Arrow function expressions](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+- [MDN: Function.prototype.bind()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
