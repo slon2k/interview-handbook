@@ -19,7 +19,7 @@ By the end of this module, you should be able to:
 - Structure a page with semantic HTML and choose elements by meaning rather than appearance.
 - Build forms with correctly associated labels, native validation, useful error messages, and keyboard support.
 - Explain accessible names, focus management, color contrast, and when ARIA is actually appropriate.
-- Use the cascade, specificity, and inheritance deliberately, and predict which properties inherit.
+- Use the cascade, specificity, inheritance, and custom properties deliberately, and predict which properties inherit.
 - Choose between normal flow, Flexbox, Grid, and positioning for a given layout, and justify the choice.
 - Explain responsive units, media queries, and fluid sizing, and build layouts that adapt without breaking.
 - Inspect a small HTML or CSS example, predict its behavior, and explain a practical fix.
@@ -35,6 +35,7 @@ By the end of this module, you should be able to:
 ### 2. CSS Foundations
 
 - [CSS cascade, specificity, and inheritance](css-cascade-specificity-and-inheritance.md)
+- [CSS custom properties](css-custom-properties.md)
 - [Box model, sizing, and overflow](box-model-sizing-and-overflow.md)
 
 ### 3. Layout Systems
@@ -68,6 +69,7 @@ By the end of this module, you should be able to:
 - Convert a `div`-based page into semantic landmarks, headings, navigation, and controls.
 - Build a responsive two-column layout that becomes a single column without duplicating markup.
 - Explain a layout bug caused by specificity, an unexpected containing block, or the flex-item minimum-size trap.
+- Implement a dark-mode toggle using CSS custom properties and `prefers-color-scheme`, with no per-element duplication.
 - Predict the result of a short markup or CSS snippet and describe the cheapest browser check that would confirm your answer.
 
 ## Interview Coverage

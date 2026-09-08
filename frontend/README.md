@@ -35,6 +35,7 @@ By the end of this track, you should be able to:
 
 ### Module 1 - Web Platform Foundations
 
+**Status:** Complete  
 **Priority:** High  
 **Prerequisites:** None
 
@@ -42,6 +43,7 @@ See the [Web Platform Foundations module](m01-web-platform-foundations/README.md
 
 ### Module 2 - JavaScript Language and Runtime
 
+**Status:** Complete  
 **Priority:** Critical  
 **Prerequisites:** Module 1
 
