@@ -51,18 +51,11 @@ See the [JavaScript Language and Runtime module](m02-javascript-language-and-run
 
 ### Module 3 - TypeScript
 
+**Status:** Complete
 **Priority:** Critical  
 **Prerequisites:** Module 2
 
-- Type inference, annotations, interfaces, type aliases, and structural typing
-- Unions, literal types, narrowing, discriminated unions, and optional properties
-- Function types, generics, constraints, `keyof`, `typeof`, and indexed-access types
-- Utility types, `unknown`, `any`, `never`, assertions, and strict compiler settings
-- Typing UI state, forms, and API DTOs; null and optional-property semantics across TypeScript and C#
-- Runtime validation of untrusted API data
-- Mapped types, conditional types, overloads, declaration files, enums, and variance at awareness level
-
-> TypeScript types do not normally exist at runtime and do not validate external data.
+See the [TypeScript module](m03-typescript/README.md).
 
 ### Module 4 - Browser Platform and ASP.NET Core API Integration
 
