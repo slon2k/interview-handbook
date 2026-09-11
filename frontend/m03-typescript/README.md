@@ -1,6 +1,6 @@
 # Module 3 - TypeScript
 
-**Status:** In progress  
+**Status:** Complete  
 **Priority:** Critical  
 **Prerequisites:** [Module 2 - JavaScript Language and Runtime](../m02-javascript-language-and-runtime/README.md)
 
