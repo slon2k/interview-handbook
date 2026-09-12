@@ -14,8 +14,8 @@ Legacy ASP.NET MVC needs only working awareness of server-rendered HTML, forms, 
 
 1. [Module 1: Web platform: HTML, CSS, and accessibility](m01-web-platform-foundations/README.md)
 2. [Module 2: JavaScript language and runtime](m02-javascript-language-and-runtime/README.md)
-3. Module 3: TypeScript
-4. Module 4: Browser platform and ASP.NET Core API integration
+3. [Module 3: TypeScript](m03-typescript/README.md)
+4. [Module 4: Browser platform and ASP.NET Core API integration](m04-browser-platform-and-aspnet-core-api-integration/README.md)
 5. Module 5: React
 6. Module 6: Frontend testing and tooling
 
@@ -59,8 +59,11 @@ See the [TypeScript module](m03-typescript/README.md).
 
 ### Module 4 - Browser Platform and ASP.NET Core API Integration
 
+**Status:** In progress  
 **Priority:** High  
 **Prerequisites:** Modules 2 and 3
+
+See the [Browser Platform and ASP.NET Core API Integration module](m04-browser-platform-and-aspnet-core-api-integration/README.md).
 
 - DOM events, bubbling, capturing, delegation, and form events
 - Browser rendering, reflow, repaint, and browser developer tools
