@@ -16,7 +16,7 @@ Legacy ASP.NET MVC needs only working awareness of server-rendered HTML, forms, 
 2. [Module 2: JavaScript language and runtime](m02-javascript-language-and-runtime/README.md)
 3. [Module 3: TypeScript](m03-typescript/README.md)
 4. [Module 4: Browser platform and ASP.NET Core API integration](m04-browser-platform-and-aspnet-core-api-integration/README.md)
-5. Module 5: React
+5. [Module 5: React](m05-react/README.md)
 6. Module 6: Frontend testing and tooling
 
 ## Learning Outcomes
@@ -80,8 +80,11 @@ See the [Browser Platform and ASP.NET Core API Integration module](m04-browser-p
 
 ### Module 5 - React
 
+**Status:** In progress  
 **Priority:** Critical  
 **Prerequisites:** Modules 1-4
+
+See the [React module](m05-react/README.md).
 
 #### Core Rendering Model
 
