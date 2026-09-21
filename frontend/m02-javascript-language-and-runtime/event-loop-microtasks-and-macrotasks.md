@@ -84,7 +84,7 @@ scheduleForever();
 
 ## Application
 
-Use this model to predict logging order in interview snippets and to explain real symptoms: a loading spinner that doesn't paint until heavy synchronous work finishes, or a resolved-promise callback that runs before a same-tick `setTimeout(fn, 0)`. For genuinely CPU-heavy work that would otherwise block the main thread, a Web Worker (covered later in this track) runs it off the main thread entirely, rather than relying on promises or timers to somehow make it non-blocking.
+Use this model to predict logging order in interview snippets and to explain real symptoms: a loading spinner that doesn't paint until heavy synchronous work finishes, or a resolved-promise callback that runs before a same-tick `setTimeout(fn, 0)`. Browsers get an opportunity to render after work completes, but the exact rendering moment is browser-controlled; `requestAnimationFrame` coordinates visual work with that rendering cycle in [Module 4](../m04-browser-platform-and-aspnet-core-api-integration/README.md). For genuinely CPU-heavy work that would otherwise block the main thread, a Web Worker (covered later in this track) runs it off the main thread entirely, rather than relying on promises or timers to somehow make it non-blocking.
 
 ## Common Mistakes
 

@@ -93,7 +93,7 @@ A closure keeps everything in its captured scope reachable for as long as the cl
 
 ## Application
 
-Use closures to create private, encapsulated state for a factory function or module, and to parameterize a callback with data from its creation context. Be deliberate about *which* variables a long-lived closure (an event listener, a timer callback) actually captures, since it keeps everything in its enclosing scope reachable for as long as it exists.
+Use closures to create private, encapsulated state for a factory function or module, and to parameterize a callback with data from its creation context. Be deliberate about *which* variables a long-lived closure (an event listener, a timer callback) actually captures, since it keeps everything in its enclosing scope reachable for as long as it exists. React hooks and callbacks in [Module 5](../m05-react/README.md) use these same closure rules; understanding them is essential for diagnosing stale values in effects and event handlers.
 
 ## Common Mistakes
 

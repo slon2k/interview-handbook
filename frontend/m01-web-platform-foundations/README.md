@@ -48,12 +48,16 @@ By the end of this module, you should be able to:
 
 - [Responsive design and media queries](responsive-design-and-media-queries.md)
 
+### 5. Production Styling Awareness
+
+- [CSS architecture and styling strategies](css-architecture-and-styling-strategies.md)
+
 ## Scope Boundaries
 
 - Browser APIs, DOM events, rendering, and network requests belong in Module 4 - Browser Platform and ASP.NET Core API Integration.
 - React component structure and rendering belong in Module 5 - React.
 - Frontend test tooling belongs in Module 6 - Frontend Testing and Tooling.
-- Advanced ARIA patterns and screen-reader-specific differences, SEO beyond semantic structure, stacking-context edge cases, animation performance, and CSS architecture choices (CSS Modules, utility classes, layered global styles) are working-awareness topics, not covered in depth here.
+- Advanced ARIA patterns and screen-reader-specific differences, SEO beyond semantic structure, stacking-context edge cases, and animation performance are working-awareness topics, not covered in depth here. CSS architecture choices are introduced at working-awareness level and applied in Module 5.
 
 ## Suggested Learning Sequence
 
@@ -71,6 +75,8 @@ By the end of this module, you should be able to:
 - Explain a layout bug caused by specificity, an unexpected containing block, or the flex-item minimum-size trap.
 - Implement a dark-mode toggle using CSS custom properties and `prefers-color-scheme`, with no per-element duplication.
 - Predict the result of a short markup or CSS snippet and describe the cheapest browser check that would confirm your answer.
+- Diagnose a broken responsive layout in browser DevTools, naming the computed style or box-model constraint that causes the visible symptom.
+- Rebuild a compact interface from a reference image using semantic HTML and a deliberate layout system, then justify the CSS approach.
 
 ## Interview Coverage
 

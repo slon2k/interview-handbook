@@ -47,7 +47,7 @@ With this reset in place, a `width: 200px` element always renders at exactly 200
 /* the GAP between them is 30px (the larger of the two), NOT 50px (their sum) */
 ```
 
-Adjacent vertical margins collapse into a single margin equal to the larger of the two — a frequent source of "why isn't this spacing what I expected" confusion, and one reason `gap` (on a flex or grid container) is often preferred over margins for spacing between items, since `gap` never collapses.
+Adjacent vertical margins of block elements in normal flow collapse into a single margin equal to the larger of the two. Margins do not collapse for flex or grid items, so `gap` is often preferred there because it expresses spacing between items directly.
 
 ### `overflow` — what happens when content doesn't fit
 
@@ -81,8 +81,8 @@ Apply a global `border-box` reset at the start of every project so declared widt
 ## Common Mistakes
 
 - Forgetting `box-sizing: border-box`, then being surprised that adding padding to a fixed-width element makes it visually larger than intended.
-- Expecting adjacent vertical margins to add together, when they actually collapse to the larger of the two.
-- Using margins for spacing between flex/grid items and hitting unexpected collapsing behavior, instead of using `gap`.
+- Expecting adjacent vertical margins in normal flow to add together, when they actually collapse to the larger of the two.
+- Treating margin collapsing as the reason to avoid margins between flex/grid items; their margins do not collapse, although `gap` is often clearer for consistent item spacing.
 - Setting `overflow: hidden` on a flex item and being confused when content still overflows, missing the `min-width: auto` default that needs an explicit `min-width: 0` override.
 
 ## Common Interview Questions

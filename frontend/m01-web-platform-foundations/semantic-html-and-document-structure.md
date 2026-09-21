@@ -91,7 +91,7 @@ A useful test: if the content would still make sense syndicated on its own (an R
 
 ## Application
 
-Choose the most specific element that matches the actual meaning before reaching for a generic `<div>`/`<span>` plus ARIA. Use landmark elements (`<header>`, `<nav>`, `<main>`, `<footer>`) once per page (except `<nav>`, which can repeat), and keep heading levels sequential to preserve a real document outline.
+Choose the most specific element that matches the actual meaning before reaching for a generic `<div>`/`<span>` plus ARIA. Use landmark elements (`<header>`, `<nav>`, `<main>`, `<footer>`) once per page (except `<nav>`, which can repeat), and keep heading levels sequential to preserve a real document outline. React components in [Module 5](../m05-react/README.md) should preserve the same semantic output: JSX changes authoring syntax, not the browser's HTML and accessibility rules.
 
 ## Common Mistakes
 

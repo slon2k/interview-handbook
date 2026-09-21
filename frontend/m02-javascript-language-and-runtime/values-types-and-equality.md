@@ -9,7 +9,7 @@ typeof "hello"   // "string"
 typeof 42         // "number"
 typeof true        // "boolean"
 typeof undefined     // "undefined"
-typeof null           // "object"  — a famous, long-standing JavaScript bug, kept for backward compatibility
+typeof null           // "object"  — a long-standing type-tag design artifact, kept for backward compatibility
 typeof Symbol()         // "symbol"
 typeof {}                 // "object"
 typeof []                   // "object" — arrays are objects; use Array.isArray() to distinguish them
@@ -61,7 +61,7 @@ Object.is(NaN, NaN)    // true
 Object.is(0, -0)            // false
 ```
 
-`Object.is()` is rarely needed day to day, but explains why `Array.prototype.includes()` (which uses `Object.is`-like semantics) can find `NaN` in an array while `indexOf()` (which uses `===`) cannot.
+`Object.is()` is rarely needed day to day, but it helps explain an important related rule: `Array.prototype.includes()` uses SameValueZero comparison, so it can find `NaN`; `indexOf()` uses `===` and cannot. Unlike `Object.is()`, SameValueZero considers `0` and `-0` equal.
 
 ### The one common, deliberate use of `==`
 
@@ -86,7 +86,7 @@ Use `===` by default for all comparisons. Reserve `== null` as the one well-know
 
 ### Basic
 - What's the difference between `==` and `===`?
-- What does `typeof null` return, and why is that considered a bug?
+- What does `typeof null` return, and why does that legacy result remain?
 
 ### Intermediate
 - Why does comparing two arrays with identical content using `===` return `false`?

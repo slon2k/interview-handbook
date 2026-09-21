@@ -86,6 +86,25 @@ const hasInactive = users.some(u => !u.active);      // true/false — does AT L
 const allActive = users.every(u => u.active);           // true/false — do ALL match?
 ```
 
+### Membership, copying, and flattening
+
+```javascript
+const values = [1, NaN, 3];
+
+values.includes(NaN); // true: includes uses SameValueZero comparison
+values.indexOf(NaN);  // -1: indexOf uses ===, and NaN !== NaN
+
+const copied = values.slice();       // a shallow copy; values is unchanged
+const removed = values.toSpliced(1, 1); // a new array; unlike mutating splice()
+
+const tags = [["frontend", "react"], ["accessibility"]];
+tags.flat(); // ["frontend", "react", "accessibility"]
+
+const labels = users.flatMap(user => [user.name, user.active ? "active" : "inactive"]);
+```
+
+Use `includes()` for a membership check, `slice()` for a shallow copy or a non-mutating range, and `flatMap()` when each source item maps naturally to zero, one, or several output items. `concat()` is another non-mutating way to combine arrays, though spread is often more readable for a small number of inputs.
+
 ## Application
 
 Default to `map`/`filter`/`reduce` (and `toSorted`/`toReversed`/`toSpliced` where sorting or splicing is needed) for any array transformation in UI-adjacent code, so that a genuinely new array/object reference results whenever data actually changes. Reserve mutating methods for cases where the array is genuinely local and not shared or tracked by a framework's change detection.
@@ -96,6 +115,7 @@ Default to `map`/`filter`/`reduce` (and `toSorted`/`toReversed`/`toSpliced` wher
 - Using `.sort()` or `.reverse()` on an array that's also referenced elsewhere, unexpectedly mutating the shared original.
 - Reaching for a manual loop with `push()` to build a new array when `map`/`filter` express the same intent more directly and without mutation.
 - Confusing `map` (always returns an array of the same length) with `filter` (returns a possibly-shorter array) when the actual goal is to remove items.
+- Using `indexOf(NaN)` as a membership check, even though strict equality never considers `NaN` equal to itself.
 
 ## Common Interview Questions
 
@@ -129,6 +149,7 @@ Predict all three outputs, and explain why `items` itself is untouched despite `
 - Rewrite a manual `for` loop using `push()` to build a filtered/transformed array into an equivalent using `map`/`filter`.
 - Implement an immutable "toggle one item's done flag" update for a list of todo objects.
 - Replace a `.sort()` call on a shared array with `.toSorted()` and verify the original array is left unchanged.
+- Flatten a nested API result with `flatMap()` and choose `includes()` rather than `indexOf()` for a membership check involving `NaN`.
 
 ## Readiness Criteria
 

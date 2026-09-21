@@ -75,7 +75,7 @@ Objects and arrays are passed to functions the same way they're assigned to vari
 
 ## Application
 
-Prefer non-mutating operations (spread, `map`, `filter`, `toSorted`/`toSpliced`) when producing new data from existing data, especially in UI code where mutation can hide state changes from a framework's change detection. Use `structuredClone()` when a genuinely independent deep copy is required, not a shallow spread. Be explicit in function design about whether a function mutates its argument or returns a new value — never leave it ambiguous.
+Prefer non-mutating operations (spread, `map`, `filter`, `toSorted`/`toSpliced`) when producing new data from existing data, especially in UI code where mutation can hide state changes from a framework's change detection. React builds on these identity rules: immutable state updates make changed values explicit and support predictable rendering and memoization in [Module 5](../m05-react/README.md). Use `structuredClone()` when a genuinely independent deep copy is required, not a shallow spread. Be explicit in function design about whether a function mutates its argument or returns a new value — never leave it ambiguous.
 
 ## Common Mistakes
 

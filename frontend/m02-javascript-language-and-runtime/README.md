@@ -30,14 +30,14 @@ By the end of this module, you should be able to:
 ### 1. Values and Data Structures
 
 - [Values, types, and equality](values-types-and-equality.md)
-- [Objects, arrays, references, and mutation](objects-arrays-references-and-mutation.md)
 - [Coercion, truthiness, null, and undefined](coercion-truthiness-null-and-undefined.md)
+- [Objects, arrays, references, and mutation](objects-arrays-references-and-mutation.md)
 
 ### 2. Bindings and Functions
 
 - [Scope, declarations, hoisting, and the temporal dead zone](scope-declarations-hoisting-and-temporal-dead-zone.md)
-- [Functions, arrow functions, and this](functions-arrow-functions-and-this.md)
 - [Closures](closures.md)
+- [Functions, arrow functions, and this](functions-arrow-functions-and-this.md)
 
 ### 3. Modern Everyday JavaScript
 
@@ -60,8 +60,8 @@ By the end of this module, you should be able to:
 
 ## Suggested Learning Sequence
 
-1. Learn value categories, object references, mutation, equality, and coercion before writing data transformations.
-2. Learn scope and declarations, then functions, `this`, and closures.
+1. Learn value categories, equality, and coercion before object references, mutation, and data transformations.
+2. Learn scope and declarations, then closures, functions, and `this`.
 3. Practice modern syntax, modules, error handling, and array transformations on realistic UI-shaped data.
 4. Learn promises and `async`/`await`, then use the event loop to explain observable execution order.
 5. Finish with prototype, class, iterator, generator, and garbage-collection awareness.
