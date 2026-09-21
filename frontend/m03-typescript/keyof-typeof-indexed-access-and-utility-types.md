@@ -16,12 +16,29 @@ TypeScript type operators derive types from existing values and types. `keyof` p
 
 Derive types from stable source models instead of manually duplicating them. Use these operators for form field maps, table columns, selectors, and adapters where a key and its value must remain correlated.
 
+### Utility types should reflect a real boundary
+
+```typescript
+type User = {
+  id: string;
+  email: string;
+  displayName: string;
+  createdAt: string;
+};
+
+type UserUpdate = Partial<Omit<User, "id" | "createdAt">>;
+type EditableUser = Pick<User, "id" | "email" | "displayName">;
+```
+
+`Partial<User>` is often too broad because it makes immutable identifiers and server-managed fields writable. Derive an update shape from the fields the operation actually accepts, and introduce a named type when the boundary is important to the domain.
+
 ## Common Mistakes
 
 - Confusing `typeof value` at runtime with `typeof Value` in a type position.
 - Using `string` for a key when `keyof T` can prevent invalid property access.
 - Applying `Partial` to a model when the domain actually requires distinct create and update types.
 - Assuming utility types validate or transform runtime objects.
+- Chaining `Partial` and `Omit` until the resulting type no longer communicates the operation it represents.
 
 ## Common Interview Questions
 
@@ -47,6 +64,7 @@ Predict the result type of `type Value = User[keyof User]` and explain why an ar
 
 - Type a reusable `getProperty` helper while preserving the selected property's type.
 - Derive an edit form model from a read-only DTO and justify every omitted field.
+- Define an update DTO that permits only client-editable fields and explain why `Partial<ReadDto>` would be too broad.
 
 ## Readiness Criteria
 

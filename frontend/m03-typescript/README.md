@@ -21,6 +21,7 @@ By the end of this module, you should be able to:
 - Use inference and annotations deliberately without typing every expression redundantly.
 - Explain structural typing, interfaces, type aliases, excess-property checks, and `readonly` data.
 - Model alternatives with unions, intersections, literal types, optional properties, and discriminated unions.
+- Preserve finite values with `as const` and derive literal unions from stable configuration data.
 - Narrow `unknown` values safely and use type guards and exhaustive checks.
 - Explain the risks of `any`, assertions, non-null assertions, and careless compiler configuration.
 - Model nullability and optional API fields precisely, including important differences from C#.
@@ -60,8 +61,8 @@ By the end of this module, you should be able to:
 ## Scope Boundaries
 
 - JavaScript values, closures, promises, and event-loop behavior belong in [Module 2](../m02-javascript-language-and-runtime/README.md); TypeScript adds static modeling on top of those runtime rules.
-- DOM events, `fetch`, browser storage, rendering, and API integration belong in Module 4 - Browser Platform and ASP.NET Core API Integration.
-- React props, hooks, component generics, and React event types belong in Module 5 - React; this module covers framework-independent UI and async modeling.
+- DOM events, `fetch`, browser storage, rendering, HTTP status handling, and API integration belong in [Module 4 - Browser Platform and ASP.NET Core API Integration](../m04-browser-platform-and-aspnet-core-api-integration/README.md).
+- React props, hooks, component generics, and React event types belong in [Module 5 - React](../m05-react/README.md); this module covers framework-independent UI and async modeling.
 - `tsconfig`, npm scripts, linting, bundling, and build delivery belong in Module 6 - Frontend Testing and Tooling; this module explains strictness concepts only where they affect type safety.
 
 ## Suggested Learning Sequence

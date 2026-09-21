@@ -16,6 +16,8 @@ UI types should represent the states and events a feature can actually have: emp
 
 Type the state transitions of a form or data view before implementing handlers. This exposes missing transitions, prevents success-only assumptions, and creates a stable contract for Module 5 React components.
 
+This lesson supplies the type model. [Module 4's fetch lesson](../m04-browser-platform-and-aspnet-core-api-integration/fetch-requests-cancellation-and-stale-responses.md) covers request cancellation and stale-response control, while [Module 5's async UI lesson](../m05-react/typed-data-fetching-and-async-ui-states.md) applies these states during React rendering.
+
 ## Common Mistakes
 
 - Combining booleans that permit impossible states such as loading and success with no data.

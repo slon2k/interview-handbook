@@ -4,13 +4,15 @@
 
 An API DTO is a compile-time model of the data a client expects to send or receive. Runtime validation checks whether actual JSON or user-controlled data matches that model. TypeScript annotations alone perform no runtime check.
 
+This lesson owns type-level transport modeling and the runtime trust boundary. [Module 4's API-contract lesson](../m04-browser-platform-and-aspnet-core-api-integration/api-dtos-pagination-and-validation-errors.md) owns HTTP-specific choices such as status handling, pagination conventions, and how an ASP.NET Core API communicates validation failures.
+
 ## How It Works
 
-- Model response envelopes, pagination metadata, nested records, nullable fields, and validation errors explicitly.
+- Model transport records, nested data, nullable fields, and stable client error types explicitly.
 - Treat `response.json()` and other external values as untrusted until parsed or validated at a boundary.
 - A schema-validation library such as Zod, Valibot, or an equivalent can parse unknown data and return a validated value or a structured failure.
 - Keep transport DTOs separate from view models when the UI needs derived labels, defaults, or a different shape.
-- ASP.NET Core `ProblemDetails` and validation responses should be mapped into a stable client error model rather than scattered through components.
+- Map schema-library failures into a stable client error model rather than scattering parser details through components.
 
 ## Application
 
@@ -46,12 +48,12 @@ Given `const user = JSON.parse(text) as User`, explain what happens when the JSO
 
 ## Practical Tasks
 
-- Type a paginated ASP.NET Core response with a `ProblemDetails`-style validation error model.
-- Add a runtime schema boundary for an unknown JSON response and map validation failure to a user-facing error state.
+- Define a transport DTO, a separate view model, and the mapper that converts between them.
+- Add a runtime schema boundary for an unknown JSON response and map schema failure to a user-facing error state.
 
 ## Readiness Criteria
 
-You can distinguish a static DTO from runtime validation, design a stable API-client boundary, and preserve useful server error structure.
+You can distinguish a static DTO from runtime validation, design a stable API-client boundary, and preserve useful parse failures without leaking schema-library details into the UI.
 
 ## References
 
