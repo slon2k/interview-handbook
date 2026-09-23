@@ -16,6 +16,32 @@ React provides hooks for values that should persist without rendering, explicit 
 
 Use refs for imperative escape hatches and values that do not affect rendering. Use reducers for explicit transition logic, context for stable cross-cutting dependencies, and custom hooks to package behavior with a clear contract.
 
+### Typed reducers and focused contexts
+
+Use discriminated action unions so a reducer handles only valid payloads and TypeScript checks every transition. This applies [Module 3's discriminated-union model](../m03-typescript/narrowing-type-guards-and-discriminated-unions.md) to React transitions.
+
+```tsx
+type DialogAction =
+  | { type: "open"; itemId: string }
+  | { type: "close" };
+
+type DialogState = { open: boolean; itemId: string | null };
+```
+
+If a context combines frequently changing data with stable commands, split it. Consumers that need only commands then avoid rerendering for every data update. Hide an optional raw context behind a custom hook that gives callers a clear provider error:
+
+```tsx
+function useSession(): Session {
+  const session = useContext(SessionContext);
+  if (session === undefined) {
+    throw new Error("useSession must be used inside SessionProvider");
+  }
+  return session;
+}
+```
+
+A custom hook should return a compact typed API, such as `{ state, reload, cancel }`, rather than leaking implementation details or pretending multiple callers share state automatically.
+
 ## Common Mistakes
 
 - Using a ref for data that should appear in rendered output.
@@ -23,6 +49,8 @@ Use refs for imperative escape hatches and values that do not affect rendering. 
 - Treating a custom hook as a global store; each caller normally receives its own state.
 - Writing reducers with mutations or side effects.
 - Using context to avoid designing a better component boundary.
+- Putting high-frequency values such as pointer position into broad context and rerendering unrelated consumers.
+- Exposing `ContextValue | undefined` to every caller instead of checking once in a provider-specific hook.
 
 ## Common Interview Questions
 
@@ -49,6 +77,7 @@ Given a ref whose `current` value changes in an event handler, predict whether t
 
 - Build a custom hook that owns request state and returns a small typed API.
 - Refactor a complex form state machine from multiple booleans into a reducer with explicit actions.
+- Split a context containing stable commands and frequently changing data, then explain which consumers stop rerendering.
 
 ## Readiness Criteria
 

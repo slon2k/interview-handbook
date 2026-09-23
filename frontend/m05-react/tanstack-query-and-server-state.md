@@ -16,6 +16,12 @@ Server state is remote data that can be loading, stale, cached, invalidated, ret
 
 Use a server-state library when multiple features need consistent caching, refetching, invalidation, retries, or background refresh. Keep query keys and mutation invalidation rules close to the feature that owns the data contract.
 
+### When raw fetching is enough
+
+An effect-based request can be appropriate for an isolated, short-lived request with no cache reuse, mutation coordination, or background refresh. A server-state library becomes worthwhile when several consumers need the same remote data, a mutation must update related views, retries and freshness need a consistent policy, or the feature needs cached data while refetching.
+
+Do not choose TanStack Query merely to avoid understanding `fetch`, cancellation, or API contracts. It centralizes cache and request lifecycle concerns; it does not validate untrusted JSON, decide how `401` or `403` should behave, or replace local UI state.
+
 ## Common Mistakes
 
 - Using an incomplete query key and returning data for the wrong route or filter.
@@ -23,6 +29,7 @@ Use a server-state library when multiple features need consistent caching, refet
 - Retrying authorization failures as if they were temporary network errors.
 - Invalidating every query after every mutation and creating unnecessary traffic.
 - Assuming a server-state library removes the need for runtime response validation.
+- Using TanStack Query for an isolated request while duplicating its state in component and global stores.
 
 ## Common Interview Questions
 
@@ -49,6 +56,7 @@ Given a query keyed only by `"orders"` while the request also depends on `custom
 
 - Design query keys and invalidation rules for a paginated ASP.NET Core resource.
 - Compare a custom effect-based fetch hook with TanStack Query and identify which lifecycle responsibilities the library removes.
+- Decide whether an isolated settings fetch and a shared paginated resource need a server-state library, and justify the difference.
 
 ## Readiness Criteria
 

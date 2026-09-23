@@ -16,6 +16,32 @@ React applications contain different kinds of state: local UI state, shared clie
 
 Before choosing a state library, classify the value. Keep server state in a server-state abstraction when caching and invalidation matter, and do not copy remote data into unrelated global client state without a clear reason.
 
+### State ownership decision process
+
+Ask these questions in order:
+
+1. Is the value authoritative on the server, asynchronous, or cacheable? It is server state.
+2. Must the value survive refresh, back/forward navigation, or sharing a link? It is URL state.
+3. Is it used by one component or a small subtree? Keep it as local state.
+4. Do several distant client-owned features need it? Consider shared client state through composition, context, or a store.
+
+This order prevents a common inversion: selecting a global store first, then forcing every value into it. Form drafts are usually local feature state. A search filter belongs in the URL rather than both a store and query parameters. Remote data should not be copied into a client store merely to make it globally available.
+
+### Feature-oriented organization
+
+Group a feature's route, components, API boundary, hooks, and types together when they change together:
+
+```text
+features/products/
+  api/products-api.ts
+  components/product-list.tsx
+  hooks/use-products.ts
+  types.ts
+  product-routes.tsx
+```
+
+This does not prohibit shared components or shared API infrastructure. It makes ownership visible before extracting an abstraction that might be premature.
+
 ## Common Mistakes
 
 - Putting every value into a global store.
@@ -23,6 +49,8 @@ Before choosing a state library, classify the value. Keep server state in a serv
 - Duplicating URL filters in local state so the two sources drift.
 - Storing derived data in multiple places.
 - Organizing all files by technical type and making feature behavior hard to discover.
+- Putting form drafts in global state when only one feature edits them.
+- Mirroring URL state or server data into another state store without choosing one source of truth.
 
 ## Common Interview Questions
 
@@ -49,6 +77,7 @@ Given a search filter stored both in URL parameters and a global store, predict 
 
 - Classify the state in a list-and-edit feature as local, shared, server, or URL state.
 - Refactor duplicated state so each value has one owner and derived values are calculated from it.
+- Defend a state-placement decision for a searchable, paginated list and identify the source of truth for every value.
 
 ## Readiness Criteria
 

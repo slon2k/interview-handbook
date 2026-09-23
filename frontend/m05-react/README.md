@@ -19,6 +19,7 @@ React interviews commonly probe component identity, list keys, derived state, ef
 By the end of this module, you should be able to:
 
 - Build functional components with typed props, JSX, events, conditional rendering, lists, and stable keys.
+- Type component props, children, DOM events, render callbacks, and generic component contracts without `any`.
 - Explain component identity, composition, lifting state, controlled and uncontrolled inputs, and derived state.
 - Explain rerenders, reconciliation, referential equality, and when `React.memo` changes behavior.
 - Use `useState`, functional updates, `useEffect`, cleanup, `useRef`, `useReducer`, `useContext`, and custom hooks appropriately.
@@ -32,6 +33,7 @@ By the end of this module, you should be able to:
 ### 1. Rendering Fundamentals
 
 - [Components, JSX, props, and rendering](components-jsx-props-and-rendering.md)
+- [TypeScript components, props, events, and generics](typescript-components-props-events-and-generics.md)
 - [Component identity, composition, and state](component-identity-composition-and-state.md)
 - [Reconciliation, rerenders, and keys](reconciliation-rerenders-and-keys.md)
 
@@ -48,12 +50,14 @@ By the end of this module, you should be able to:
 - [Typed data fetching and async UI states](typed-data-fetching-and-async-ui-states.md)
 - [Forms, validation, and submission](forms-validation-and-submission.md)
 - [State categories and application architecture](state-categories-and-application-architecture.md)
+- [Guided capstone: searchable catalog](capstone-searchable-catalog.md)
 
 ### 4. Boundaries and Ecosystem Awareness
 
 - [Error boundaries, Suspense, and code splitting](error-boundaries-suspense-and-code-splitting.md)
 - [Styling and state-library choices](styling-and-state-library-choices.md)
 - [TanStack Query and server state](tanstack-query-and-server-state.md)
+- [Modern React 19 awareness](modern-react-19-awareness.md)
 
 ## Scope Boundaries
 
@@ -70,7 +74,8 @@ By the end of this module, you should be able to:
 3. Learn `useState` and `useEffect`, then distinguish event handling from external-system synchronization.
 4. Add refs, reducers, context, custom hooks, and targeted performance tools.
 5. Apply the model to routing, URL state, typed data fetching, async UI states, and forms.
-6. Finish with component architecture, boundaries, code splitting, styling, and server-state libraries.
+6. Finish with component architecture, boundaries, code splitting, styling, server-state libraries, and modern React awareness.
+7. Complete the guided capstone by applying the preceding modules to one API-backed feature.
 
 ## Practical Deliverables
 
@@ -79,6 +84,14 @@ By the end of this module, you should be able to:
 - Model a controlled form with field-level validation and server-side validation errors.
 - Refactor a component with prop drilling into a deliberate composition, reducer, or context design.
 - Explain whether a feature needs local state, shared state, URL state, or a server-state library.
+- Complete a searchable, paginated feature with typed URL state, cancellation, field-level server validation, and deliberate auth/conflict behavior.
+
+## Cross-Module Connections
+
+- [Module 1: Semantic HTML](../m01-web-platform-foundations/semantic-html-and-document-structure.md) informs the HTML emitted by every React component.
+- [Module 2: Closures](../m02-javascript-language-and-runtime/closures.md) explains stale values in callbacks and effects; [promises and async/await](../m02-javascript-language-and-runtime/promises-and-async-await.md) informs data-loading behavior.
+- [Module 3: UI state](../m03-typescript/typing-ui-state-forms-and-async-results.md) and [type-level reuse](../m03-typescript/keyof-typeof-indexed-access-and-utility-types.md) underpin typed components, forms, and async branches.
+- [Module 4: Fetch and cancellation](../m04-browser-platform-and-aspnet-core-api-integration/fetch-requests-cancellation-and-stale-responses.md), [API contracts](../m04-browser-platform-and-aspnet-core-api-integration/api-dtos-pagination-and-validation-errors.md), and [URL state](../m04-browser-platform-and-aspnet-core-api-integration/client-side-routing-urls-and-history-state.md) describe the browser behavior that React features coordinate.
 
 ## Interview Coverage
 

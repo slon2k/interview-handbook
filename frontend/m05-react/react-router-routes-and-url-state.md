@@ -16,6 +16,18 @@ React Router maps browser URLs to React views and provides navigation, route par
 
 Use route parameters for resource identity and query parameters for shareable view state. Keep navigation, data loading, and permission boundaries close to the route that owns them.
 
+### URL-owned view state
+
+Put search, filters, sort order, and pagination in query parameters when a user should be able to refresh, bookmark, share, or navigate back to the same view. Parse and default every value at the route boundary; query strings are external input, not trusted typed state.
+
+```tsx
+const query = searchParams.get("query") ?? "";
+const requestedPage = Number(searchParams.get("page") ?? "1");
+const page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+```
+
+When a path parameter or query value changes, data for the old route is no longer current. Coordinate the new route with cancellation and stale-response protection from [Module 4: Fetch and cancellation](../m04-browser-platform-and-aspnet-core-api-integration/fetch-requests-cancellation-and-stale-responses.md). URL mechanics themselves are covered in [Module 4: Client-side routing](../m04-browser-platform-and-aspnet-core-api-integration/client-side-routing-urls-and-history-state.md).
+
 ## Common Mistakes
 
 - Storing shareable filters only in component state so refresh and back/forward lose them.
@@ -23,6 +35,8 @@ Use route parameters for resource identity and query parameters for shareable vi
 - Using ordinary anchors for in-app navigation when router links are needed for SPA behavior.
 - Keeping a stale request alive after the route changes.
 - Building deeply nested route logic that duplicates layout and authorization decisions.
+- Copying query parameters into local state as a second source of truth, then letting refresh or back navigation make the views diverge.
+- Assuming a route parameter or query value is valid without parsing and defaulting it.
 
 ## Common Interview Questions
 
@@ -35,6 +49,7 @@ Use route parameters for resource identity and query parameters for shareable vi
 
 - How do nested routes share layout while rendering different content?
 - How should a route change interact with an in-flight data request?
+- Why should a new search normally reset the URL page parameter to the first page?
 
 ### Advanced and Follow-up
 
@@ -49,6 +64,7 @@ Given `/customers/42?tab=orders&page=2`, identify which values represent resourc
 
 - Design routes for a paginated, filterable ASP.NET Core resource.
 - Add route-aware request cancellation so a previous record cannot overwrite the newly selected record.
+- Parse malformed query parameters to safe defaults and verify that the resulting URL view survives refresh and browser back navigation.
 
 ## Readiness Criteria
 

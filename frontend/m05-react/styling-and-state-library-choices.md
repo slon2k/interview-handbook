@@ -16,6 +16,8 @@ React applications can style components with ordinary CSS, CSS Modules, utility 
 
 Choose styling based on team conventions, accessibility, design-system integration, build/runtime cost, and maintainability. Choose a client-state library only after classifying the state and confirming local state, context, or a server-state tool is insufficient.
 
+The styling mechanism does not replace the platform rules in [Module 1](../m01-web-platform-foundations/README.md). CSS Modules, utility classes, and CSS-in-JS still need semantic HTML, visible focus states, sufficient contrast, responsive layout, and deliberate cascade control. Reuse custom properties or design tokens for shared values rather than embedding one-off colors and spacing in every component.
+
 ## Common Mistakes
 
 - Choosing a styling library by popularity without considering the existing design system or build pipeline.
@@ -23,6 +25,7 @@ Choose styling based on team conventions, accessibility, design-system integrati
 - Putting server data into a client-state store and reimplementing caching and invalidation.
 - Adding a global store to avoid lifting a small amount of state.
 - Treating a library's API as the architecture instead of defining ownership first.
+- Replacing a native control with a styled generic element and losing its keyboard and accessibility behavior.
 
 ## Common Interview Questions
 

@@ -16,6 +16,12 @@ Error boundaries isolate rendering failures so one broken subtree does not neces
 
 Place boundaries around meaningful feature or route units and provide recovery or navigation options. Use code splitting for routes or features whose initial cost is worth delaying, while measuring the resulting loading experience.
 
+### Boundaries, data, and useful fallbacks
+
+An error boundary handles render-time failures in its descendant tree. It does not replace explicit handling for event handlers, rejected requests, or API status responses. Suspense commonly handles a dynamically imported component while its code loads; data libraries can also opt into Suspense, but that is a separate contract with its own error and retry behavior.
+
+Choose fallbacks that preserve orientation. A route shell with a content placeholder is usually more useful than replacing the whole page with a blank spinner. Pair a feature boundary with a recovery action that matches the failure: retry a lazy import, navigate away from an invalid route, or show a request error through the feature's ordinary async state.
+
 ## Common Mistakes
 
 - Assuming one top-level boundary gives every feature an appropriate recovery experience.
@@ -23,6 +29,8 @@ Place boundaries around meaningful feature or route units and provide recovery o
 - Showing a blank screen or generic spinner for every Suspense boundary.
 - Splitting tiny components and increasing request overhead without meaningful bundle benefit.
 - Treating code splitting as a substitute for reducing unnecessary dependencies.
+- Assuming an error boundary catches an event-handler exception or a rejected `fetch` promise.
+- Treating Suspense for `React.lazy` as proof that all data fetching should suspend.
 
 ## Common Interview Questions
 
