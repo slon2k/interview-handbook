@@ -59,7 +59,7 @@ See the [TypeScript module](m03-typescript/README.md).
 
 ### Module 4 - Browser Platform and ASP.NET Core API Integration
 
-**Status:** In progress  
+**Status:** Complete  
 **Priority:** High  
 **Prerequisites:** Modules 2 and 3
 
@@ -80,7 +80,7 @@ See the [Browser Platform and ASP.NET Core API Integration module](m04-browser-p
 
 ### Module 5 - React
 
-**Status:** In progress  
+**Status:** Complete  
 **Priority:** Critical  
 **Prerequisites:** Modules 1-4
 

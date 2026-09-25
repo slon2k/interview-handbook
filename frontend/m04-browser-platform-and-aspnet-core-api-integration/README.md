@@ -1,6 +1,6 @@
 # Module 4 - Browser Platform and ASP.NET Core API Integration
 
-**Status:** In progress  
+**Status:** Complete  
 **Priority:** High  
 **Prerequisites:** [Module 2 - JavaScript Language and Runtime](../m02-javascript-language-and-runtime/README.md) and [Module 3 - TypeScript](../m03-typescript/README.md)
 

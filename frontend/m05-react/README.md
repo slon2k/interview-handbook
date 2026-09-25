@@ -1,6 +1,6 @@
 # Module 5 - React
 
-**Status:** In progress  
+**Status:** Complete  
 **Priority:** Critical  
 **Prerequisites:** [Module 1 - Web Platform Foundations](../m01-web-platform-foundations/README.md), [Module 2 - JavaScript Language and Runtime](../m02-javascript-language-and-runtime/README.md), [Module 3 - TypeScript](../m03-typescript/README.md), and [Module 4 - Browser Platform and ASP.NET Core API Integration](../m04-browser-platform-and-aspnet-core-api-integration/README.md)
 
