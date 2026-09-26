@@ -2,23 +2,55 @@
 
 ## Definition
 
-A React form collects user input, displays validation feedback, and submits a deliberate payload to an API. Controlled and uncontrolled forms represent different ownership choices for input values, while validation can happen locally, at the server boundary, or both.
+A React form collects user input, displays validation feedback, and submits a deliberate payload to an API. A **controlled** input gets its value from React state and reports every change through an event handler; an **uncontrolled** input keeps its current value in the DOM itself, read only when needed (via a ref or native form submission). Client-side validation gives immediate feedback; server-side validation remains the authoritative check, since a client can always be bypassed.
+
+```tsx
+function ControlledInput() {
+  const [value, setValue] = useState("");
+  return <input value={value} onChange={e => setValue(e.target.value)} />; // React OWNS the value at all times
+}
+```
+
+## Alternatives & Trade-offs
+
+Controlled inputs let every keystroke trigger application logic immediately — live validation, character counting, conditionally showing other fields — at the cost of a rerender on every keystroke, which can matter for a very large form. Uncontrolled inputs (or a form library built on them, like React Hook Form) avoid that per-keystroke rerender by letting the DOM hold the value until submission, at the cost of needing a ref or the library's own API to read values, rather than having them always available in state.
 
 ## How It Works
 
-- A controlled input receives its value from React state and reports changes through an event handler.
-- An uncontrolled input keeps its current value in the DOM and can be read through a ref or form submission APIs.
-- Client validation can provide immediate feedback, but server validation remains authoritative for business rules.
-- A submission should model idle, editing, submitting, success, and error states without allowing duplicate or invalid requests.
-- Server field errors should map back to stable field names and remain visible without losing a general error message.
+### Controlled vs. uncontrolled — who owns the current value
 
-## Application
+```tsx
+// Controlled: React state is the source of truth; the input can never show a value React doesn't know about
+function Controlled() {
+  const [name, setName] = useState("");
+  return <input value={name} onChange={e => setName(e.target.value)} />;
+}
 
-Use controlled inputs when UI behavior depends on each change. Use uncontrolled inputs or a form library when the form is large and field-level rerendering or registration concerns matter. Keep the final submission contract aligned with the typed API DTO rather than sending display state directly.
+// Uncontrolled: the DOM owns the value; React reads it only when actually needed
+function Uncontrolled() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  function handleSubmit() { console.log(nameRef.current?.value); }
+  return <input ref={nameRef} defaultValue="" />;
+}
+```
 
-### Typed submission and server failures
+Mixing the two — starting a controlled input's `value` at `undefined` and later giving it a real string — triggers React's "a component is changing an uncontrolled input to be controlled" warning, since the input silently switched modes partway through its lifecycle.
 
-Keep a form draft separate from the API payload when display values, optionality, or normalization differ. Model submission as explicit states so a failure preserves the user's draft and a retry has a clear transition. The framework-independent state shapes belong in [Module 3](../m03-typescript/typing-ui-state-forms-and-async-results.md); React event types and component contracts are covered in [TypeScript components, props, events, and generics](typescript-components-props-events-and-generics.md).
+### Keeping a form draft separate from the API payload
+
+```tsx
+type OrderFormDraft = { quantity: string; note: string };  // display-friendly: quantity as a STRING while being typed
+
+type CreateOrderRequest = { quantity: number; note: string | null }; // the actual API shape
+
+function toRequest(draft: OrderFormDraft): CreateOrderRequest {
+  return { quantity: Number(draft.quantity), note: draft.note.trim() || null };
+}
+```
+
+A draft's display needs (an empty string while a number field is being typed, before it's a valid number at all) and the API's needs (an actual `number`, `null` instead of an empty string) are often genuinely different shapes — keeping them as two distinct types with an explicit mapping function avoids awkward compromises trying to force one shape to serve both purposes.
+
+### Modeling submission as explicit states
 
 ```tsx
 type SaveState =
@@ -29,53 +61,72 @@ type SaveState =
   | { status: "success" };
 ```
 
-Map ASP.NET Core `ValidationProblemDetails.errors` to stable form-field names, preserving every message for a field. Do not treat `401` or `403` as validation failures: those belong to the auth flow. A `409` conflict needs a deliberate recovery path such as reload, compare, or retry; an unexpected `5xx` needs a general recoverable error. See [Module 4: API contracts](../m04-browser-platform-and-aspnet-core-api-integration/api-dtos-pagination-and-validation-errors.md) and [auth status handling](../m04-browser-platform-and-aspnet-core-api-integration/cookies-storage-auth-and-status-handling.md).
+### Mapping server validation errors back to specific fields
+
+```tsx
+// ASP.NET Core's ValidationProblemDetails.errors shape: { "Quantity": ["must be greater than 0"] }
+function mapValidationErrors(problem: ValidationProblemDetails): Record<string, string[]> {
+  return problem.errors ?? {};
+}
+
+function FieldError({ fieldErrors, field }: { fieldErrors: Record<string, string[]>; field: string }) {
+  const messages = fieldErrors[field];
+  return messages ? <span role="alert">{messages.join(", ")}</span> : null;
+}
+```
+
+`401`/`403` are authentication/authorization problems, not validation failures, and shouldn't be displayed as field errors. A `409` conflict needs its own deliberate recovery path (reload and compare, or an explicit retry) rather than being treated like a retryable field error. See [Module 4: API Contracts](../m04-browser-platform-and-aspnet-core-api-integration/api-dtos-pagination-and-validation-errors.md) and [Auth Status Handling](../m04-browser-platform-and-aspnet-core-api-integration/cookies-storage-auth-and-status-handling.md).
+
+## Application
+
+Use controlled inputs when behavior genuinely depends on every keystroke; use uncontrolled inputs or a form library for large forms where per-keystroke rerenders matter. Keep a form's draft type separate from the API's request type when their shapes genuinely differ, with an explicit mapping function between them. Model submission as explicit states, and map server validation errors to specific fields rather than collapsing them into one generic message.
 
 ## Common Mistakes
 
-- Treating client validation as a substitute for server validation.
-- Updating a controlled input from a stale value or switching between controlled and uncontrolled modes.
-- Disabling the submit button without representing server failure or retry behavior.
-- Clearing field errors on every keystroke when the user still needs the feedback.
-- Sending formatted display values where the API expects a normalized DTO.
-- Replacing a field-level validation response with one generic message and losing actionable feedback.
-- Treating `401`, `403`, or `409` as though they were retryable field-validation failures.
+- Switching an input between controlled and uncontrolled by letting its `value` start as `undefined`, triggering React's mode-switch warning.
+- Treating client-side validation as a substitute for server-side validation, when a client can always be bypassed.
+- Sending a form's display-formatted draft values directly as the API payload instead of mapping to the actual expected shape.
+- Collapsing distinct server failures (`400` validation, `401`/`403` auth, `409` conflict, `500` unexpected) into one generic error message, losing actionable, field-specific feedback.
+- Disabling the submit button on failure with no path to retry, or allowing duplicate submissions with no submitting state at all.
 
 ## Common Interview Questions
 
-### Foundation
-
-- What is the difference between controlled and uncontrolled inputs?
-- Why does a form need server-side validation even when it validates in the browser?
+### Basic
+- What's the difference between a controlled and an uncontrolled input?
+- Why does a form need server-side validation even when it already validates client-side?
 
 ### Intermediate
+- How would you represent a form's submitting and validation-error states explicitly?
+- Why might a form's draft type differ from the API request type it eventually sends?
 
-- How would you represent submitting and validation-error states?
-- When might a form library be useful?
-- How would you type a submit event and keep a draft separate from the API payload?
+### Advanced
+- How would you map an ASP.NET Core `ValidationProblemDetails` error dictionary onto specific form fields?
+- How should `400`, `401`, `403`, `409`, and `500` responses each produce different, deliberate UI behavior in a form?
 
-### Advanced and Follow-up
-
-- How do you prevent duplicate submissions while still allowing a retry after failure?
-- How would you map an ASP.NET Core validation error dictionary to fields in a React form?
-- How should `400` validation, `401`, `403`, `409`, and `500` produce different user-facing behavior?
+### Follow-up Questions
+- Does disabling the submit button during submission alone prevent duplicate submissions?
+- Can a form library like React Hook Form use uncontrolled inputs under the hood while still exposing validation state?
 
 ### Code Prediction
-
-Given a controlled input whose `value` becomes `undefined` after a failed load, explain the controlled/uncontrolled warning and how to model the empty value safely.
+```tsx
+function Field({ value }: { value?: string }) {
+  return <input value={value} onChange={() => {}} />;
+}
+```
+If `value` is `undefined` on the first render and later becomes a real string, what warning does React produce, and why?
 
 ## Practical Tasks
 
-- Build a typed controlled form with local validation and server field-error mapping.
-- Compare a controlled form with an uncontrolled form and justify the choice for a large data-entry workflow.
-- Preserve a user's draft after validation failure and add separate recovery behavior for conflict and authorization responses.
+- Build a controlled form with local validation and server field-error mapping using a discriminated `SaveState`.
+- Compare a controlled and an uncontrolled implementation of the same large form, and justify a choice based on rerender cost.
+- Implement distinct recovery behavior for a `409` conflict versus a `400` validation failure in the same form.
 
 ## Readiness Criteria
 
-You can choose controlled or uncontrolled inputs, model submission states, preserve server validation details, and keep form data separate from transport and display models.
+Choose controlled versus uncontrolled inputs deliberately, model submission state explicitly, and map distinct server failure types to distinct, appropriate UI behavior rather than one generic error message.
 
 ## References
 
-- [React: Sharing state between components](https://react.dev/learn/sharing-state-between-components)
+- [React: Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
 - [React: `useState`](https://react.dev/reference/react/useState)
 - [React Hook Form documentation](https://react-hook-form.com/)

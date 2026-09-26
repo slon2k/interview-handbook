@@ -2,34 +2,49 @@
 
 ## Definition
 
-React applications contain different kinds of state: local UI state, shared client state, server state, and URL state. Architecture becomes clearer when each value has one appropriate owner and one source of truth.
+React applications hold several genuinely different kinds of state: **local UI state** (owned by one component or small subtree), **shared client state** (used by multiple distant features, owned by the client), **server state** (remote, asynchronous, cacheable, subject to invalidation), and **URL state** (navigation, filters, sorting — should survive refresh and be shareable). Architecture gets clearer once every value has exactly one appropriate owner.
+
+```tsx
+const [isMenuOpen, setIsMenuOpen] = useState(false);      // local UI state — belongs to this component alone
+const { data: orders } = useQuery({ queryKey: ["orders"] }); // server state — owned by a server-state library
+```
+
+## Alternatives & Trade-offs
+
+Defaulting every piece of state to a global store is simple to reach for and never requires deciding where a value "really" belongs, but it makes ownership unclear, triggers unnecessary re-renders across unrelated features, and often duplicates server or URL state that already has a better home. Classifying state by category first — asking what kind of value this actually is before deciding where it lives — costs a moment of deliberate thought per value, but keeps each one owned by exactly the mechanism actually suited to it.
 
 ## How It Works
 
-- Local UI state belongs to one component or a small subtree, such as an open menu or draft input.
-- Shared client state is used by multiple distant features and is controlled by the client application rather than the server.
-- Server state is remote, asynchronous, cacheable, and subject to invalidation or refetching.
-- URL state represents navigation, filters, sorting, or pagination that should survive refresh and be shareable.
-- Feature-oriented structure groups routes, components, hooks, API calls, and state decisions by user capability instead of technical type alone.
+### The state-ownership decision process, applied in order
 
-## Application
+```
+1. Is the value authoritative on the SERVER, asynchronous, or cacheable?          -> server state (TanStack Query)
+2. Must it survive refresh, back/forward navigation, or be shareable via a link?   -> URL state (React Router)
+3. Is it used by only ONE component or a small subtree?                            -> local state (useState)
+4. Do several DISTANT client-owned features genuinely need it?                       -> shared client state (context/store)
+```
 
-Before choosing a state library, classify the value. Keep server state in a server-state abstraction when caching and invalidation matter, and do not copy remote data into unrelated global client state without a clear reason.
+```tsx
+// A search filter answers "yes" to question 2 -> it belongs in the URL, not a global store
+const [searchParams, setSearchParams] = useSearchParams();
+const filter = searchParams.get("filter") ?? "";
+```
 
-### State ownership decision process
+Asking these questions *in this order* prevents a common inversion: reaching for a global store first, then trying to force every value (including ones that are really server or URL state) into it, rather than recognizing each value's actual category upfront.
 
-Ask these questions in order:
+### Why remote data doesn't belong in a plain client store
 
-1. Is the value authoritative on the server, asynchronous, or cacheable? It is server state.
-2. Must the value survive refresh, back/forward navigation, or sharing a link? It is URL state.
-3. Is it used by one component or a small subtree? Keep it as local state.
-4. Do several distant client-owned features need it? Consider shared client state through composition, context, or a store.
+```tsx
+// WRONG: copies server data into a client store, then has to hand-roll caching/invalidation
+const useOrdersStore = create<{ orders: Order[] }>(() => ({ orders: [] }));
 
-This order prevents a common inversion: selecting a global store first, then forcing every value into it. Form drafts are usually local feature state. A search filter belongs in the URL rather than both a store and query parameters. Remote data should not be copied into a client store merely to make it globally available.
+// RIGHT: server state stays in a server-state library, which already handles caching/invalidation
+const { data: orders } = useQuery({ queryKey: ["orders", customerId], queryFn: () => fetchOrders(customerId) });
+```
 
-### Feature-oriented organization
+This is exactly the mistake the previous two topics warned about from their own angles — copying remote data into ordinary client state duplicates work a server-state library already does correctly, and creates a second source of truth that can drift from what the server actually has.
 
-Group a feature's route, components, API boundary, hooks, and types together when they change together:
+### Feature-oriented file organization — grouping by what changes together
 
 ```text
 features/products/
@@ -40,51 +55,52 @@ features/products/
   product-routes.tsx
 ```
 
-This does not prohibit shared components or shared API infrastructure. It makes ownership visible before extracting an abstraction that might be premature.
+Grouping a feature's route, components, API calls, hooks, and types together (rather than splitting every project by technical layer — `all-components/`, `all-hooks/`, `all-api-calls/`) makes it obvious which files change together when the feature changes, without prohibiting genuinely shared, cross-feature components or infrastructure from living separately.
+
+## Application
+
+Classify a value's state category *before* deciding where it should live, following the decision process above in order. Keep server state in a server-state library, URL-shareable state in the router, and reserve a global client store for values genuinely needed across several distant, client-owned features — not as a default first choice.
 
 ## Common Mistakes
 
-- Putting every value into a global store.
-- Treating server state as ordinary local state and reimplementing caching, retries, and invalidation inconsistently.
-- Duplicating URL filters in local state so the two sources drift.
-- Storing derived data in multiple places.
-- Organizing all files by technical type and making feature behavior hard to discover.
-- Putting form drafts in global state when only one feature edits them.
-- Mirroring URL state or server data into another state store without choosing one source of truth.
+- Putting every piece of state into a global store by default, rather than classifying each value's actual category first.
+- Treating server-fetched data as ordinary local or global client state, then hand-rolling caching, retries, and invalidation inconsistently across the app.
+- Duplicating a URL-shareable filter into local or global state as well, letting the two sources of truth drift apart after a refresh or back navigation.
+- Organizing an entire codebase by technical file type instead of by feature, making it hard to see which files actually change together.
 
 ## Common Interview Questions
 
-### Foundation
-
-- What are the main categories of application state?
-- What is the difference between client state and server state?
+### Basic
+- What are the main categories of state in a React application?
+- What's the practical difference between client state and server state?
 
 ### Intermediate
+- In what order would you evaluate a new piece of state to decide where it belongs?
+- Why shouldn't a shareable filter be duplicated in both the URL and a global store?
 
-- Where should a shareable filter live?
-- When should state be lifted, placed in context, or kept local?
+### Advanced
+- Why is server state different enough from client state to justify a dedicated library like TanStack Query, rather than treating it as ordinary state?
+- How would you reorganize a codebase split entirely by technical layer into feature-oriented boundaries?
 
-### Advanced and Follow-up
-
-- Why is server state different enough to justify TanStack Query or an equivalent library?
-- How would you split a growing React app into feature-oriented boundaries?
+### Follow-up Questions
+- Does classifying state by category mean a global client store is never appropriate?
+- Can URL state and local component state both legitimately exist for the same feature, for different values?
 
 ### Code Prediction
-
-Given a search filter stored both in URL parameters and a global store, predict how the values can diverge after browser back navigation and identify the better source of truth.
+A search filter is stored both as a query parameter and in a global Zustand store, kept "in sync" by an effect. After the user navigates back using the browser's back button, what could happen to these two values, and which one should have been the actual single source of truth?
 
 ## Practical Tasks
 
-- Classify the state in a list-and-edit feature as local, shared, server, or URL state.
-- Refactor duplicated state so each value has one owner and derived values are calculated from it.
-- Defend a state-placement decision for a searchable, paginated list and identify the source of truth for every value.
+- Classify each piece of state in a list-and-edit feature as local, shared, server, or URL state, and justify each choice.
+- Refactor a value duplicated between local state and a global store into a single source of truth.
+- Reorganize a small technical-layer-organized project (all components together, all hooks together) into feature-oriented folders.
 
 ## Readiness Criteria
 
-You can classify state accurately, choose ownership deliberately, and explain how state categories influence component boundaries and library selection.
+Classify state accurately using the ownership decision process, avoid duplicating server or URL state into a client store, and organize a codebase around features rather than technical layers alone.
 
 ## References
 
-- [React: Managing state](https://react.dev/learn/managing-state)
-- [React: Sharing state between components](https://react.dev/learn/sharing-state-between-components)
+- [React: Managing State](https://react.dev/learn/managing-state)
+- [React: Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
 - [TanStack Query documentation](https://tanstack.com/query/latest)

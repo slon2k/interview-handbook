@@ -2,7 +2,16 @@
 
 ## Definition
 
-TypeScript makes a React component's inputs and outputs explicit: props describe what a caller must provide, event handlers describe which DOM event a callback receives, and generics let a reusable component preserve the type of the data it renders. Prefer an ordinary function with an explicit props type; `React.FC` is optional, not required.
+TypeScript makes a React component's inputs and outputs explicit: props describe what a caller must provide, event handlers describe which DOM event a callback receives, and generics let a reusable component preserve the exact type of the data it renders. A plain function with an explicit props type is sufficient for almost every component — `React.FC` is optional, not required.
+
+```tsx
+type ButtonProps = { label: string; onClick: () => void };
+function Button({ label, onClick }: ButtonProps) { return <button onClick={onClick}>{label}</button>; }
+```
+
+## Alternatives & Trade-offs
+
+`React.FC<Props>` implicitly adds a `children` prop and a specific return type, which was historically the "default" way examples were written — but it makes every component accept `children` whether or not that's actually intended, and adds indirection with no real benefit over an ordinary typed function. Writing a plain function with an explicit, precise props type is more work to type out per-component but says exactly what the component accepts, with no implicit extras.
 
 ## How It Works
 
@@ -29,7 +38,7 @@ export function SearchBox({ label, value, onChange, children }: SearchBoxProps) 
 }
 ```
 
-Use `ReactNode` when a prop accepts renderable content such as text, elements, fragments, or arrays of those values. Use a more specific element type only when the component truly needs to inspect or clone that element. Type handlers by the element that emits them, rather than giving their event an implicit `any`.
+Use `ReactNode` when a prop accepts renderable content — text, elements, fragments, arrays of those. Type handlers by the specific element that emits them (`ChangeEvent<HTMLInputElement>`, not a generic click-event type used for everything), rather than leaving them implicitly `any`.
 
 ### Mutually exclusive props and render callbacks
 
@@ -43,9 +52,9 @@ function Label({ label, renderLabel }: LabelProps) {
 }
 ```
 
-A discriminated or mutually exclusive union prevents callers from supplying incompatible alternatives. For a render callback, type both the arguments it receives and the renderable value it returns.
+This mutually-exclusive union (Module 3's discriminated-union model, applied to component props) prevents a caller from supplying *both* a text label and a render callback at once — a combination that would be ambiguous and that a simple `{ label?: string; renderLabel?: () => ReactNode }` shape would have silently allowed.
 
-### Generic components and wrapper props
+### Generic components — preserving the caller's actual item type
 
 ```tsx
 type ListProps<Item extends { id: string }> = {
@@ -58,7 +67,9 @@ function List<Item extends { id: string }>({ items, renderItem }: ListProps<Item
 }
 ```
 
-Use a constraint only for the properties the component needs. A wrapper around a native element can inherit its standard props without repeating them:
+The constraint (`extends { id: string }`) only requires what the component actually needs — an `id` for the key — while still letting `renderItem` receive the caller's *exact* item type (a `Product`, a `User`, whatever was actually passed in), not a widened, generic shape.
+
+### Wrapping a native element without repeating its props
 
 ```tsx
 import type { ComponentPropsWithoutRef } from "react";
@@ -68,74 +79,58 @@ type PrimaryButtonProps = ComponentPropsWithoutRef<"button"> & {
 };
 ```
 
-`forwardRef` is useful when a component deliberately exposes a DOM node to its caller, such as a reusable input. Treat it as an interoperability pattern, not a default component shape.
-
-### Reducers, context, and custom hooks
-
-```tsx
-type CounterAction =
-  | { type: "increment" }
-  | { type: "set"; value: number };
-
-function counterReducer(state: number, action: CounterAction): number {
-  switch (action.type) {
-    case "increment":
-      return state + 1;
-    case "set":
-      return action.value;
-  }
-}
-```
-
-Use discriminated actions so a reducer can narrow action-specific payloads. Give a custom hook a small, named return contract. A context whose value may be absent should be accessed through a custom hook that throws a clear error outside its provider, instead of leaking `T | undefined` across every consumer.
+`ComponentPropsWithoutRef<"button">` gives every standard HTML button attribute (`disabled`, `onClick`, `type`, and so on) for free, so a wrapper component doesn't need to manually redeclare each one it wants to pass through.
 
 ## Application
 
-Keep the TypeScript contract at the component boundary. Use the framework-independent state models from [Module 3](../m03-typescript/typing-ui-state-forms-and-async-results.md) for props and hook results, then use React types only for JSX, DOM events, children, and ref interoperability.
+Keep the TypeScript contract at the component boundary explicit and precise. Use the framework-independent state models from [Module 3](../m03-typescript/typing-ui-state-forms-and-async-results.md) for props and hook results, and reach for React-specific types only for JSX, DOM events, children, and ref interoperability.
 
 ## Common Mistakes
 
-- Defaulting to `React.FC` because it appears in older examples, instead of writing the clearest component signature.
-- Giving event handlers an implicit `any` or using a click event type for a change handler.
-- Using `ReactNode` when a component requires exactly one inspectable React element.
-- Writing a generic component with no constraint, then assuming every item has an `id` for its key.
-- Publishing a context value that can be `undefined` without a provider-checking hook.
-- Using a type assertion to claim that untrusted API data matches a prop type instead of validating it at the Module 3 boundary.
+- Defaulting to `React.FC` out of habit, implicitly granting every component an unintended `children` prop.
+- Giving an event handler an implicit `any`, or using the wrong DOM event type (a click-event type for a change handler).
+- Writing a generic component with no constraint at all, then assuming every item has an `id` available for its key.
+- Publishing a context value typed as possibly `undefined` to every consumer instead of checking it once in a dedicated hook.
 
 ## Common Interview Questions
 
-### Foundation
-
+### Basic
 - Why is a plain function with typed props usually sufficient for a React component?
-- When would a prop use `ReactNode`?
+- When would a prop's type be `ReactNode` instead of `string` or a specific element type?
 
 ### Intermediate
+- How would you type an input change handler versus a form submit handler?
+- How would you prevent a component from accepting both a text label and a render callback at the same time?
 
-- How would you type an input change handler and a form submit handler?
-- How would you prevent a component from accepting both a text label and a render callback?
+### Advanced
+- How would you type a reusable list component while preserving the caller's specific item type through to the render callback?
+- Why should a context value that might be `undefined` typically be accessed through a dedicated hook rather than directly?
 
-### Advanced and Follow-up
-
-- How would you type a reusable list while preserving the caller's item type?
-- When is `forwardRef` appropriate, and why should it not be the default?
+### Follow-up Questions
+- Does `React.FC` provide any type safety that a plain typed function doesn't?
+- Can a generic component's constraint be narrower than the full shape of the data it's given?
 
 ### Code Prediction
-
-Given a `List<Item extends { id: string }>` component, explain why passing items with only `{ name: string }` fails before rendering and how the constraint protects the list key.
+```tsx
+function List<Item extends { id: string }>({ items }: { items: Item[] }) {
+  return <ul>{items.map(item => <li key={item.id} />)}</ul>;
+}
+<List items={[{ name: "Widget" }]} />
+```
+Does this compile? Why or why not, given the constraint on `Item`?
 
 ## Practical Tasks
 
-- Type a controlled input component with a `ReactNode` label and an input change handler.
-- Refactor a component with incompatible optional props into a mutually exclusive union.
-- Build a generic list that accepts a typed render callback and uses a stable key.
-- Type a reducer action union and add a context hook that reports a missing provider clearly.
+- Type a controlled input component with a `ReactNode` label and a properly-typed change handler.
+- Refactor a component with two incompatible optional props into a mutually exclusive union.
+- Build a generic list component that accepts a typed render callback and enforces a stable key requirement via its constraint.
 
 ## Readiness Criteria
 
-You can type React component boundaries, DOM events, render callbacks, generic component data, reducers, contexts, and custom-hook contracts without resorting to `any` or unsafe assertions.
+Type React component boundaries, DOM events, and generic components precisely without resorting to `any` or unsafe assertions, and explain why `React.FC` is avoidable rather than required.
 
 ## References
 
-- [React TypeScript Cheatsheet: Basic prop types](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example/)
-- [React: Passing props to a component](https://react.dev/learn/passing-props-to-a-component)
+- [React TypeScript Cheatsheet: Basic Prop Types](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example/)
+- [React: Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
 - [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)

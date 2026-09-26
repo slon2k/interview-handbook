@@ -64,7 +64,7 @@ By the end of this module, you should be able to:
 - JavaScript closures, promises, and event-loop behavior belong in [Module 2](../m02-javascript-language-and-runtime/README.md).
 - TypeScript modeling, narrowing, generics, and runtime-validation limits belong in [Module 3](../m03-typescript/README.md).
 - DOM events, browser rendering, `fetch`, CORS, authentication, URL mechanics, and API contracts belong in [Module 4](../m04-browser-platform-and-aspnet-core-api-integration/README.md); this module explains how React uses them.
-- React Testing Library, MSW, Vitest or Jest, Playwright or Cypress, bundling, and frontend delivery belong in Module 6.
+- React Testing Library, MSW, Vitest or Jest, Playwright or Cypress, bundling, and frontend delivery belong in [Module 6](../m06-frontend-testing-and-tooling/README.md).
 - HTTP semantics, backend API design, and security architecture remain in the related .NET modules.
 
 ## Suggested Learning Sequence
@@ -95,7 +95,7 @@ By the end of this module, you should be able to:
 
 ## Interview Coverage
 
-Each topic includes foundation, intermediate, and advanced questions plus a code-prediction or debugging prompt. Practice explaining what React knows during rendering, what an effect synchronizes, and which state transition or identity rule causes the observed behavior.
+Each topic includes basic, intermediate, and advanced/follow-up questions plus a code-prediction or debugging prompt. Practice explaining what React knows during rendering, what an effect synchronizes, and which state transition or identity rule causes the observed behavior.
 
 ## References
 
