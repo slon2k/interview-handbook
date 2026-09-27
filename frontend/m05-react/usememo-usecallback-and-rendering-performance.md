@@ -51,7 +51,7 @@ function Parent() {
 }
 ```
 
-Without `useCallback`, `handleSave` would be a brand-new function on every render of `Parent`, which — exactly like the inline-object-prop trap in the reconciliation topic — would defeat `MemoButton`'s `React.memo` even though the function's *behavior* never actually changes.
+Without `useCallback`, `handleSave` would be a brand-new function on every render of `Parent`, which — exactly like the [inline-object-prop trap in the reconciliation topic](reconciliation-rerenders-and-keys.md) — would defeat `MemoButton`'s `React.memo` even though the function's *behavior* never actually changes.
 
 ### A memoized value can go stale just like an effect can
 
@@ -61,10 +61,11 @@ function SearchResults({ items, query }: { items: Item[]; query: string }) {
     () => items.filter(i => i.name.includes(query)),
     [items] // WRONG: query is used inside the calculation but missing from the dependency array
   );
-  // filtered keeps using whatever `query` was true the FIRST time this ran — a stale value bug,
-  // identical in shape to the missing-dependency bug covered in the useEffect topic
+  // filtered keeps using whatever `query` was true the FIRST time this ran — a stale value bug
 }
 ```
+
+This is identical in shape to the missing-dependency bug covered in [`useEffect`, dependencies, cleanup, and synchronization](useeffect-dependencies-cleanup-and-synchronization.md).
 
 ### Memoization has a real, ongoing cost — it isn't free
 

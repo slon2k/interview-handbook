@@ -112,7 +112,7 @@ Model async UI state as a discriminated union with mutually exclusive branches, 
 
 ### Advanced
 - How would you distinguish initial loading, background refreshing, and retrying in the same component's UI?
-- When does raw `useEffect`-based fetching like this become limiting enough to justify a server-state library (previous topics)?
+- When does raw `useEffect`-based fetching like this become limiting enough to justify a server-state library (a later topic)?
 
 ### Follow-up Questions
 - Does an aborted request (via `AbortController`) count as an error state in a well-designed model?

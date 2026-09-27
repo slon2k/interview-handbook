@@ -2,7 +2,7 @@
 
 ## Definition
 
-React doesn't mandate a styling approach or a state-management library — both are architectural choices layered on top. Styling options range from plain CSS to CSS Modules (build-time scoped class names), utility-first frameworks (Tailwind), and CSS-in-JS. Client-state libraries (Redux, Zustand, Jotai) exist specifically for *shared client state* — they solve a different problem than server state (previous topic), which they should not be used to reimplement.
+React doesn't mandate a styling approach or a state-management library — both are architectural choices layered on top. Styling options range from plain CSS to CSS Modules (build-time scoped class names), utility-first frameworks (Tailwind), and CSS-in-JS. Client-state libraries (Redux, Zustand, Jotai) exist specifically for *shared client state* — they solve a different problem than server state (a later topic, [TanStack Query and server state](tanstack-query-and-server-state.md)), which they should not be used to reimplement.
 
 ```tsx
 import styles from "./Card.module.css"; // CSS Modules: class names are scoped, generated uniquely per file at build time
@@ -69,7 +69,7 @@ const useOrdersStore = create<{ orders: Order[]; setOrders: (o: Order[]) => void
   setOrders: (orders) => set({ orders }),
 }));
 // every consumer now has to manually figure out when this cached copy is stale and needs refetching —
-// exactly the problem the previous topic's server-state library already solves
+// exactly the problem a server-state library (the next topic) already solves
 ```
 
 ## Application

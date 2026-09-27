@@ -81,7 +81,7 @@ function TodoItem({ todo }: { todo: Todo }) {
 
 ## Application
 
-Use `useTransition` specifically when one user interaction has both an urgent part (keep the input responsive) and a non-urgent, potentially expensive part (recompute a large filtered/derived view) — not as a general performance switch. Use `useOptimistic` only for actions where an optimistic result the product can clearly explain and gracefully roll back is worth the snappier feel; keep using ordinary state and TanStack Query (previous topic) for everything else.
+Use `useTransition` specifically when one user interaction has both an urgent part (keep the input responsive) and a non-urgent, potentially expensive part (recompute a large filtered/derived view) — not as a general performance switch. Use `useOptimistic` only for actions where an optimistic result the product can clearly explain and gracefully roll back is worth the snappier feel; keep using ordinary state and [TanStack Query](tanstack-query-and-server-state.md) for everything else.
 
 ## Common Mistakes
 
