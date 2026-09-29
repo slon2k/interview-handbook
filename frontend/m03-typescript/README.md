@@ -18,7 +18,7 @@ A strong frontend candidate can read a type error as useful design feedback, mod
 
 By the end of this module, you should be able to:
 
-- Use inference and annotations deliberately without typing every expression redundantly.
+- Use inference, annotations, and `satisfies` deliberately without typing every expression redundantly.
 - Explain structural typing, interfaces, type aliases, excess-property checks, and `readonly` data.
 - Model alternatives with unions, intersections, literal types, optional properties, and discriminated unions.
 - Preserve finite values with `as const` and derive literal unions from stable configuration data.
@@ -63,7 +63,7 @@ By the end of this module, you should be able to:
 - JavaScript values, closures, promises, and event-loop behavior belong in [Module 2](../m02-javascript-language-and-runtime/README.md); TypeScript adds static modeling on top of those runtime rules.
 - DOM events, `fetch`, browser storage, rendering, HTTP status handling, and API integration belong in [Module 4 - Browser Platform and ASP.NET Core API Integration](../m04-browser-platform-and-aspnet-core-api-integration/README.md).
 - React props, hooks, component generics, and React event types belong in [Module 5 - React](../m05-react/README.md); this module covers framework-independent UI and async modeling.
-- `tsconfig`, npm scripts, linting, bundling, and build delivery belong in Module 6 - Frontend Testing and Tooling; this module explains strictness concepts only where they affect type safety.
+- `tsconfig`, npm scripts, linting, bundling, and build delivery belong in [Module 6 - Frontend Testing and Tooling](../m06-frontend-testing-and-tooling/README.md); this module explains strictness concepts only where they affect type safety.
 
 ## Suggested Learning Sequence
 
@@ -83,7 +83,7 @@ By the end of this module, you should be able to:
 
 ## Interview Coverage
 
-Each topic includes foundation, intermediate, and advanced questions plus a code-prediction prompt. Practise explaining what the compiler knows, what it can narrow, and what remains unchecked once JavaScript runs.
+Each topic includes basic, intermediate, and advanced/follow-up questions plus a code-prediction prompt. Practise explaining what the compiler knows, what it can narrow, and what remains unchecked once JavaScript runs.
 
 ## References
 
