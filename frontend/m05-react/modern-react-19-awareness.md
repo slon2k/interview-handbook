@@ -6,16 +6,19 @@ React 19 adds APIs for keeping urgent interaction responsive while a related, no
 
 ```tsx
 const [isPending, startTransition] = useTransition();
+const [filterQuery, setFilterQuery] = useState("");
 
 function handleChange(newQuery: string) {
-  setQuery(newQuery);                          // URGENT: keep the input responsive immediately
-  startTransition(() => setFilteredResults(filter(newQuery))); // NON-URGENT: can lag behind slightly
+  setQuery(newQuery); // URGENT: keep the input responsive immediately
+  startTransition(() => setFilterQuery(newQuery)); // NON-URGENT: schedule the derived view update
 }
+
+const filteredResults = expensiveFilter(allItems, filterQuery);
 ```
 
 ## Alternatives & Trade-offs
 
-Without a transition, a single state update that triggers an expensive re-render (filtering a large list on every keystroke) can make typing itself feel laggy, since React treats every update with equal urgency by default. Marking the expensive part as a transition lets React prioritize the input's own responsiveness first and catch up on the expensive work slightly after — at the cost of `isPending` needing to be handled deliberately in the UI, and the fact that a transition does nothing for network latency or CPU parallelism; it only affects *scheduling priority* between two state updates that happen (roughly) together.
+Without a transition, a single state update that triggers an expensive render (filtering a large list on every keystroke) can make typing itself feel laggy, since React treats every update with equal urgency by default. Marking the state update that drives the expensive render as a transition lets React keep the input update urgent and make the derived render interruptible. The filter function still runs synchronously during rendering; a transition does not make CPU work faster or move it to another thread.
 
 ## How It Works
 
@@ -24,17 +27,17 @@ Without a transition, a single state update that triggers an expensive re-render
 ```tsx
 function SearchBox() {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Item[]>([]);
+  const [filterQuery, setFilterQuery] = useState("");
   const [isPending, startTransition] = useTransition();
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     setQuery(value); // updates immediately — the input never feels laggy
 
-    startTransition(() => {
-      setResults(expensiveFilter(allItems, value)); // React can interrupt/deprioritize THIS if more urgent work arrives
-    });
+    startTransition(() => setFilterQuery(value)); // React can interrupt the render driven by this update
   }
+
+  const results = expensiveFilter(allItems, filterQuery);
 
   return (
     <>
@@ -45,7 +48,7 @@ function SearchBox() {
 }
 ```
 
-Without the transition, `setResults(expensiveFilter(...))` on every keystroke would be treated with the same urgency as `setQuery`, and a slow filter calculation could make the input itself feel sluggish to type into — the transition tells React "this part can wait a beat if something more urgent needs attention first."
+Without the transition, the state that drives the expensive render would be updated with the same urgency as `setQuery`. With the transition, React can commit the urgent input update first and interrupt/restart the render for the new results when needed. The `expensiveFilter` call itself still runs synchronously during that render.
 
 ### `useTransition` does not cancel requests or make anything computationally faster
 
@@ -62,22 +65,30 @@ A common misconception worth correcting directly: `useTransition` is a rendering
 ### `useOptimistic` — showing an expected result before the server confirms it
 
 ```tsx
-function TodoItem({ todo }: { todo: Todo }) {
+function TodoItem({ todo, onTodoUpdated }: {
+  todo: Todo;
+  onTodoUpdated: (todo: Todo) => void;
+}) {
   const [optimisticTodo, setOptimisticTodo] = useOptimistic(
     todo,
     (state, newDone: boolean) => ({ ...state, done: newDone })
   );
 
-  async function handleToggle() {
-    setOptimisticTodo(!optimisticTodo.done); // shows the NEW state IMMEDIATELY, before the request resolves
-    await toggleTodoRequest(todo.id, !todo.done); // if this fails, optimisticTodo reverts back to `todo` automatically
+  function handleToggle() {
+    const nextDone = !optimisticTodo.done;
+
+    startTransition(async () => {
+      setOptimisticTodo(nextDone); // shows the NEW state immediately, before the request resolves
+      const savedTodo = await toggleTodoRequest(todo.id, nextDone);
+      startTransition(() => onTodoUpdated(savedTodo)); // commit the confirmed server state
+    });
   }
 
   return <Checkbox checked={optimisticTodo.done} onChange={handleToggle} />;
 }
 ```
 
-`useOptimistic` renders the expected outcome instantly for a snappier feel, then reconciles with whatever the server actually confirms — if the request fails and `todo` itself never updates, the optimistic value automatically reverts. This only makes sense for actions where a rare failure and its visible "snap back" are an acceptable user experience — not for anything where showing, then un-showing, a result would be confusing or costly.
+`useOptimistic` renders the expected outcome instantly for a snappier feel, then reconciles with the confirmed value supplied through `onTodoUpdated`. If the request fails and the canonical `todo` remains unchanged, the optimistic value automatically reverts. The setter must run inside an Action, and the canonical state or server-state cache must be updated after success. This only makes sense for actions where a rare failure and its visible "snap back" are an acceptable user experience — not for anything where showing, then un-showing, a result would be confusing or costly.
 
 ## Application
 
@@ -112,10 +123,10 @@ Use `useTransition` specifically when one user interaction has both an urgent pa
 ```tsx
 function handleChange(value: string) {
   setQuery(value);
-  startTransition(() => setResults(expensiveFilter(value)));
+  startTransition(() => setFilterQuery(value));
 }
 ```
-While typing quickly, does the input ever feel laggy waiting for `expensiveFilter` to finish? What specifically is `startTransition` doing to make that true?
+While typing quickly, when does `expensiveFilter` run, and what specifically is `startTransition` doing to keep its render interruptible?
 
 ## Practical Tasks
 

@@ -55,6 +55,6 @@ You can explain environment-driven API configuration, dev-server proxies, and th
 
 ## References
 
-- [MDN: Environment variables in browser apps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
-- [Vite: Environment variables](https://vitejs.dev/guide/env-and-mode.html)
+- [Vite: Environment variables and modes](https://vite.dev/guide/env-and-mode.html)
+- [Vite: Development server proxy](https://vite.dev/config/server-options.html#server-proxy)
 - [Create React App: Proxying API requests in development](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
